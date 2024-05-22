@@ -1,10 +1,10 @@
 # Work Log
 
-## GROUP MEMBER 1
+## IVAN GONTCHAR
 
-### date x
+### 5/22/24
 
-info
+didn't do much, just added Game pde, but worked on expanding phases, as per Mr. K's suggestion in our google doc
 
 ### date y
 
