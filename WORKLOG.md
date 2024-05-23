@@ -17,6 +17,6 @@ info
 
 I created the infield, with the smaller green diamond and the yellow one surrounding it. I also put a rectangle for the scoreboard at the top. Spent a lot of time with the diamonds because I'm an idiot.
 
-### date y
+### 5/23/24 - CW
 
-info
+I made the rest of the field
