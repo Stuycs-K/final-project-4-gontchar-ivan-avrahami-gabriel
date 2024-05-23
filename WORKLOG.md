@@ -13,9 +13,9 @@ info
 
 ## GROUP MEMBER 2
 
-### date x
+### 5/22/24
 
-info
+I created the infield, with the smaller green diamond and the yellow one surrounding it. I also put a rectangle for the scoreboard at the top. Spent a lot of time with the diamonds because I'm an idiot.
 
 ### date y
 
