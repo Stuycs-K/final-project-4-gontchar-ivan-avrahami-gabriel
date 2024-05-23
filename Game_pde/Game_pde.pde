@@ -1,28 +1,44 @@
 void setup(){
-  int translate = 100;
   size(1600, 1000);
-  background(0);
-  fill(255);
-  rect(125,25,1200,75);
-  fill(21,212,53);
-  //green outer quad
-  quad(800,425+translate,1000,615+translate,800,825+translate,600,615+translate);
-  fill(237,247,87);
-  //yellow quad
-  quad(800,425+translate,975,600+translate,800,775+translate,625,600+translate);
-  fill(21,212,53);
-  //green inner quad
-  quad(800,450+translate,950,600+translate,800,750+translate,650,600+translate);
-  rotate(PI);
-  arc(-800,-425-translate,550,550,-QUARTER_PI,PI+QUARTER_PI,PIE);
-  rotate(-PI);
-  stroke(255);
-  strokeWeight(2);
-  line(330,300+translate,800,776+translate);
-  line(1270,300+translate,800,776+translate);
-  line(800,425+translate,975,600+translate);
-  line(800,425+translate,625,600+translate);
+  background(181, 154, 94);
+  field();
 }
 void draw(){
 
+}
+
+void field(){
+  fill(21,212,53);
+  stroke(0);
+  circle(width / 2, height - 150, 1600);
+  //stroke(255);
+  rect(0, height - 150, width, 150);
+  
+  //translate(width/2, height/2);
+  //rotate(QUARTER_PI);
+  //rect(-204, -104, 208, 208);
+  quad(width / 2, height - 150, 500, height - 250, width / 2, 400, width - 500, height - 250);
+  
+  //int translate = 100;
+  //fill(255);
+  //rect(125,25,1200,75);
+  //fill(21,212,53);
+  ////green outer quad
+  //stroke(21,212,53);
+  //quad(800,425+translate,1000,615+translate,800,825+translate,600,615+translate);
+  //fill(237,247,87);
+  ////yellow quad
+  //quad(800,425+translate,975,600+translate,800,775+translate,625,600+translate);
+  //fill(21,212,53);
+  ////green inner quad
+  //quad(800,450+translate,950,600+translate,800,750+translate,650,600+translate);
+  //rotate(PI);
+  //arc(-800,-425-translate,550,550,-QUARTER_PI,PI+QUARTER_PI,PIE);
+  //rotate(-PI);
+  //stroke(255);
+  //strokeWeight(2);
+  //line(330,300+translate,800,776+translate);
+  //line(1270,300+translate,800,776+translate);
+  //line(800,425+translate,975,600+translate);
+  //line(800,425+translate,625,600+translate);
 }

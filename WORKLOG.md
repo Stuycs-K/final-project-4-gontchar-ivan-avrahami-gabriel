@@ -6,9 +6,9 @@
 
 didn't do much, just added Game pde, but worked on expanding phases, as per Mr. K's suggestion in our google doc
 
-### date y
+### 5/23
 
-info
+worked on "beautifying" the field"
 
 
 ## GROUP MEMBER 2
