@@ -34,18 +34,12 @@ void setup(){
 }
 
 void draw(){
-  background(255);
-
   //check if the button P1_LEFT is being pressed:
   if (keyboardInput.isPressed(Controller.P1_LEFT)) {
-    rect(10, 10, 10, 10);
   }
   //check if the button P1_RIGHT is being pressed:
   if (keyboardInput.isPressed(Controller.P1_RIGHT)) {
-    rect(30, 10, 10, 10);
   }
-  fill(0);
-  text("Try pressing one or more\n of: WASD keys", 10, 50);
 }
 
 void keyPressed() {
