@@ -1,4 +1,4 @@
-public class Scoreboard {
+class Scoreboard {
   public Scoreboard() {
     
   }

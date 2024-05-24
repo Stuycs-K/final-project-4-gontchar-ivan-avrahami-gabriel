@@ -1,4 +1,4 @@
-public class Baseball {
+class Baseball {
   public Baseball() {
     
   }

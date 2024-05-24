@@ -2,6 +2,7 @@ String homeTeam;
 String awayTeam;
 Scoreboard board;
 Baseball ball;
+Controller keyboardInput;
 
 void setup(){
   int translate = 50;
@@ -29,11 +30,32 @@ void setup(){
   line(800,425+translate,625,600+translate);
   
   
-  
+  keyboardInput = new Controller();
 }
 
 void draw(){
+  background(255);
 
+  //check if the button P1_LEFT is being pressed:
+  if (keyboardInput.isPressed(Controller.P1_LEFT)) {
+    rect(10, 10, 10, 10);
+  }
+  //check if the button P1_RIGHT is being pressed:
+  if (keyboardInput.isPressed(Controller.P1_RIGHT)) {
+    rect(30, 10, 10, 10);
+  }
+  fill(0);
+  text("Try pressing one or more\n of: WASD keys", 10, 50);
+}
+
+void keyPressed() {
+  //send the number of the key to your controller object
+  keyboardInput.press(keyCode);
+}
+
+void keyReleased() {
+  //send the number of the key to your controller object
+  keyboardInput.release(keyCode);
 }
 
 void pitch(Pitch p){
@@ -45,4 +67,5 @@ void pitch(Pitch p){
   if (p.getPitch() == "fastball") {
     speed = 15;
   }
+  
 }
