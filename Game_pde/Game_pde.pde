@@ -1,5 +1,11 @@
+String homeTeam;
+String awayTeam;
+Scoreboard board;
+Baseball ball;
+Controller keyboardInput;
+
 void setup(){
-  int translate = 100;
+  int translate = 50;
   size(1600, 1000);
   background(0);
   fill(255);
@@ -22,7 +28,38 @@ void setup(){
   line(1270,300+translate,800,776+translate);
   line(800,425+translate,975,600+translate);
   line(800,425+translate,625,600+translate);
+  
+  
+  keyboardInput = new Controller();
 }
-void draw(){
 
+void draw(){
+  //check if the button P1_LEFT is being pressed:
+  if (keyboardInput.isPressed(Controller.P1_LEFT)) {
+  }
+  //check if the button P1_RIGHT is being pressed:
+  if (keyboardInput.isPressed(Controller.P1_RIGHT)) {
+  }
+}
+
+void keyPressed() {
+  //send the number of the key to your controller object
+  keyboardInput.press(keyCode);
+}
+
+void keyReleased() {
+  //send the number of the key to your controller object
+  keyboardInput.release(keyCode);
+}
+
+void pitch(Pitch p){
+  int right = 0;
+  int speed = 10;
+  if (p.getPitch() == "curveball") {
+    //right = (int) (Math.random() * 5 - 3);
+  }
+  if (p.getPitch() == "fastball") {
+    speed = 15;
+  }
+  
 }
