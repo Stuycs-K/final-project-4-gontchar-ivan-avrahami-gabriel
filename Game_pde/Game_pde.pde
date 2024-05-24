@@ -1,5 +1,10 @@
+String homeTeam;
+String awayTeam;
+Scoreboard board;
+Baseball ball;
+
 void setup(){
-  int translate = 100;
+  int translate = 50;
   size(1600, 1000);
   background(0);
   fill(255);
@@ -22,7 +27,22 @@ void setup(){
   line(1270,300+translate,800,776+translate);
   line(800,425+translate,975,600+translate);
   line(800,425+translate,625,600+translate);
+  
+  
+  
 }
+
 void draw(){
 
+}
+
+void pitch(Pitch p){
+  int right = 0;
+  int speed = 10;
+  if (p.getPitch() == "curveball") {
+    //right = (int) (Math.random() * 5 - 3);
+  }
+  if (p.getPitch() == "fastball") {
+    speed = 15;
+  }
 }
