@@ -30,6 +30,9 @@ void setup(){
   line(800,425+translate,625,600+translate);
   
   
+  // trying to load a batter
+  Player batter = new Player("batterExperimental.png", 800, 500);
+  
   keyboardInput = new Controller();
 }
 
