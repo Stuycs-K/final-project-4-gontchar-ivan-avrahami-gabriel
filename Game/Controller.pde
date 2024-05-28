@@ -29,7 +29,7 @@ class Controller {
       inputs[P1_RIGHT] = true;
     if(code == 'W')
       inputs[P1_UP] = true;
-    if(code == 'R')
+    if(code == 'S')
       inputs[P1_DOWN] = true;
     if(code == '1')
       inputs[BASE_1] = true;
@@ -49,7 +49,7 @@ class Controller {
     inputs[P1_RIGHT] = false;
     if(code == 'W')
       inputs[P1_UP] = false;
-    if(code == 'R')
+    if(code == 'S')
       inputs[P1_DOWN] = false;
     if(code == '1')
       inputs[BASE_1] = false;

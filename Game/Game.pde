@@ -3,6 +3,9 @@ String awayTeam;
 Scoreboard board;
 Baseball ball;
 Controller keyboardInput;
+Player pitcher;
+Player batter;
+Player fielder;
 
 void setup(){
   int translate = 50;
@@ -30,17 +33,32 @@ void setup(){
   line(800,425+translate,625,600+translate);
   
   
+  // trying to load a batter
+  fielder = new Player("batterExperimental.png", 800, 500);
+  
   keyboardInput = new Controller();
 }
 
 void draw(){
   //check if the button P1_LEFT is being pressed:
+  //check if the button P1_LEFT is being pressed:
   if (keyboardInput.isPressed(Controller.P1_LEFT)) {
+    fielder.move(-5,0);
   }
+  
+  //check if the button P1_RIGHT is being pressed:
   //check if the button P1_RIGHT is being pressed:
   if (keyboardInput.isPressed(Controller.P1_RIGHT)) {
+    fielder.move(5,0);
   }
+  if (keyboardInput.isPressed(Controller.P1_UP)) {
+    fielder.move(0,-5);
+  }
+  if (keyboardInput.isPressed(Controller.P1_DOWN)) {
+    fielder.move(0,5);
+  } 
 }
+
 
 void keyPressed() {
   //send the number of the key to your controller object
