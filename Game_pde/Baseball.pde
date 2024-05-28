@@ -1,5 +1,0 @@
-class Baseball {
-  public Baseball() {
-    
-  }
-}

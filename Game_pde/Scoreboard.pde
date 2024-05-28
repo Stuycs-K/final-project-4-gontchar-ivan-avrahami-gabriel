@@ -1,5 +1,0 @@
-class Scoreboard {
-  public Scoreboard() {
-    
-  }
-}
