@@ -3,6 +3,9 @@ String awayTeam;
 Scoreboard board;
 Baseball ball;
 Controller keyboardInput;
+Player pitcher;
+Player batter;
+Player fielder;
 
 void setup(){
   int translate = 50;
@@ -36,9 +39,17 @@ void setup(){
 void draw(){
   //check if the button P1_LEFT is being pressed:
   if (keyboardInput.isPressed(Controller.P1_LEFT)) {
+    fielder.move(-1,0);
   }
   //check if the button P1_RIGHT is being pressed:
   if (keyboardInput.isPressed(Controller.P1_RIGHT)) {
+    fielder.move(1,0);
+  }
+  if (keyboardInput.isPressed(Controller.P1_UP)) {
+    fielder.move(0,-1);
+  }
+  if (keyboardInput.isPressed(Controller.P1_DOWN)) {
+    fielder.move(0,1);
   }
 }
 
@@ -50,16 +61,4 @@ void keyPressed() {
 void keyReleased() {
   //send the number of the key to your controller object
   keyboardInput.release(keyCode);
-}
-
-void pitch(Pitch p){
-  int right = 0;
-  int speed = 10;
-  if (p.getPitch() == "curveball") {
-    //right = (int) (Math.random() * 5 - 3);
-  }
-  if (p.getPitch() == "fastball") {
-    speed = 15;
-  }
-  
 }
