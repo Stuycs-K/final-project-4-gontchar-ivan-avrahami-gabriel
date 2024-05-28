@@ -28,9 +28,9 @@ class Controller {
     if(code == 'D')
       inputs[P1_RIGHT] = true;
     if(code == 'W')
-      inputs[PI_UP] = true;
+      inputs[P1_UP] = true;
     if(code == 'R')
-      inputs[PI_DOWN] = true;
+      inputs[P1_DOWN] = true;
     if(code == '1')
       inputs[BASE_1] = true;
     if(code == '2')
@@ -48,9 +48,9 @@ class Controller {
     if(code == 'D')
     inputs[P1_RIGHT] = false;
     if(code == 'W')
-      inputs[PI_UP] = false;
+      inputs[P1_UP] = false;
     if(code == 'R')
-      inputs[PI_DOWN] = false;
+      inputs[P1_DOWN] = false;
     if(code == '1')
       inputs[BASE_1] = false;
     if(code == '2')
