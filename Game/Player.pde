@@ -13,7 +13,7 @@ class Player {
     image(picture, horizontal+rl, vertical+du);
   }
   
-  public void pitch(Pitch p){
+  public void pitch(baseball b, Pitch p){
     int right = 0;
     int speed = 10;
     if (p.getPitch() == "curveball") {
@@ -22,6 +22,6 @@ class Player {
     if (p.getPitch() == "fastball") {
       speed = 15;
     }
-  
+    b.move(right,speed);
   }
 }
