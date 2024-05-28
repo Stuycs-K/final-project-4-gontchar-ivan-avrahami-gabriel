@@ -98,7 +98,7 @@ I made some of the pitching and the keyboard inputs, then merged
 
 ### 5/24/24 - HW
 
-xxx
+I forgot to update the worklog on the day of but I did work with player movement
 
 ### 5/28/24 - CW
 
