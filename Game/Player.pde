@@ -2,6 +2,9 @@ class Player {
   PImage picture;
   int horizontal;
   int vertical;
+  int heightPlayer = 100;
+  int widthPlayer = 100;
+  
   public Player(String img, int hor, int ver) {
     picture = loadImage(img);
     horizontal = hor;
@@ -10,7 +13,9 @@ class Player {
   }
   
   public void move(int rl, int du) {
-    image(picture, horizontal+rl, vertical+du);
+    horizontal+=rl;
+    vertical+=du;
+    image(picture, horizontal, vertical);
   }
   
   public void pitch(Pitch p){
