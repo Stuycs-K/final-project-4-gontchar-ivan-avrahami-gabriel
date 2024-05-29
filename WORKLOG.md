@@ -102,11 +102,11 @@ I forgot to update the worklog on the day of but I did work with player movement
 
 ### 5/28/24 - CW
 
-xxx
+We worked on the pitching in class.
 
 ### 5/28/24 - HW
 
-xxx
+I displayed the players and baseball appropriately; they can be moved.
 
 ### 5/29/24 - CW
 
