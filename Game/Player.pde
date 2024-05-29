@@ -29,4 +29,18 @@ class Player {
   public void throwBall(Base b) {
     b.location();
   }
+  
+  public void pitch(Pitch p) {
+    int right = 0;
+    int speed = 10;
+    if (p.getPitch() == "curveball") {
+      //right = (int) (Math.random() * 5 - 3);
+    }
+    if (p.getPitch() == "fastball") {
+      speed = 15;
+    }
+    if (! hasSwung) {
+      ball.move(right,speed);
+    }      
+  }
 }

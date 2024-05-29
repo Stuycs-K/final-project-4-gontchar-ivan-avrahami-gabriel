@@ -32,19 +32,7 @@ class Field {
     pitcher.displayPlayer();
     ball.displayBaseball();
   
-    pitch(new Pitch("fastball"));
-  
-    int right = 0;
-    int speed = 10;
-    if (p.getPitch() == "curveball") {
-      //right = (int) (Math.random() * 5 - 3);
-    }
-    if (p.getPitch() == "fastball") {
-      speed = 15;
-    }
-    if (! hasSwung) {
-      ball.move(right,speed);
-    }  
+    pitcher.pitch(new Pitch("fastball"));
   
     //check if the button P1_LEFT is being pressed:
     if (keyboardInput.isPressed(Controller.P1_LEFT)) {
@@ -75,5 +63,11 @@ class Field {
         fielder.throwBall(home);
       }
     }
+    
+    //if (pitcher.hasBall()) {
+      if (keyboardInput.isPressed(Controller.PITCH)) {
+        hasSwung = false;
+      }
+    //}
   }
 }

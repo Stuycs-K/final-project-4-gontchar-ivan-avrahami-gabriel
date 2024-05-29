@@ -19,7 +19,7 @@ void setup(){
   home = new Base(4, 800, 800);
   ball = new Baseball(800,625);
 
-  hasSwung = false;
+  hasSwung = true;
 
   keyboardInput = new Controller();
 }
