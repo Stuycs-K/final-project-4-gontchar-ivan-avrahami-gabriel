@@ -8,22 +8,25 @@ class Player {
 
   public Player(String img, int hor, int ver) {
     picture = loadImage(img);
+    picture.resize(50,0);
     horizontal = hor;
     vertical = ver;
-    image(picture, horizontal, vertical);
+  }
+  
+  public void displayPlayer() {
+    image(picture, horizontal, vertical);    
   }
   
   public void move(int rl, int du) {
     horizontal+=rl;
     vertical+=du;
-    image(picture, horizontal, vertical);
   }
   
   public boolean hasBall() {
     return hasBaseball;
   }
   
-  public void throw(Base b) {
+  public void throwBall(Base b) {
     b.location();
   }
 }

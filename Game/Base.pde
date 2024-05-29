@@ -6,8 +6,11 @@ class Base {
     yLoc = y;
   }
   
-  public PVector toHere(int xStart, int yStart) {
-    PVector vec;
-    return vec;
+  public PVector toHere(int xStart, int yStart) {  
+    return new PVector();
+  }
+  
+  public void location() {
+    
   }
 }

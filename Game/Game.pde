@@ -8,8 +8,24 @@ Base first, second, third, home;
 boolean hasSwung;
 
 void setup(){
+  size(1600,1000);
+  // trying to load a batter
+  fielder = new Player("batterExperimental.png", 600, 175);
+  batter = new Player("batterExperimental.png", 800, 700);
+  pitcher = new Player("batterExperimental.png", 800, 600);
+  first = new Base(1, 1000, 950);
+  second = new Base(2, 800, 500);
+  third = new Base(3, 600, 650);
+  home = new Base(4, 800, 800);
+  
+  hasSwung = false;
+  
+  keyboardInput = new Controller();
+}
+
+void draw(){
+  clear();
   int translate = 50;
-  size(1600, 1000);
   background(0);
   fill(255);
   rect(125,25,1200,75);
@@ -32,22 +48,10 @@ void setup(){
   line(800,425+translate,975,600+translate);
   line(800,425+translate,625,600+translate);
   
+  fielder.displayPlayer();
+  batter.displayPlayer();
+  pitcher.displayPlayer();
   
-  // trying to load a batter
-  fielder = new Player("batterExperimental.png", 600, 175);
-  batter = new Player("batterExperimental.png", 800, 500);
-  pitcher = new Player("batterExperimental.png", 800, 400);
-  first = new Base(1, 1000, 950);
-  second = new Base(2, 800, 500);
-  third = new Base(3, 600, 650);
-  home = new Base(4, 800, 800);
-  
-  hasSwung = false;
-  
-  keyboardInput = new Controller();
-}
-
-void draw(){
   //check if the button P1_LEFT is being pressed:
   if (keyboardInput.isPressed(Controller.P1_LEFT)) {
     fielder.move(-5,0);
@@ -65,16 +69,16 @@ void draw(){
   
   if (fielder.hasBall()) {
     if (keyboardInput.isPressed(Controller.BASE_1)) {
-      fielder.throw(first);
+      fielder.throwBall(first);
     }
     if (keyboardInput.isPressed(Controller.BASE_2)) {
-      fielder.throw(second);
+      fielder.throwBall(second);
     }
     if (keyboardInput.isPressed(Controller.BASE_3)) {
-      fielder.throw(third);
+      fielder.throwBall(third);
     }
-    if (keyboardInput.isPressed(Controller.BASE_4)) {
-      fielder.throw(fourth);
+    if (keyboardInput.isPressed(Controller.BASE_HOME)) {
+      fielder.throwBall(home);
     }  
   }
 }
