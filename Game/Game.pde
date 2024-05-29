@@ -25,9 +25,8 @@ void setup(){
 }
 
 void draw(){
-  clear();
   
-  int translate = 50;
+  int translate = 100;
   background(0);
   fill(255);
   rect(125,25,1200,75);
@@ -54,6 +53,20 @@ void draw(){
   batter.displayPlayer();
   pitcher.displayPlayer();
   ball.displayBaseball();
+  
+  pitch(new Pitch("fastball"));
+  
+  int right = 0;
+  int speed = 10;
+  if (p.getPitch() == "curveball") {
+    //right = (int) (Math.random() * 5 - 3);
+  }
+  if (p.getPitch() == "fastball") {
+    speed = 15;
+  }
+  if (! hasSwung) {
+    ball.move(right,speed);
+  }  
   
   //check if the button P1_LEFT is being pressed:
   if (keyboardInput.isPressed(Controller.P1_LEFT)) {
@@ -96,18 +109,5 @@ void keyReleased() {
   //send the number of the key to your controller object
   keyboardInput.release(keyCode);
 }
-
-void pitch(Pitch p){
-  int right = 0;
-  int speed = 10;
-  if (p.getPitch() == "curveball") {
-    //right = (int) (Math.random() * 5 - 3);
-  }
-  if (p.getPitch() == "fastball") {
-    speed = 15;
-  }
-  while (! hasSwung) {
-    batter.move(right,speed);
-  }
   
 }
