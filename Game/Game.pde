@@ -8,8 +8,43 @@ Player batter;
 Player fielder;
 
 void setup(){
-  int translate = 50;
   size(1600, 1000);
+  makeField();
+  
+  // trying to load a batter
+  fielder = new Player("batterExperimental.png", 800, 500);
+  
+  keyboardInput = new Controller();
+}
+
+void draw(){
+  makeField();
+  fielder.loader();
+  //check if the button P1_LEFT is being pressed:
+  //check if the button P1_LEFT is being pressed:
+  if (keyboardInput.isPressed(Controller.P1_LEFT)) {
+    fielder.move(-5,0);
+  }
+  
+  //check if the button P1_RIGHT is being pressed:
+  //check if the button P1_RIGHT is being pressed:
+  if (keyboardInput.isPressed(Controller.P1_RIGHT)) {
+//<<<<<<< HEAD
+    fielder.move(5,0);
+//=======
+    
+//>>>>>>> g-pitching
+  }
+  if (keyboardInput.isPressed(Controller.P1_UP)) {
+    fielder.move(0,-5);
+  }
+  if (keyboardInput.isPressed(Controller.P1_DOWN)) {
+    fielder.move(0,5);
+  } 
+}
+
+void makeField(){
+  int translate = 50;
   background(0);
   fill(255);
   rect(125,25,1200,75);
@@ -31,38 +66,7 @@ void setup(){
   line(1270,300+translate,800,776+translate);
   line(800,425+translate,975,600+translate);
   line(800,425+translate,625,600+translate);
-  
-  
-  // trying to load a batter
-  fielder = new Player("batterExperimental.png", 800, 500);
-  
-  keyboardInput = new Controller();
 }
-
-void draw(){
-  //check if the button P1_LEFT is being pressed:
-  //check if the button P1_LEFT is being pressed:
-  if (keyboardInput.isPressed(Controller.P1_LEFT)) {
-    fielder.move(-5,0);
-  }
-  
-  //check if the button P1_RIGHT is being pressed:
-  //check if the button P1_RIGHT is being pressed:
-  if (keyboardInput.isPressed(Controller.P1_RIGHT)) {
-<<<<<<< HEAD
-    fielder.move(5,0);
-=======
-    
->>>>>>> g-pitching
-  }
-  if (keyboardInput.isPressed(Controller.P1_UP)) {
-    fielder.move(0,-5);
-  }
-  if (keyboardInput.isPressed(Controller.P1_DOWN)) {
-    fielder.move(0,5);
-  } 
-}
-
 
 void keyPressed() {
   //send the number of the key to your controller object

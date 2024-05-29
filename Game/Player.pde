@@ -2,25 +2,30 @@ class Player {
   PImage picture;
   int horizontal;
   int vertical;
-<<<<<<< HEAD
-  int heightPlayer = 100;
+//<<<<<<< HEAD
+  int heightPlayer = 150;
   int widthPlayer = 100;
   
-=======
+//=======
   boolean hasSwung;
->>>>>>> g-pitching
+//>>>>>>> g-pitching
   public Player(String img, int hor, int ver) {
     picture = loadImage(img);
     horizontal = hor;
     vertical = ver;
-    image(picture, horizontal, vertical);
     hasSwung = false;
+    loader();
+  }
+  
+  public void loader(){
+    image(picture, horizontal, vertical, widthPlayer, heightPlayer);
   }
   
   public void move(int rl, int du) {
     horizontal+=rl;
     vertical+=du;
-    image(picture, horizontal, vertical);
+    loader();
+    //image(picture, horizontal, vertical, heightPlayer, widthPlayer);
   }
   
   public void pitch(Baseball b, Pitch p){
