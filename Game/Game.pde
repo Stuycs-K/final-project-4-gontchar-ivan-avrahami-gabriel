@@ -3,43 +3,30 @@ String awayTeam;
 Scoreboard board;
 Baseball ball;
 Controller keyboardInput;
-Player pitcher;
-Player batter;
-Player fielder;
+Player pitcher, batter, fielder;
+Base first, second, third, home;
+boolean hasSwung;
 
 void setup(){
-  size(1600, 1000);
-  makeField();
-  
+  size(1600,1000);
   // trying to load a batter
-  fielder = new Player("batterExperimental.png", width / 2, 700);
-  
+  fielder = new Player("batterExperimental.png", 600, 175);
+  batter = new Player("batterExperimental.png", 800, 700);
+  pitcher = new Player("batterExperimental.png", 800, 600);
+  first = new Base(1, 1000, 950);
+  second = new Base(2, 800, 500);
+  third = new Base(3, 600, 650);
+  home = new Base(4, 800, 800);
+  ball = new Baseball(800,625);
+
+  hasSwung = false;
+
   keyboardInput = new Controller();
 }
 
 void draw(){
-  makeField();
-  fielder.loader();
-  //check if the button P1_LEFT is being pressed:
-  //check if the button P1_LEFT is being pressed:
-  if (keyboardInput.isPressed(Controller.P1_LEFT)) {
-    fielder.move(-5,0);
-  }
-  
-  //check if the button P1_RIGHT is being pressed:
-  //check if the button P1_RIGHT is being pressed:
-  if (keyboardInput.isPressed(Controller.P1_RIGHT)) {
-    fielder.move(5,0);
-  }
-  if (keyboardInput.isPressed(Controller.P1_UP)) {
-    fielder.move(0,-5);
-  }
-  if (keyboardInput.isPressed(Controller.P1_DOWN)) {
-    fielder.move(0,5);
-  } 
-}
+  clear();
 
-void makeField(){
   int translate = 50;
   background(0);
   fill(255);
@@ -62,7 +49,43 @@ void makeField(){
   line(1270,300+translate,800,776+translate);
   line(800,425+translate,975,600+translate);
   line(800,425+translate,625,600+translate);
+
+  fielder.displayPlayer();
+  batter.displayPlayer();
+  pitcher.displayPlayer();
+  ball.displayBaseball();
+
+  //check if the button P1_LEFT is being pressed:
+  if (keyboardInput.isPressed(Controller.P1_LEFT)) {
+    fielder.move(-5,0);
+  }
+  //check if the button P1_RIGHT is being pressed:
+  if (keyboardInput.isPressed(Controller.P1_RIGHT)) {
+    fielder.move(5,0);
+  }
+  if (keyboardInput.isPressed(Controller.P1_UP)) {
+    fielder.move(0,-5);
+  }
+  if (keyboardInput.isPressed(Controller.P1_DOWN)) {
+    fielder.move(0,5);
+  }
+
+  if (fielder.hasBall()) {
+    if (keyboardInput.isPressed(Controller.BASE_1)) {
+      fielder.throwBall(first);
+    }
+    if (keyboardInput.isPressed(Controller.BASE_2)) {
+      fielder.throwBall(second);
+    }
+    if (keyboardInput.isPressed(Controller.BASE_3)) {
+      fielder.throwBall(third);
+    }
+    if (keyboardInput.isPressed(Controller.BASE_HOME)) {
+      fielder.throwBall(home);
+    }
+  }
 }
+
 
 void keyPressed() {
   //send the number of the key to your controller object
@@ -83,5 +106,8 @@ void pitch(Pitch p){
   if (p.getPitch() == "fastball") {
     speed = 15;
   }
-  
+  while (! hasSwung) {
+    batter.move(right,speed);
+  }
+
 }
