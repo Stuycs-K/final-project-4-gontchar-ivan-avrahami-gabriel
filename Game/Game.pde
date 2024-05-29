@@ -12,7 +12,7 @@ void setup(){
   makeField();
   
   // trying to load a batter
-  fielder = new Player("batterExperimental.png", 800, 500);
+  fielder = new Player("batterExperimental.png", width / 2, 700);
   
   keyboardInput = new Controller();
 }
@@ -29,11 +29,7 @@ void draw(){
   //check if the button P1_RIGHT is being pressed:
   //check if the button P1_RIGHT is being pressed:
   if (keyboardInput.isPressed(Controller.P1_RIGHT)) {
-//<<<<<<< HEAD
     fielder.move(5,0);
-//=======
-    
-//>>>>>>> g-pitching
   }
   if (keyboardInput.isPressed(Controller.P1_UP)) {
     fielder.move(0,-5);

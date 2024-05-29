@@ -2,13 +2,10 @@ class Player {
   PImage picture;
   int horizontal;
   int vertical;
-//<<<<<<< HEAD
   int heightPlayer = 150;
   int widthPlayer = 100;
-  
-//=======
   boolean hasSwung;
-//>>>>>>> g-pitching
+
   public Player(String img, int hor, int ver) {
     picture = loadImage(img);
     horizontal = hor;
