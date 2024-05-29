@@ -29,4 +29,10 @@ class Player {
   public void throwBall(Base b) {
     b.location();
   }
+  
+  public void swing(){
+    picture = loadImage("batSwung.jpg");
+    picture.resize(50,0);
+    hasSwung = true;
+  }
 }
