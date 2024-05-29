@@ -17,6 +17,7 @@ void setup(){
   second = new Base(2, 800, 500);
   third = new Base(3, 600, 650);
   home = new Base(4, 800, 800);
+  ball = new Baseball(800,625);
   
   hasSwung = false;
   
@@ -25,6 +26,7 @@ void setup(){
 
 void draw(){
   clear();
+  
   int translate = 50;
   background(0);
   fill(255);
@@ -51,6 +53,7 @@ void draw(){
   fielder.displayPlayer();
   batter.displayPlayer();
   pitcher.displayPlayer();
+  ball.displayBaseball();
   
   //check if the button P1_LEFT is being pressed:
   if (keyboardInput.isPressed(Controller.P1_LEFT)) {
