@@ -12,15 +12,15 @@ worked on trying my hand in making a field in my own branch. to be fair it is pr
 
 ### 5/24/24 - HW
 
-xxx
+forgot to add but worked on players
 
 ### 5/28/24 - CW
 
-xxx
+worked together to have player image load and for it to move
 
 ### 5/28/24 - HW
 
-xxx
+I finished having the player move and not repeatedly leave behind its image
 
 ### 5/29/24 - CW
 
