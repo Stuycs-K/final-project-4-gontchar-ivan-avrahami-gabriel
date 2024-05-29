@@ -7,7 +7,7 @@ class Baseball {
   }
   
   public void displayBaseball() {
-    PImage ball = loadImage("ball.jpg");
+    PImage ball = loadImage("ball.png");
     ball.resize(30,0);
     image(ball, xLoc, yLoc);    
   }
