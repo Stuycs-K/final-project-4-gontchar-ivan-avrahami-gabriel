@@ -19,12 +19,13 @@ void setup(){
   home = new Base(4, 800, 800);
   ball = new Baseball(800,625);
 
-  hasSwung = false;
+  hasSwung = true;
 
   keyboardInput = new Controller();
 }
 
 void draw(){
+<<<<<<< HEAD
   clear();
 
   int translate = 50;
@@ -88,6 +89,10 @@ void draw(){
   if(mousePressed == true) {
     batter.swing();
   }
+=======
+  Field ivan_lacks_neurons = new Field();
+  ivan_lacks_neurons.makeField();
+>>>>>>> 1dd833a25fe8e97cf3cfa98b10c4581e4d6c5735
 }
 
 
@@ -99,19 +104,4 @@ void keyPressed() {
 void keyReleased() {
   //send the number of the key to your controller object
   keyboardInput.release(keyCode);
-}
-
-void pitch(Pitch p){
-  int right = 0;
-  int speed = 10;
-  if (p.getPitch() == "curveball") {
-    //right = (int) (Math.random() * 5 - 3);
-  }
-  if (p.getPitch() == "fastball") {
-    speed = 15;
-  }
-  while (! hasSwung) {
-    batter.move(right,speed);
-  }
-
 }
