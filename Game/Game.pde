@@ -7,6 +7,7 @@ Base first, second, third, home;
 boolean hasSwung = false;
 boolean hasBall = false;
 boolean canSwing = false;
+int xdistance, ydistance;
 int translate = 50;
 
 void setup(){

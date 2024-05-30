@@ -46,9 +46,8 @@ class Player {
   public void swing(int x, int y){
     if (canSwing && ! hasSwung) {
       if (x > 700 && x < 900 && y > 675 + translate && y < 775 + translate) {
-        int xdistance = x - ball.x();
-        int ydistance = Math.abs(y - ball.y());
-        ball.move(2 * xdistance, -5 * ydistance);
+        xdistance = x - ball.x();
+        ydistance = Math.abs(y - ball.y());
         board.add("in play");
       }
       else {
