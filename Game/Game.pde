@@ -13,7 +13,7 @@ void setup(){
   size(1600,1000);
   // trying to load a batter
   fielder = new Player("batterExperimental.png", 775, 125+translate);
-  batter = new Player("batSwung.jpg", 747, 700+translate);
+  batter = new Player("batterExperimental.png", 747, 700+translate);
   pitcher = new Player("batterExperimental.png", 775, 550+translate);
   first = new Base(1, 1000, 950);
   second = new Base(2, 800, 500);
