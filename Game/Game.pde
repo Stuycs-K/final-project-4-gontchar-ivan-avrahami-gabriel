@@ -1,25 +1,24 @@
-String homeTeam;
-String awayTeam;
+String homeTeam, awayTeam;
 Scoreboard board;
 Baseball ball;
 Controller keyboardInput;
 Player pitcher, batter, fielder;
 Base first, second, third, home;
-boolean hasSwung;
+boolean hasSwung = true;
+boolean hasBall = false;
+int translate = 50;
 
 void setup(){
   size(1600,1000);
   // trying to load a batter
-  fielder = new Player("batterExperimental.png", 775, 175);
-  batter = new Player("batterExperimental.png", 747, 750);
-  pitcher = new Player("batterExperimental.png", 775, 600);
+  fielder = new Player("batterExperimental.png", 775, 75+translate);
+  batter = new Player("batSwung.jpg", 747, 650+translate);
+  pitcher = new Player("batterExperimental.png", 775, 500+translate);
   first = new Base(1, 1000, 950);
   second = new Base(2, 800, 500);
   third = new Base(3, 600, 650);
   home = new Base(4, 800, 800);
   ball = new Baseball(800,625);
-
-  hasSwung = true;
 
   keyboardInput = new Controller();
 }

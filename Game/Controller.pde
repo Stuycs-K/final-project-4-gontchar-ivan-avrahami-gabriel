@@ -42,7 +42,7 @@ class Controller {
       inputs[BASE_HOME] = true;
     if(code == ' ')
       inputs[PITCH_SPEED] = true;
-    if(code == 'p')
+    if(code == 'P')
       inputs[PITCH] = true;
   }
   void release(int code) {
@@ -64,7 +64,7 @@ class Controller {
       inputs[BASE_HOME] = false;
     if(code == ' ')
       inputs[PITCH_SPEED] = false;
-    if(code == 'p')
+    if(code == 'P')
       inputs[PITCH_SPEED] = false;
   }
 }
