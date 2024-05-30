@@ -10,9 +10,9 @@ boolean hasSwung;
 void setup(){
   size(1600,1000);
   // trying to load a batter
-  fielder = new Player("batterExperimental.png", 600, 175);
-  batter = new Player("batterExperimental.png", 800, 700);
-  pitcher = new Player("batterExperimental.png", 800, 600);
+  fielder = new Player("batterExperimental.png", 775, 175);
+  batter = new Player("batterExperimental.png", 747, 750);
+  pitcher = new Player("batterExperimental.png", 775, 600);
   first = new Base(1, 1000, 950);
   second = new Base(2, 800, 500);
   third = new Base(3, 600, 650);

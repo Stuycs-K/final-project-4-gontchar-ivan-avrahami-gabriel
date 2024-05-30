@@ -43,4 +43,9 @@ class Player {
       ball.move(right,speed);
     }      
   }
+  public void swing(){
+    picture = loadImage("batSwung.jpg");
+    picture.resize(50,0);
+    hasSwung = true;
+  }
 }
