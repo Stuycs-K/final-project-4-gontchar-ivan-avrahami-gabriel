@@ -5,9 +5,10 @@ class Field {
   
   void makeField() {
     
-    background(0);
+    background(181, 154, 94);
     fill(255);
     rect(125,25,1200,75);
+    triangle(width / 2, 875, 100, 300, 900, 300);
     fill(21,212,53);
     //green outer quad
     quad(800,425+translate,1000,615+translate,800,825+translate,600,615+translate);

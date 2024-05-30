@@ -24,11 +24,11 @@ I finished having the player move and not repeatedly leave behind its image
 
 ### 5/29/24 - CW
 
-xxx
+Worked with gabriel on getting hitting to work
 
 ### 5/29/24 - HW
 
-xxx
+added better pictures for players and worked on how the field looks a bit
 
 ### 5/30/24 - CW
 
