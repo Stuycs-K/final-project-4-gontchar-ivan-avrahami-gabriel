@@ -20,4 +20,13 @@ class Baseball {
     speed = Math.sqrt(hor * hor + ver * ver);
   }
   
+  public int x() {
+    return xLoc;
+  }
+  
+  public int y() {
+    return yLoc;
+  }
+  
+  
 }

@@ -29,6 +29,7 @@ class Player {
   }
   
   public void pitch(Pitch p) {
+    canSwing = true;
     if (! hasSwung) {
       int right = 0;
       int speed = 3;
@@ -36,18 +37,25 @@ class Player {
         right = (int) (Math.random() * 5 - 3);
       }
       if (p.getPitch() == "fastball") {
-        speed = 5;
+        speed = 6;
       }
-      if (! hasSwung) {
-        ball.move(right,speed);
-      }
+      ball.move(right,speed);
     }
   }
   
   public void swing(int x, int y){
-    if (! hasSwung) {
-      
+    if (canSwing && ! hasSwung) {
+      if (x > 700 && x < 900 && y > 675 + translate && y < 775 + translate) {
+        int xdistance = x - ball.x();
+        int ydistance = Math.abs(y - ball.y());
+        ball.move(2 * xdistance, -5 * ydistance);
+        board.add("in play");
+      }
+      else {
+        board.add("strike");
+      }
       hasSwung = true;
+      canSwing = false;
     }
   }
 }
