@@ -4,7 +4,7 @@ Baseball ball;
 Controller keyboardInput;
 Player pitcher, batter, fielder;
 Base first, second, third, home;
-boolean hasSwung = true;
+boolean hasSwung = false;
 boolean hasBall = false;
 int translate = 50;
 
@@ -37,4 +37,8 @@ void keyPressed() {
 void keyReleased() {
   //send the number of the key to your controller object
   keyboardInput.release(keyCode);
+}
+
+void mouseClicked() {
+  batter.swing(mouseX,mouseY);
 }

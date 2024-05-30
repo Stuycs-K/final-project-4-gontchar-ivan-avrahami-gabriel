@@ -32,8 +32,6 @@ class Field {
     pitcher.displayPlayer();
     ball.displayBaseball();
   
-    pitcher.pitch(new Pitch("curveball"));
-  
     //check if the button P1_LEFT is being pressed:
     if (keyboardInput.isPressed(Controller.P1_LEFT)) {
       fielder.move(-5,0);
@@ -51,21 +49,17 @@ class Field {
     if (keyboardInput.isPressed(Controller.BASE_1)) {
       fielder.throwBall(first);
     }
-      if (keyboardInput.isPressed(Controller.BASE_2)) {
-        fielder.throwBall(second);
-      }
-      if (keyboardInput.isPressed(Controller.BASE_3)) {
-        fielder.throwBall(third);
-      }
-      if (keyboardInput.isPressed(Controller.BASE_HOME)) {
-        fielder.throwBall(home);
-      }
+    if (keyboardInput.isPressed(Controller.BASE_2)) {
+      fielder.throwBall(second);
     }
-    
-    //if (pitcher.hasBall()) {
-      if (keyboardInput.isPressed(Controller.PITCH)) {
-        hasSwung = false;
-      }
-    //}
+    if (keyboardInput.isPressed(Controller.BASE_3)) {
+      fielder.throwBall(third);
+    }
+    if (keyboardInput.isPressed(Controller.BASE_HOME)) {
+      fielder.throwBall(home);
+    }
+    if (keyboardInput.isPressed(Controller.PITCH)) {
+      pitcher.pitch(new Pitch("curveball"));
+    }
   }
 }

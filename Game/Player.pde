@@ -22,25 +22,32 @@ class Player {
   }
 
   public void throwBall(Base b) {
-    b.location();
-    hasBaseball = false;
+    if (hasBall) {
+      b.location();
+      hasBall = false;
+    }
   }
   
   public void pitch(Pitch p) {
-    int right = 0;
-    int speed = 3;
-    if (p.getPitch() == "curveball") {
-      right = (int) (Math.random() * 5 - 3);
-    }
-    if (p.getPitch() == "fastball") {
-      speed = 5;
-    }
     if (! hasSwung) {
-      ball.move(right,speed);
-    }      
+      int right = 0;
+      int speed = 3;
+      if (p.getPitch() == "curveball") {
+        right = (int) (Math.random() * 5 - 3);
+      }
+      if (p.getPitch() == "fastball") {
+        speed = 5;
+      }
+      if (! hasSwung) {
+        ball.move(right,speed);
+      }
+    }
   }
   
-  public void swing(){
-    hasSwung = true;
+  public void swing(int x, int y){
+    if (! hasSwung) {
+      
+      hasSwung = true;
+    }
   }
 }
