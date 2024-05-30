@@ -34,17 +34,17 @@ class Field {
   
     //check if the button P1_LEFT is being pressed:
     if (keyboardInput.isPressed(Controller.P1_LEFT)) {
-      fielder.move(-5,0);
+      fielder.move(-8,0);
     }
     //check if the button P1_RIGHT is being pressed:
     if (keyboardInput.isPressed(Controller.P1_RIGHT)) {
-      fielder.move(5,0);
+      fielder.move(8,0);
     }
     if (keyboardInput.isPressed(Controller.P1_UP)) {
-      fielder.move(0,-5);
+      fielder.move(0,-8);
     }
     if (keyboardInput.isPressed(Controller.P1_DOWN)) {
-      fielder.move(0,5);
+      fielder.move(0,8);
     }
     if (keyboardInput.isPressed(Controller.BASE_1)) {
       fielder.throwBall(first);
@@ -63,7 +63,7 @@ class Field {
     }
     
     if (hasSwung && ! hasBall) {
-      ball.move(-xdistance, -2 * ydistance);
+      ball.move(-xDistance, Math.max(-10, -1000 / yDistance));
     }
   }
 }

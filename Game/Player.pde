@@ -43,11 +43,11 @@ class Player {
     }
   }
 
-  public void swing(int x, int y){
+  public void swing(int xMouse, int yMouse){
     if (canSwing && ! hasSwung) {
-      if (x > 700 && x < 900 && y > 675 + translate && y < 775 + translate) {
-        xdistance = x - ball.x();
-        ydistance = Math.abs(y - ball.y());
+      if (xMouse > 700 && xMouse < 900 && yMouse > 675 + translate && yMouse < 775 + translate) {
+        xDistance = xMouse - ball.x();
+        yDistance = Math.abs(yMouse - ball.y());
         board.add("in play");
       }
       else {
