@@ -7,9 +7,9 @@ class Field {
     background(0,148,60,255);
     stroke(255, 255, 255);
     fill(21,212,53);
-    arc(width / 2, 980, 1700, 1700, PI+QUARTER_PI, PI+PI-QUARTER_PI);
+    arc(width / 2, 930 + translate, 1700, 1700, PI+QUARTER_PI, PI+PI-QUARTER_PI);
     fill(235,157,95,255);
-    arc(width / 2, 930, 1000, 1000, PI+QUARTER_PI, PI+PI-QUARTER_PI);
+    arc(width / 2, 865 + translate, 1000, 1000, PI+QUARTER_PI, PI+PI-QUARTER_PI);
     
     //fill(255);
     //rect(125,25,1200,75);
@@ -27,8 +27,8 @@ class Field {
     //rotate(-PI);
     stroke(255);
     strokeWeight(2);
-    line(330,300+translate,800,776+translate);
-    line(1270,300+translate,800,776+translate);
+    line(240,290+translate,800,865+translate);
+    line(1360,290+translate,800,865+translate);
     line(800,425+translate,975,600+translate);
     line(800,425+translate,625,600+translate);
 
@@ -71,5 +71,7 @@ class Field {
       ball.move(-xDistance, Math.max(-10, -1000 / yDistance));
       batter.move(3,-3);
     }
+    
+    //board.getEvents();
   }
 }

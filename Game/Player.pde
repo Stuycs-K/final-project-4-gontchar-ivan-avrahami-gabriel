@@ -45,17 +45,17 @@ class Player {
 
   public void swing(int xMouse, int yMouse){
     if (canSwing && ! hasSwung) {
-      if (xMouse > 700 && xMouse < 900 && yMouse > 675 + translate && yMouse < 775 + translate) {
+      if (xMouse > 700 && xMouse < 900 && yMouse > 625 + translate && yMouse < 825 + translate) {
         xDistance = xMouse - ball.x();
-        yDistance = Math.abs(yMouse - ball.y());
+        yDistance = Math.abs(yMouse - ball.y()) + 1;//in case it's 0
         batter.move(20,20);
-        board.add("in play");
+        board.addEvent("in play");
+        hasSwung = true;
+        canSwing = false;
       }
       else {
-        board.add("strike");
+        board.addEvent("strike");
       }
-      hasSwung = true;
-      canSwing = false;
     }
   }
 }
