@@ -4,7 +4,6 @@ class Player {
   int vertical;
   int heightPlayer = 100;
   int widthPlayer = 100;
-  boolean hasBaseball = false;
 
   public Player(String img, int hor, int ver) {
     picture = loadImage(img);
@@ -16,38 +15,47 @@ class Player {
   public void displayPlayer() {
     image(picture, horizontal, vertical);
   }
-  
+
   public void move(int rl, int du) {
     horizontal+=rl;
     vertical+=du;
   }
 
-  public boolean hasBall() {
-    return hasBaseball;
+  public void throwBall(Base b) {
+    if (hasBall) {
+      b.location();
+      hasBall = false;
+    }
   }
 
-  public void throwBall(Base b) {
-    b.location();
-  }
-  
-<<<<<<< HEAD
-  public void swing(){
-    picture = loadImage("batSwung.jpg");
-    picture.resize(50,0);
-    hasSwung = true;
-=======
   public void pitch(Pitch p) {
-    int right = 0;
-    int speed = 10;
-    if (p.getPitch() == "curveball") {
-      //right = (int) (Math.random() * 5 - 3);
-    }
-    if (p.getPitch() == "fastball") {
-      speed = 15;
-    }
+    canSwing = true;
     if (! hasSwung) {
+      int right = 0;
+      int speed = 3;
+      if (p.getPitch() == "curveball") {
+        right = (int) (Math.random() * 5 - 3);
+      }
+      if (p.getPitch() == "fastball") {
+        speed = 6;
+      }
       ball.move(right,speed);
-    }      
->>>>>>> 1dd833a25fe8e97cf3cfa98b10c4581e4d6c5735
+    }
+  }
+
+  public void swing(int x, int y){
+    if (canSwing && ! hasSwung) {
+      if (x > 700 && x < 900 && y > 675 + translate && y < 775 + translate) {
+        int xdistance = x - ball.x();
+        int ydistance = Math.abs(y - ball.y());
+        ball.move(2 * xdistance, -5 * ydistance);
+        board.add("in play");
+      }
+      else {
+        board.add("strike");
+      }
+      hasSwung = true;
+      canSwing = false;
+    }
   }
 }

@@ -110,11 +110,11 @@ I displayed the players and baseball appropriately; they can be moved.
 
 ### 5/29/24 - CW
 
-xxx
+We fixed merge conflicts and also got a better new image and moved the draw command into a separate file
 
 ### 5/29/24 - HW
 
-xxx
+I totally revamped the pitching and started on the hitting mechanic. Was accidentally working in my main though.
 
 ### 5/30/24 - CW
 
