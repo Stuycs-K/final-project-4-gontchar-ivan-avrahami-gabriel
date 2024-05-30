@@ -13,7 +13,7 @@ class Controller {
   boolean [] inputs;
 
   public Controller() {
-    inputs = new boolean[19];//10 valid buttons
+    inputs = new boolean[10];//10 valid buttons
   }
 
   /**@param code: a valid constant e.g. P1_LEFT

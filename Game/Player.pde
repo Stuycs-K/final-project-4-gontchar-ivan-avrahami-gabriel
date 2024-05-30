@@ -32,12 +32,12 @@ class Player {
   
   public void pitch(Pitch p) {
     int right = 0;
-    int speed = 10;
+    int speed = 3;
     if (p.getPitch() == "curveball") {
       //right = (int) (Math.random() * 5 - 3);
     }
     if (p.getPitch() == "fastball") {
-      speed = 15;
+      speed = 5;
     }
     if (! hasSwung) {
       ball.move(right,speed);
