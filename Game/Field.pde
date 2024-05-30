@@ -66,9 +66,11 @@ class Field {
     if (keyboardInput.isPressed(Controller.PITCH)) {
       pitcher.pitch(new Pitch("curveball"));
     }
-    
+
+    fielder.pickUpBall();
+
     if (hasSwung && ! hasBall) {
-      ball.move(-xDistance, Math.max(-10, -1000 / yDistance));
+      ball.move(-xDistance/4, Math.max(-5, -1000 / yDistance));
       batter.move(3,-3);
     }
     

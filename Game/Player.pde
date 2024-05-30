@@ -2,8 +2,6 @@ class Player {
   PImage picture;
   int horizontal;
   int vertical;
-  int heightPlayer = 100;
-  int widthPlayer = 100;
 
   public Player(String img, int hor, int ver) {
     picture = loadImage(img);
@@ -16,9 +14,12 @@ class Player {
     image(picture, horizontal, vertical);
   }
 
-  public void move(int rl, int du) {
-    horizontal+=rl;
-    vertical+=du;
+  public void move(int hor, int ver) {
+    horizontal += hor;
+    vertical += ver;
+    if (hasBall) {
+      ball.move(hor, ver);
+    }
   }
 
   public void throwBall(Base b) {
@@ -56,6 +57,12 @@ class Player {
       else {
         board.addEvent("strike");
       }
+    }
+  }
+  
+  public void pickUpBall() {
+    if (Math.abs(ball.x() - (horizontal + (picture.width/2))) < 50 && Math.abs(ball.x() - (vertical + (picture.height/2))) < 50) {
+      hasBall = true;
     }
   }
 }
