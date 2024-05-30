@@ -48,6 +48,7 @@ class Player {
       if (xMouse > 700 && xMouse < 900 && yMouse > 675 + translate && yMouse < 775 + translate) {
         xDistance = xMouse - ball.x();
         yDistance = Math.abs(yMouse - ball.y());
+        batter.move(20,20);
         board.add("in play");
       }
       else {

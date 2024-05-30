@@ -64,6 +64,7 @@ class Field {
     
     if (hasSwung && ! hasBall) {
       ball.move(-xDistance, Math.max(-10, -1000 / yDistance));
+      batter.move(3,-3);
     }
   }
 }
