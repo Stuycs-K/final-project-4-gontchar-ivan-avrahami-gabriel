@@ -44,12 +44,12 @@ class Field {
     //home
     rect(width / 2 - 15, 810 + translate, 30, 30);
     //1st
-    //rect();
+    rect(1020, 555 + translate, 30, 30);
     ////2nd
-    //rect();
+    rect(785, 345 + translate, 30, 30);
     ////3rd
-    //rect();
-
+    rect(560, 555 + translate, 30, 30);
+  
     fielder.displayPlayer();
     batter.displayPlayer();
     pitcher.displayPlayer();
