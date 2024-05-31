@@ -11,16 +11,6 @@ class Field {
     fill(235,157,95,255);
     arc(width / 2, 865 + translate, 1000, 1100, PI+QUARTER_PI, PI+PI-QUARTER_PI);
     
-    //drawing the bases
-    fill(255, 255, 255);
-    //home
-    rect(width / 2 - 15, 835 + translate, 30, 30);
-    //1st
-    //rect();
-    ////2nd
-    //rect();
-    ////3rd
-    //rect();
     
     //fill(255);
     //rect(125,25,1200,75);
@@ -48,6 +38,17 @@ class Field {
     stroke(235,157,95,255);
     fill(235,157,95,255);
     circle(800,825+translate,100);
+
+    //drawing the bases
+    fill(255, 255, 255);
+    //home
+    rect(width / 2 - 15, 810 + translate, 30, 30);
+    //1st
+    //rect();
+    ////2nd
+    //rect();
+    ////3rd
+    //rect();
 
     fielder.displayPlayer();
     batter.displayPlayer();
