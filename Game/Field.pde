@@ -27,15 +27,17 @@ class Field {
     //rotate(-PI);
     stroke(255);
     strokeWeight(2);
-    line(240,290+translate,800,865+translate);
-    line(1360,290+translate,800,865+translate);
-    line(800,425+translate,975,600+translate);
-    line(800,425+translate,625,600+translate);
+    line(243,287+translate,800,847+translate);
+    line(1357,287+translate,800,847+translate);
+    line(1150,508+translate,1185,543+translate);
+    line(450,507+translate,415,542+translate);
 
     fielder.displayPlayer();
     batter.displayPlayer();
     pitcher.displayPlayer();
     ball.displayBaseball();
+    
+    fielder.pickUpBall();
   
     //check if the button P1_LEFT is being pressed:
     if (keyboardInput.isPressed(Controller.P1_LEFT)) {
@@ -64,12 +66,14 @@ class Field {
       fielder.throwBall(home);
     }
     if (keyboardInput.isPressed(Controller.PITCH)) {
-      pitcher.pitch(new Pitch("curveball"));
+      pitcher.pitch(new Pitch("fastball"));
     }
-    
-    if (hasSwung && ! hasBall) {
-      ball.move(-xDistance, Math.max(-10, -1000 / yDistance));
-      batter.move(3,-3);
+
+    if (hasSwung) {
+      if (! fielder.hasBall()) {
+        ball.move(-xDistance/4, Math.max(-5, -1000 / yDistance));
+      }
+      batter.move(2,-2);
     }
     
     //board.getEvents();

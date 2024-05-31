@@ -2,23 +2,30 @@ class Player {
   PImage picture;
   int horizontal;
   int vertical;
-  int heightPlayer = 100;
-  int widthPlayer = 100;
+  boolean hasBall;
 
   public Player(String img, int hor, int ver) {
     picture = loadImage(img);
     picture.resize(50,0);
     horizontal = hor;
     vertical = ver;
+    hasBall = false;
   }
 
   public void displayPlayer() {
     image(picture, horizontal, vertical);
   }
+  
+  public boolean hasBall() {
+    return hasBall;
+  }
 
-  public void move(int rl, int du) {
-    horizontal+=rl;
-    vertical+=du;
+  public void move(int hor, int ver) {
+    horizontal += hor;
+    vertical += ver;
+    //if (hasBall) {
+      //ball.move(hor, ver);
+    //}
   }
 
   public void throwBall(Base b) {
@@ -45,7 +52,7 @@ class Player {
 
   public void swing(int xMouse, int yMouse){
     if (canSwing && ! hasSwung) {
-      if (xMouse > 700 && xMouse < 900 && yMouse > 625 + translate && yMouse < 825 + translate) {
+      if (xMouse > 700 && xMouse < 900 && yMouse > 675 + translate && yMouse < 875 + translate) {
         xDistance = xMouse - ball.x();
         yDistance = Math.abs(yMouse - ball.y()) + 1;//in case it's 0
         batter.move(20,20);
@@ -56,6 +63,12 @@ class Player {
       else {
         board.addEvent("strike");
       }
+    }
+  }
+  
+  public void pickUpBall() {
+    if (! hasBall & Math.abs(ball.x() - (horizontal + (picture.width/2))) < 35 && Math.abs(ball.y() - (vertical + (picture.height/2))) < 35) {
+      hasBall = true;
     }
   }
 }

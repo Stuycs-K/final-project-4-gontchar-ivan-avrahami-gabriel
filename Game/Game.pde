@@ -5,7 +5,6 @@ Controller keyboardInput;
 Player pitcher, batter, fielder;
 Base first, second, third, home;
 boolean hasSwung = false;
-boolean hasBall = false;
 boolean canSwing = false;
 int xDistance, yDistance;
 int translate = 50;
@@ -14,8 +13,8 @@ void setup(){
   size(1600,1000);
   // trying to load a batter
   fielder = new Player("batterExperimental.png", 775, 125+translate);
-  batter = new Player("batterExperimental.png", 747, 700+translate);
-  pitcher = new Player("batterExperimental.png", 775, 550+translate);
+  batter = new Player("batterExperimental.png", 725, 770+translate);
+  pitcher = new Player("batterExperimental.png", 775, 530+translate);
   first = new Base(1, 1000, 950);
   second = new Base(2, 800, 500);
   third = new Base(3, 600, 650);
