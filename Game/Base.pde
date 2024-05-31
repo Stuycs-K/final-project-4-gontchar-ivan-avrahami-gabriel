@@ -16,4 +16,10 @@ class Base {
   public int y(){
     return yLoc;
   }
+  
+  public int onBase(Player person){
+    //if(person.xCenter() >= 0 && person.xCenter() <= 0){
+    //}
+    return baseNum;
+  }
 }
