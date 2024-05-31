@@ -36,6 +36,8 @@ class Field {
     batter.displayPlayer();
     pitcher.displayPlayer();
     ball.displayBaseball();
+    
+    fielder.pickUpBall();
   
     //check if the button P1_LEFT is being pressed:
     if (keyboardInput.isPressed(Controller.P1_LEFT)) {
@@ -64,14 +66,12 @@ class Field {
       fielder.throwBall(home);
     }
     if (keyboardInput.isPressed(Controller.PITCH)) {
-      pitcher.pitch(new Pitch("curveball"));
+      pitcher.pitch(new Pitch("fastball"));
     }
-
-    fielder.pickUpBall();
 
     if (hasSwung && ! hasBall) {
       ball.move(-xDistance/4, Math.max(-5, -1000 / yDistance));
-      batter.move(3,-3);
+      batter.move(2,-2);
     }
     
     //board.getEvents();

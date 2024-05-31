@@ -61,7 +61,7 @@ class Player {
   }
   
   public void pickUpBall() {
-    if (Math.abs(ball.x() - (horizontal + (picture.width/2))) < 50 && Math.abs(ball.x() - (vertical + (picture.height/2))) < 50) {
+    if (! hasBall & Math.abs(ball.x() - (horizontal + (picture.width/2))) < 35 && Math.abs(ball.y() - (vertical + (picture.height/2))) < 35) {
       hasBall = true;
     }
   }
