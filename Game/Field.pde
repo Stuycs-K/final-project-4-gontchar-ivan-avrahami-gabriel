@@ -7,9 +7,9 @@ class Field {
     background(0,148,60,255);
     stroke(255, 255, 255);
     fill(21,212,53);
-    arc(width / 2, 930 + translate, 1700, 1700, PI+QUARTER_PI, PI+PI-QUARTER_PI);
+    arc(width / 2, 930 + translate, 1900, 1900, PI+QUARTER_PI, PI+PI-QUARTER_PI);
     fill(235,157,95,255);
-    arc(width / 2, 865 + translate, 1000, 1000, PI+QUARTER_PI, PI+PI-QUARTER_PI);
+    arc(width / 2, 865 + translate, 1000, 1100, PI+QUARTER_PI, PI+PI-QUARTER_PI);
     
     //drawing the bases
     fill(255, 255, 255);
@@ -30,18 +30,24 @@ class Field {
     //fill(237,247,87);
     ////yellow quad
     //quad(800,425+translate,975,600+translate,800,775+translate,625,600+translate);
-    //fill(21,212,53);
-    ////green inner quad
-    //quad(800,450+translate,950,600+translate,800,750+translate,650,600+translate);
+    stroke(21,212,53);
+    fill(21,212,53);
+    //green inner quad
+    quad(800,380+translate,1015,570+translate,800,800+translate,595,570+translate);
     //rotate(PI);
     //arc(-800,-425-translate,550,550,-QUARTER_PI,PI+QUARTER_PI,PIE);
     //rotate(-PI);
+    
     stroke(255);
     strokeWeight(2);
     line(243,287+translate,800,847+translate);
     line(1357,287+translate,800,847+translate);
     line(1150,508+translate,1185,543+translate);
     line(450,507+translate,415,542+translate);
+    
+    stroke(235,157,95,255);
+    fill(235,157,95,255);
+    circle(800,825+translate,100);
 
     fielder.displayPlayer();
     batter.displayPlayer();
@@ -77,7 +83,7 @@ class Field {
       fielder.throwBall(home);
     }
     if (keyboardInput.isPressed(Controller.PITCH)) {
-      pitcher.pitch(new Pitch("fastball"));
+      pitcher.pitch(new Pitch("curveball"));
     }
 
     if (hasSwung) {
