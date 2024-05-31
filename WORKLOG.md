@@ -118,11 +118,11 @@ I totally revamped the pitching and started on the hitting mechanic. Was acciden
 
 ### 5/30/24 - CW
 
-xxx
+I made the hitting continuous and the batter started running.
 
 ### 5/30/24 - HW
 
-xxx
+I fixed the field and allowed the fielder to pick up the ball.
 
 ### 5/31/24 - CW
 
