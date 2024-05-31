@@ -5,7 +5,6 @@ Controller keyboardInput;
 Player pitcher, batter, fielder;
 Base first, second, third, home;
 boolean hasSwung = false;
-boolean hasBall = false;
 boolean canSwing = false;
 int xDistance, yDistance;
 int translate = 50;

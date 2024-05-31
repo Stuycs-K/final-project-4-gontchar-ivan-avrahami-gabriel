@@ -69,8 +69,10 @@ class Field {
       pitcher.pitch(new Pitch("fastball"));
     }
 
-    if (hasSwung && ! hasBall) {
-      ball.move(-xDistance/4, Math.max(-5, -1000 / yDistance));
+    if (hasSwung) {
+      if (! fielder.hasBall()) {
+        ball.move(-xDistance/4, Math.max(-5, -1000 / yDistance));
+      }
       batter.move(2,-2);
     }
     

@@ -2,24 +2,30 @@ class Player {
   PImage picture;
   int horizontal;
   int vertical;
+  boolean hasBall;
 
   public Player(String img, int hor, int ver) {
     picture = loadImage(img);
     picture.resize(50,0);
     horizontal = hor;
     vertical = ver;
+    hasBall = false;
   }
 
   public void displayPlayer() {
     image(picture, horizontal, vertical);
   }
+  
+  public boolean hasBall() {
+    return hasBall;
+  }
 
   public void move(int hor, int ver) {
     horizontal += hor;
     vertical += ver;
-    if (hasBall) {
-      ball.move(hor, ver);
-    }
+    //if (hasBall) {
+      //ball.move(hor, ver);
+    //}
   }
 
   public void throwBall(Base b) {
