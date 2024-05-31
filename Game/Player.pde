@@ -23,9 +23,9 @@ class Player {
   public void move(int hor, int ver) {
     horizontal += hor;
     vertical += ver;
-    //if (hasBall) {
-      //ball.move(hor, ver);
-    //}
+    if (hasBall) {
+      ball.move(hor, ver);
+    }
   }
 
   public void throwBall(Base b) {
