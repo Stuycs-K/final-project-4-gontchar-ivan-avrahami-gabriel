@@ -16,6 +16,14 @@ class Player {
     image(picture, horizontal, vertical);
   }
   
+  public int xCenter() {
+    return horizontal + picture.width/2;
+  }
+
+  public int yCenter() {
+    return vertical + picture.height/2;
+  }
+  
   public boolean hasBall() {
     return hasBall;
   }
@@ -67,7 +75,7 @@ class Player {
   }
   
   public void pickUpBall() {
-    if (! hasBall & Math.abs(ball.x() - (horizontal + (picture.width/2))) < 35 && Math.abs(ball.y() - (vertical + (picture.height/2))) < 35) {
+    if (! hasBall & Math.abs(ball.x() - (this.xCenter())) < 35 && Math.abs(ball.y() - (this.yCenter())) < 35) {
       hasBall = true;
     }
   }
