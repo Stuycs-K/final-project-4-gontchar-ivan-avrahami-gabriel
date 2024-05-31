@@ -10,7 +10,10 @@ class Base {
     return new PVector();
   }
   
-  public void location() {
-    
+  public int x() {
+    return xLoc;
+  }
+  public int y(){
+    return yLoc;
   }
 }
