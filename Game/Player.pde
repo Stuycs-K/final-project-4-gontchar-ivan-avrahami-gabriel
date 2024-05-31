@@ -30,7 +30,6 @@ class Player {
 
   public void throwBall(Base b) {
     if (hasBall) {
-      b.location();
       hasBall = false;
     }
   }
