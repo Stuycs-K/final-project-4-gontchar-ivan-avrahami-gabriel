@@ -5,11 +5,11 @@ class Field {
   
   void makeField() {
     background(0,148,60,255);
-    stroke(255, 255, 255);
+    stroke(21, 212, 53);
     fill(21,212,53);
     arc(width / 2, 930 + translate, 1900, 1900, PI+QUARTER_PI, PI+PI-QUARTER_PI);
     fill(235,157,95,255);
-    arc(width / 2, 865 + translate, 1000, 1100, PI+QUARTER_PI, PI+PI-QUARTER_PI);
+    arc(width / 2, 865 + translate, 1025, 1100, PI+QUARTER_PI, PI+PI-QUARTER_PI);
     
     
     //fill(255);
@@ -23,7 +23,7 @@ class Field {
     stroke(21,212,53);
     fill(21,212,53);
     //green inner quad
-    quad(800,380+translate,1015,570+translate,800,800+translate,595,570+translate);
+    quad(800,380+translate,1015,570+translate,800,800+translate,585,570+translate);
     //rotate(PI);
     //arc(-800,-425-translate,550,550,-QUARTER_PI,PI+QUARTER_PI,PIE);
     //rotate(-PI);
@@ -91,9 +91,9 @@ class Field {
       if (! fielder.hasBall()) {
         ball.move(-xDistance/4, Math.max(-5, -1000 / yDistance));
       }
-      batter.move(2,-2);
-    }
+      batter.runToBase();
     
     //board.getEvents();
+    }
   }
 }
