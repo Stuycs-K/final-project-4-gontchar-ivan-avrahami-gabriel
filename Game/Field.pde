@@ -1,6 +1,7 @@
 class Field {
+  boolean stopHit;
   Field() {
-    String cat = "meow";
+    stopHit = false;
   }
   
   void makeField() {
@@ -56,6 +57,9 @@ class Field {
     ball.displayBaseball();
     
     fielder.pickUpBall();
+    if (fielder.hasBall()) {
+      stopHit = true;
+    }
   
     //check if the button P1_LEFT is being pressed:
     if (keyboardInput.isPressed(Controller.P1_LEFT)) {
@@ -88,11 +92,9 @@ class Field {
     }
 
     if (hasSwung) {
-      if (! fielder.hasBall()) {
+      if (! stopHit) {
         ball.move(-xDistance/4, Math.max(-5, -250 / yDistance));
       }
-      batter.runToBase();
-    
     //board.getEvents();
     }
   }

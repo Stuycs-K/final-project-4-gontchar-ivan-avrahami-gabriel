@@ -6,13 +6,30 @@ class Base {
     yLoc = y;
   }
   
-  public PVector toHere(int xStart, int yStart) {  
-    return new PVector();
+  public int[] toHere(int xStart, int yStart) {
+    int xDist = xLoc - xStart;
+    int yDist = yLoc - yStart;
+    int g_c_f = gcf(xDist, yDist);
+    return new int[]{xDist / gcf, yDist / gcf, gcf};
+  }
+  
+  public int gcf(int a, int b) {
+    int hi = max(a,b);
+    int lo = min(a,b);
+    
+    while (lo > 0) {
+      int temp = hi % lo;
+      hi = lo;
+      lo = temp;
+    }
+    
+    return hi;
   }
   
   public int x() {
     return xLoc;
   }
+  
   public int y(){
     return yLoc;
   }

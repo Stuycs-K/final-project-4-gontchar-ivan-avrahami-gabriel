@@ -41,6 +41,7 @@ class Player {
   public void throwBall(Base b) {
     if (hasBall) {
       hasBall = false;
+      int[] results = first.toHere(ball.x(), ball.y());
     }
   }
 
