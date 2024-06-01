@@ -89,7 +89,7 @@ class Field {
 
     if (hasSwung) {
       if (! fielder.hasBall()) {
-        ball.move(-xDistance/4, Math.max(-5, -1000 / yDistance));
+        ball.move(-xDistance/4, Math.max(-5, -250 / yDistance));
       }
       batter.runToBase();
     

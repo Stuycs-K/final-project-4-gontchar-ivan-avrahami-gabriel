@@ -11,7 +11,7 @@ class Player {
     horizontal = hor;
     vertical = ver;
     hasBall = false;
-    whichBase = 1;
+    whichBase = 0;
   }
 
   public void displayPlayer() {
