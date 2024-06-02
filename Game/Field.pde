@@ -1,6 +1,5 @@
 class Field {
   Field() {
-    String cat = "meow";
   }
   
   void makeField() {
@@ -23,7 +22,7 @@ class Field {
     stroke(21,212,53);
     fill(21,212,53);
     //green inner quad
-    quad(800,380+translate,1015,570+translate,800,800+translate,585,570+translate);
+    quad(800,360+translate,1020,580+translate,800,800+translate,580,580+translate);
     //rotate(PI);
     //arc(-800,-425-translate,550,550,-QUARTER_PI,PI+QUARTER_PI,PIE);
     //rotate(-PI);
@@ -71,22 +70,37 @@ class Field {
     if (keyboardInput.isPressed(Controller.P1_DOWN)) {
       fielder.move(0,8);
     }
-    if (keyboardInput.isPressed(Controller.BASE_1)) {
-      fielder.throwBall(first);
-    }
-    if (keyboardInput.isPressed(Controller.BASE_2)) {
-      fielder.throwBall(second);
-    }
-    if (keyboardInput.isPressed(Controller.BASE_3)) {
-      fielder.throwBall(third);
-    }
-    if (keyboardInput.isPressed(Controller.BASE_HOME)) {
-      fielder.throwBall(home);
+    if (fielder.hasBall()) {
+      if (keyboardInput.isPressed(Controller.BASE_1)) {
+        results = first.toHere(ball.x(), ball.y());
+        throwBase = true;
+        //fielder.throwBall(first);
+      }
+      if (keyboardInput.isPressed(Controller.BASE_2)) {
+        results = second.toHere(ball.x(), ball.y());
+        throwBase = true;
+        //fielder.throwBall(second);
+      }
+      if (keyboardInput.isPressed(Controller.BASE_3)) {
+        results = third.toHere(ball.x(), ball.y());
+        throwBase = true;
+        //fielder.throwBall(third);
+      }
+      if (keyboardInput.isPressed(Controller.BASE_HOME)) {
+        results = home.toHere(ball.x(), ball.y()); 
+        throwBase = true;
+        //fielder.throwBall(home);
+      }
     }
     if (keyboardInput.isPressed(Controller.PITCH)) {
       pitcher.pitch(new Pitch("fastball"));
     }
-
+    
+    if (throwBase) {
+      int[] res = Arrays.copyOf(results);
+      fielder.throwBall(res);
+    }
+    
     if (hasSwung) {
       if (! stopHit) {
         ball.move(0, Math.max(-5, -10000 / yDistance));

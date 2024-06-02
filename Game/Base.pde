@@ -9,9 +9,10 @@ class Base {
   public int[] toHere(int xStart, int yStart) {
     int xDist = xLoc - xStart;
     int yDist = yLoc - yStart;
-    int g_c_f = gcf(Math.abs(xDist), Math.abs(yDist));
-    System.out.println(xDist + " " + yDist + " " + g_c_f);
-    return new int[]{xDist / g_c_f, yDist / g_c_f, g_c_f};
+    //int g_c_f = gcf(Math.abs(xDist), Math.abs(yDist));
+    //System.out.println(xDist + " " + yDist + " " + g_c_f);
+    //return new int[]{xDist / g_c_f, yDist / g_c_f, g_c_f};
+    return new int[]{xDist, yDist};
   }
   
   public int gcf(int a, int b) {

@@ -1,3 +1,4 @@
+import java.util.*;
 String homeTeam, awayTeam;
 Scoreboard board;
 Baseball ball;
@@ -7,6 +8,8 @@ Base first, second, third, home;
 boolean hasSwung = false;
 boolean canSwing = false;
 boolean stopHit = false;
+boolean throwBase = false;
+int[] results;
 int xDistance, yDistance;
 int translate = 50;
 

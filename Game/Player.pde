@@ -37,9 +37,38 @@ class Player {
       ball.move(hor, ver);
     }
   }
-
-  public void throwBall(Base base) {
-    if (hasBall) {
+  
+  public void throwBall(int aNeg, int bNeg) {
+    hasBall = false;
+    results[0] = Math.abs(results[0]);
+    results[1] = Math.abs(results[1]);
+    int a = results[0];
+    int b = results[1];
+    if (a > 0 && b > 0) {
+      double rand = (double) a / (a+b);
+      if (a < b) {
+        rand = (double) b / (a+b);
+      }
+      if (Math.random() < rand) {
+        results[0]--;
+        ball.move(aNeg, 0);
+      }
+      else {
+        results[1]--;
+        ball.move(0, bNeg);
+      }
+    }
+    else if (a > 0) {
+      results[0]--;
+      ball.move(aNeg, 0);
+    }
+    else if (b > 0) {
+      results[1]--;
+      ball.move(0, bNeg);
+    }
+  }
+  /*public void throwBall(Base base) {
+      if (hasBall) {
       hasBall = false;
       int[] results = base.toHere(ball.x(), ball.y());
       int aNeg = 1;
@@ -77,9 +106,9 @@ class Player {
           ball.move(0, bNeg);
         }
       }
-      System.out.println(ball.x() + " " + ball.y() + " " + results[0] + " " + results[1] + " " + results[2]);
+      //System.out.println(ball.x() + " " + ball.y() + " " + results[0] + " " + results[1] + " " + results[2]);
     }
-  }
+  }*/
 
   public void pitch(Pitch p) {
     canSwing = true;
