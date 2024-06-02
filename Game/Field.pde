@@ -100,13 +100,20 @@ class Field {
       pitcher.pitch(new Pitch("fastball"));
     }
     
+    if (ball.y() > 1500+translate) {
+      canSwing = false;
+      board.addEvent("strike");
+      canSwing = false;
+      ball = new Baseball(800, 625);
+    }
+    
     if (throwBase) {
       fielder.throwBall();
     }
     
     if (hasSwung) {
       if (! stopHit) {
-        ball.move(0, Math.max(-5, -10000 / yDistance));
+        ball.move(-xDistance/8, Math.max(-5, -1000 / yDistance));
       }
     //board.getEvents();
     }

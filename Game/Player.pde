@@ -139,11 +139,12 @@ class Player {
         batter.move(20,20);
         board.addEvent("in play");
         hasSwung = true;
-        canSwing = false;
       }
       else {
         board.addEvent("strike");
+        ball = new Baseball(800, 625);
       }
+      canSwing = false;
     }
   }
   
@@ -163,6 +164,6 @@ class Player {
     if (whichBase < 2) {
       yShift = -1;
     }
-    move(2*xShift,2*yShift); 
+    move(2*xShift,2*yShift);
   }
 }
