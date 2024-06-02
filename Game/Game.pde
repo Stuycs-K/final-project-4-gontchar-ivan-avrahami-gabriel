@@ -9,7 +9,7 @@ boolean hasSwung = false;
 boolean canSwing = false;
 boolean stopHit = false;
 boolean throwBase = false;
-int[] results;
+int[] results, res;
 int xDistance, yDistance;
 int translate = 50;
 

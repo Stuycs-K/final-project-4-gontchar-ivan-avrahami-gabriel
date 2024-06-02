@@ -73,21 +73,25 @@ class Field {
     if (fielder.hasBall()) {
       if (keyboardInput.isPressed(Controller.BASE_1)) {
         results = first.toHere(ball.x(), ball.y());
+        res = new int[]{Math.abs(results[0]), Math.abs(results[1])};
         throwBase = true;
         //fielder.throwBall(first);
       }
       if (keyboardInput.isPressed(Controller.BASE_2)) {
         results = second.toHere(ball.x(), ball.y());
+        res = new int[]{Math.abs(results[0]), Math.abs(results[1])};
         throwBase = true;
         //fielder.throwBall(second);
       }
       if (keyboardInput.isPressed(Controller.BASE_3)) {
         results = third.toHere(ball.x(), ball.y());
+        res = new int[]{Math.abs(results[0]), Math.abs(results[1])};
         throwBase = true;
         //fielder.throwBall(third);
       }
       if (keyboardInput.isPressed(Controller.BASE_HOME)) {
-        results = home.toHere(ball.x(), ball.y()); 
+        results = home.toHere(ball.x(), ball.y());
+        res = new int[]{Math.abs(results[0]), Math.abs(results[1])};
         throwBase = true;
         //fielder.throwBall(home);
       }
@@ -97,8 +101,7 @@ class Field {
     }
     
     if (throwBase) {
-      int[] res = Arrays.copyOf(results);
-      fielder.throwBall(res);
+      fielder.throwBall();
     }
     
     if (hasSwung) {

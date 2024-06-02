@@ -38,32 +38,38 @@ class Player {
     }
   }
   
-  public void throwBall(int aNeg, int bNeg) {
+  public void throwBall() {
     hasBall = false;
-    results[0] = Math.abs(results[0]);
-    results[1] = Math.abs(results[1]);
-    int a = results[0];
-    int b = results[1];
+    int aNeg = 1;
+    int bNeg = 1;
+    if (results[0] < 0) {
+      aNeg = -1;
+    }
+    if (results[1] < 0) {
+      bNeg = -1;
+    }
+    int a = res[0];
+    int b = res[1];
     if (a > 0 && b > 0) {
       double rand = (double) a / (a+b);
       if (a < b) {
         rand = (double) b / (a+b);
       }
       if (Math.random() < rand) {
-        results[0]--;
+        res[0]--;
         ball.move(aNeg, 0);
       }
       else {
-        results[1]--;
+        res[1]--;
         ball.move(0, bNeg);
       }
     }
     else if (a > 0) {
-      results[0]--;
+      res[0]--;
       ball.move(aNeg, 0);
     }
     else if (b > 0) {
-      results[1]--;
+      res[1]--;
       ball.move(0, bNeg);
     }
   }
