@@ -29,7 +29,7 @@ class Player {
   public boolean hasBall() {
     return hasBall;
   }
-
+ 
   public void move(int hor, int ver) {
     horizontal += hor;
     vertical += ver;
@@ -38,10 +38,46 @@ class Player {
     }
   }
 
-  public void throwBall(Base b) {
+  public void throwBall(Base base) {
     if (hasBall) {
       hasBall = false;
-      int[] results = first.toHere(ball.x(), ball.y());
+      int[] results = base.toHere(ball.x(), ball.y());
+      int aNeg = 1;
+      int bNeg = 1;
+      if (results[0] < 0) {
+        aNeg = -1;
+      }
+      if (results[1] < 0) {
+        bNeg = -1;
+      }
+      int a, b;
+      for (int i = 0; i < results[2]; i++) {
+        a = Math.abs(results[0]);
+        b = Math.abs(results[1]);
+        while (a > 0 && b > 0) {
+          double rand = (double) a / (a+b);
+          if (a > b) {
+            rand = (double) b / (a+b);
+          }
+          if (Math.random() < rand) {
+            a--;
+            ball.move(aNeg, 0);
+          }
+          else {
+            b--;
+            ball.move(0, bNeg);
+          }
+        }
+        while (a > 0) {
+          a--;
+          ball.move(aNeg, 0);
+        }
+        while (b > 0) {
+          b--;
+          ball.move(0, bNeg);
+        }
+      }
+      System.out.println(ball.x() + " " + ball.y() + " " + results[0] + " " + results[1] + " " + results[2]);
     }
   }
 
@@ -79,6 +115,7 @@ class Player {
   public void pickUpBall() {
     if (! hasBall & Math.abs(ball.x() - (this.xCenter())) < 35 && Math.abs(ball.y() - (this.yCenter())) < 35) {
       hasBall = true;
+      stopHit = true;
     }
   }
   

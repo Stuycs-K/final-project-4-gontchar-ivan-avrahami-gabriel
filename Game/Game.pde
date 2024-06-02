@@ -6,6 +6,7 @@ Player pitcher, batter, fielder;
 Base first, second, third, home;
 boolean hasSwung = false;
 boolean canSwing = false;
+boolean stopHit = false;
 int xDistance, yDistance;
 int translate = 50;
 
@@ -15,7 +16,7 @@ void setup(){
   fielder = new Player("batterExperimental.png", 775, 125+translate);
   batter = new Player("batterExperimental.png", 730, 770+translate);
   pitcher = new Player("batterExperimental.png", 775, 530+translate);
-  first = new Base(1, 1000, 950);
+  first = new Base(1, 1000, 650);
   second = new Base(2, 800, 500);
   third = new Base(3, 600, 650);
   home = new Base(4, 800, 800);
