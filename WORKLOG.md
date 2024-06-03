@@ -126,15 +126,15 @@ I fixed the field and allowed the fielder to pick up the ball.
 
 ### 5/31/24 - CW
 
-xxx
+Adjusted the field
 
 ### 5/31/24 - HW
 
-xxx
+I did a lot of work in this period of time getting the running to work and somewhat allowing multiple players.
 
 ### 6/3/24 - CW
 
-xxx
+Most of the period was taken up by demos, and Ivan and I spent the rest of it discussing our gameplan
 
 ### 6/3/24 - HW
 
