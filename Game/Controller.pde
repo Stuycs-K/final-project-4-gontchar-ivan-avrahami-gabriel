@@ -47,9 +47,9 @@ class Controller {
   }
   void release(int code) {
     if(code == 'A')
-    inputs[P1_LEFT] = false;
+      inputs[P1_LEFT] = false;
     if(code == 'D')
-    inputs[P1_RIGHT] = false;
+      inputs[P1_RIGHT] = false;
     if(code == 'W')
       inputs[P1_UP] = false;
     if(code == 'S')
@@ -65,6 +65,6 @@ class Controller {
     if(code == ' ')
       inputs[PITCH_SPEED] = false;
     if(code == 'P')
-      inputs[PITCH_SPEED] = false;
+      inputs[PITCH] = false;
   }
 }

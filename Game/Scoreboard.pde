@@ -1,9 +1,9 @@
 class Scoreboard {
-  String home, away;
+  String homeTeam, awayTeam;
   ArrayList<String> events;
   public Scoreboard(String homeT, String awayT) {
-    home = homeT;
-    away = awayT;
+    homeTeam = homeT;
+    awayTeam = awayT;
     events = new ArrayList<String>();
   }
   
@@ -13,5 +13,17 @@ class Scoreboard {
   
   public void getEvents() {
     System.out.println(events);
+  }
+  
+  public void genericSetup() {
+    shouldPitch = false;
+    hasSwung = false;
+    canSwing = false;
+    stopHit = false;
+    throwBase = false;
+    fielder = new Player("batterExperimental.png", 775, 125+translate);
+    batter = new Player("batterExperimental.png", 730, 770+translate);
+    pitcher = new Player("batterExperimental.png", 775, 530+translate);
+    ball = new Baseball(800,625);
   }
 }

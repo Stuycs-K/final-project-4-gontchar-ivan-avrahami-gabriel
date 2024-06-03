@@ -98,7 +98,11 @@ class Field {
       }
     }
     if (keyboardInput.isPressed(Controller.PITCH)) {
-      pitcher.pitch(new Pitch("fastball"));
+      shouldPitch = true;
+    }
+    
+    if (shouldPitch) {
+      pitcher.pitch(new Pitch("curveball"));
     }
     
     if (ball.y() > 1500+translate) {
@@ -108,7 +112,9 @@ class Field {
     }
     
     if (throwBase) {
-      fielder.throwBall();
+      for (int i = 0; i < 10; i++) {
+        fielder.throwBall();
+      }
     }
     
     if (hasSwung) {
@@ -120,13 +126,9 @@ class Field {
     }
     
     if (! batter.getKeepRunning()) {
+      keyboardInput.release('P');
       runner = batter;
-      batter = new Player("batterExperimental.png", 730, 770+translate);
-      hasSwung = false;
-      canSwing = false;
-      stopHit = false;
-      throwBase = false;
-      ball = new Baseball(800,625);
+      board.genericSetup();
     }
     
     //System.out.println(xDistance + " " + yDistance);

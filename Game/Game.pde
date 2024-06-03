@@ -1,14 +1,9 @@
-import java.util.*;
-String homeTeam, awayTeam;
 Scoreboard board;
 Baseball ball;
 Controller keyboardInput;
 Player pitcher, batter, fielder, runner;
 Base first, second, third, home;
-boolean hasSwung = false;
-boolean canSwing = false;
-boolean stopHit = false;
-boolean throwBase = false;
+boolean shouldPitch, hasSwung, canSwing, stopHit, throwBase;
 int[] results, res;
 int xDistance, yDistance;
 int translate = 50;
@@ -16,18 +11,13 @@ int translate = 50;
 void setup(){
   size(1600,1000);
   // trying to load a batter
+  runner = new Player("batterExperimental.png", 2000, 2000+translate);
   first = new Base(1, 1010, 565+translate);
   second = new Base(2, 790, 355+translate);
   third = new Base(3, 565, 565+translate);
   home = new Base(4, 790, 810+translate);
-  fielder = new Player("batterExperimental.png", 775, 125+translate);
-  batter = new Player("batterExperimental.png", 730, 770+translate);
-  pitcher = new Player("batterExperimental.png", 775, 530+translate);
-  runner = new Player("batterExperimental.png", 2000, 2000+translate);
-  ball = new Baseball(800,625);
-  homeTeam = "Home Team";
-  awayTeam = "Away Team";
-  board = new Scoreboard(homeTeam, awayTeam);
+  board = new Scoreboard("Home Team", "Away Team");
+  board.genericSetup();
 
   keyboardInput = new Controller();
 }
@@ -49,7 +39,7 @@ void keyReleased() {
 }
 
 void mouseClicked() {
-  if (mouseX < 200 && mouseY > 500+translate) {
+  if (mouseX < 300 && mouseY > 400+translate) {
     batter.setShouldRun(true);
   }
   batter.swing(mouseX,mouseY);
