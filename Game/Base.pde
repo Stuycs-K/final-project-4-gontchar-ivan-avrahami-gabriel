@@ -6,6 +6,10 @@ class Base {
     yLoc = y;
   }
   
+  public int getBaseNum() {
+    return baseNum;
+  }
+  
   public int[] toHere(int xStart, int yStart) {
     int xDist = xLoc - xStart;
     int yDist = yLoc - yStart;

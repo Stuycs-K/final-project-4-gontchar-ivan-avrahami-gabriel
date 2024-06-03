@@ -3,7 +3,7 @@ class Player {
   int horizontal;
   int vertical;
   boolean hasBall;
-  int whichBase;
+  Base whichBase;
 
   public Player(String img, int hor, int ver) {
     picture = loadImage(img);
@@ -11,7 +11,7 @@ class Player {
     horizontal = hor;
     vertical = ver;
     hasBall = false;
-    whichBase = 0;
+    whichBase = home;
   }
 
   public void displayPlayer() {
@@ -149,19 +149,38 @@ class Player {
   }
   
   public void pickUpBall() {
-    if (! hasBall & Math.abs(ball.x() - (this.xCenter())) < 35 && Math.abs(ball.y() - (this.yCenter())) < 35) {
+    if (! hasBall && Math.abs(ball.x() - this.xCenter()) < 35 && Math.abs(ball.y() - this.yCenter()) < 35) {
       hasBall = true;
       stopHit = true;
+    }
+  }
+  
+  public int getWhichBaseNum() {
+    return whichBase.getBaseNum();
+  }
+  
+  public void setWhichBaseNum(int num) {
+    if (num == 1) {
+      whichBase = first;
+    }
+    if (num == 2) {
+      whichBase = second;
+    }
+    if (num == 3) {
+      whichBase = third;
+    }
+    if (num == 4) {
+      whichBase = home;
     }
   }
   
   public void runToBase() {
     int xShift = 1;
     int yShift = 1;
-    if (whichBase == 1 || whichBase == 2) {
+    if (whichBase == first || whichBase == second) {
       xShift = -1;
     }
-    if (whichBase < 2) {
+    if (whichBase == first || whichBase == home) {
       yShift = -1;
     }
     move(2*xShift,2*yShift);

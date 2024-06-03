@@ -19,7 +19,7 @@ void setup(){
   fielder = new Player("batterExperimental.png", 775, 125+translate);
   batter = new Player("batterExperimental.png", 730, 770+translate);
   pitcher = new Player("batterExperimental.png", 775, 530+translate);
-  first = new Base(1, 1020, 565+translate);
+  first = new Base(1, 1015, 565+translate);
   second = new Base(2, 790, 355+translate);
   third = new Base(3, 565, 565+translate);
   home = new Base(4, 790, 810+translate);

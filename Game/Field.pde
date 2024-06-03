@@ -29,10 +29,10 @@ class Field {
     
     stroke(255);
     strokeWeight(2);
-    line(243,287+translate,800,847+translate);
-    line(1357,287+translate,800,847+translate);
-    line(1150,508+translate,1185,543+translate);
-    line(450,507+translate,415,542+translate);
+    line(200,195+translate,800,847+translate);
+    line(1400,195+translate,800,847+translate);
+    //line(1150,508+translate,1185,543+translate);
+    //line(450,507+translate,415,542+translate);
     
     stroke(235,157,95,255);
     fill(235,157,95,255);
@@ -43,7 +43,7 @@ class Field {
     //home
     rect(width / 2 - 15, 810 + translate, 30, 30);
     //1st
-    rect(1020, 555 + translate, 30, 30);
+    rect(1015, 555 + translate, 30, 30);
     ////2nd
     rect(785, 345 + translate, 30, 30);
     ////3rd
@@ -103,7 +103,6 @@ class Field {
     if (ball.y() > 1500+translate) {
       canSwing = false;
       board.addEvent("strike");
-      canSwing = false;
       ball = new Baseball(800, 625);
     }
     
@@ -114,6 +113,10 @@ class Field {
     if (hasSwung) {
       if (! stopHit) {
         ball.move(-xDistance/8, Math.max(-5, -1000 / yDistance));
+      }
+      if (batter.xCenter() ) {
+        batter.setWhichBase(batter.getWhichBase() + 1);
+        batter.runToBase();
       }
     //board.getEvents();
     }
