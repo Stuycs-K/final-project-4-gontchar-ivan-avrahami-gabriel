@@ -3,7 +3,7 @@ String homeTeam, awayTeam;
 Scoreboard board;
 Baseball ball;
 Controller keyboardInput;
-Player pitcher, batter, fielder;
+Player pitcher, batter, fielder, runner;
 Base first, second, third, home;
 boolean hasSwung = false;
 boolean canSwing = false;
@@ -23,6 +23,7 @@ void setup(){
   fielder = new Player("batterExperimental.png", 775, 125+translate);
   batter = new Player("batterExperimental.png", 730, 770+translate);
   pitcher = new Player("batterExperimental.png", 775, 530+translate);
+  runner = new Player("batterExperimental.png", 2000, 2000+translate);
   ball = new Baseball(800,625);
   homeTeam = "Home Team";
   awayTeam = "Away Team";
@@ -48,5 +49,8 @@ void keyReleased() {
 }
 
 void mouseClicked() {
+  if (mouseX < 200 && mouseY > 500+translate) {
+    batter.setShouldRun(true);
+  }
   batter.swing(mouseX,mouseY);
 }

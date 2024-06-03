@@ -52,6 +52,7 @@ class Field {
     fielder.displayPlayer();
     batter.displayPlayer();
     pitcher.displayPlayer();
+    runner.displayPlayer();
     ball.displayBaseball();
     
     fielder.pickUpBall();
@@ -114,19 +115,18 @@ class Field {
       if (! stopHit) {
         ball.move(-xDistance/6, Math.max(-5, -1000 / yDistance));
       }
-      Base next = batter.getNextBase();
-      System.out.println(batter.getShouldRun() + " " + batter.xCenter() + " " + next.x() + " " + batter.yCenter() + " " + next.y());
-      if (batter.getShouldRun()) {
-        if (batter.xCenter() < next.x() + 20 && batter.xCenter() > next.x() - 20
-        && batter.yCenter() < next.y() + 30 && batter.yCenter() > next.y() - 30) {
-          //batter.setShouldRun(false);
-          batter.setWhichBase(next.num());
-        }
-        else {
-          batter.runToBase();
-        }
-      }
+      batter.runToBase();
     //board.getEvents();
+    }
+    
+    if (! batter.getKeepRunning()) {
+      runner = batter;
+      batter = new Player("batterExperimental.png", 730, 770+translate);
+      hasSwung = false;
+      canSwing = false;
+      stopHit = false;
+      throwBase = false;
+      ball = new Baseball(800,625);
     }
     
     //System.out.println(xDistance + " " + yDistance);

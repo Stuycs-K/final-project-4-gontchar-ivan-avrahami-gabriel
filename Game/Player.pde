@@ -3,7 +3,7 @@ class Player {
   int horizontal, vertical;
   boolean hasBall;
   Base whichBase, nextBase;
-  boolean shouldRun;
+  boolean shouldRun, keepRunning;
 
   public Player(String img, int hor, int ver) {
     picture = loadImage(img);
@@ -14,6 +14,7 @@ class Player {
     whichBase = home;
     nextBase = first;
     shouldRun = false;
+    keepRunning = true;
   }
 
   public void displayPlayer() {
@@ -141,7 +142,6 @@ class Player {
         batter.move(20,20);
         board.addEvent("in play");
         hasSwung = true;
-        shouldRun = true;
       }
       else {
         board.addEvent("strike");
@@ -158,13 +158,13 @@ class Player {
     }
   }
   
-  public Base getWhichBase() {
+  /*public Base getWhichBase() {
     return whichBase;
   }
 
   public Base getNextBase() {
     return nextBase;
-  }
+  }*/
   
   public void setWhichBase(int num) {
     if (num == 1) {
@@ -185,7 +185,7 @@ class Player {
     }
   }
   
-  public void runToBase() {
+  public void actuallyRun() {
     int xShift = 1;
     int yShift = 1;
     if (whichBase == first || whichBase == second) {
@@ -197,11 +197,28 @@ class Player {
     move(2*xShift,2*yShift);
   }
   
-  public boolean getShouldRun() {
-    return shouldRun;
+  public void runToBase() {
+    //System.out.println(batter.getShouldRun() + " " + batter.xCenter() + " " + next.x() + " " + batter.yCenter() + " " + next.y());
+    if (keepRunning) {
+    
+      if (this.xCenter() < nextBase.x() + 20 && this.xCenter() > nextBase.x() - 20
+      && this.yCenter() < nextBase.y() + 40 && this.yCenter() > nextBase.y()) {
+      
+        batter.setWhichBase(nextBase.num());
+        keepRunning = shouldRun;
+        shouldRun = false;
+      }
+      else {
+        this.actuallyRun();
+      }
+    }
   }
   
   public void setShouldRun(boolean bool) {
     shouldRun = bool;
+  }
+  
+  public boolean getKeepRunning() {
+    return keepRunning;
   }
 }
