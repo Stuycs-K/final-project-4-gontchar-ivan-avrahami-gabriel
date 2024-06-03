@@ -6,7 +6,7 @@ class Base {
     yLoc = y;
   }
   
-  public int getBaseNum() {
+  public int num() {
     return baseNum;
   }
   
@@ -40,9 +40,9 @@ class Base {
     return yLoc;
   }
   
-  public int onBase(Player person){
+  //public int onBase(Player person){
     //if(person.xCenter() >= 0 && person.xCenter() <= 0){
     //}
-    return baseNum;
-  }
+    //return baseNum;
+  //}
 }

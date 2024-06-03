@@ -43,7 +43,7 @@ class Field {
     //home
     rect(width / 2 - 15, 810 + translate, 30, 30);
     //1st
-    rect(1015, 555 + translate, 30, 30);
+    rect(1010, 555 + translate, 30, 30);
     ////2nd
     rect(785, 345 + translate, 30, 30);
     ////3rd
@@ -112,11 +112,19 @@ class Field {
     
     if (hasSwung) {
       if (! stopHit) {
-        ball.move(-xDistance/8, Math.max(-5, -1000 / yDistance));
+        ball.move(-xDistance/6, Math.max(-5, -1000 / yDistance));
       }
-      if (batter.xCenter() ) {
-        batter.setWhichBase(batter.getWhichBase() + 1);
-        batter.runToBase();
+      Base next = batter.getNextBase();
+      System.out.println(batter.getShouldRun() + " " + batter.xCenter() + " " + next.x() + " " + batter.yCenter() + " " + next.y());
+      if (batter.getShouldRun()) {
+        if (batter.xCenter() < next.x() + 20 && batter.xCenter() > next.x() - 20
+        && batter.yCenter() < next.y() + 30 && batter.yCenter() > next.y() - 30) {
+          //batter.setShouldRun(false);
+          batter.setWhichBase(next.num());
+        }
+        else {
+          batter.runToBase();
+        }
       }
     //board.getEvents();
     }

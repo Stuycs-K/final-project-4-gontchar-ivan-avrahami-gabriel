@@ -1,9 +1,9 @@
 class Player {
   PImage picture;
-  int horizontal;
-  int vertical;
+  int horizontal, vertical;
   boolean hasBall;
-  Base whichBase;
+  Base whichBase, nextBase;
+  boolean shouldRun;
 
   public Player(String img, int hor, int ver) {
     picture = loadImage(img);
@@ -12,6 +12,8 @@ class Player {
     vertical = ver;
     hasBall = false;
     whichBase = home;
+    nextBase = first;
+    shouldRun = false;
   }
 
   public void displayPlayer() {
@@ -139,6 +141,7 @@ class Player {
         batter.move(20,20);
         board.addEvent("in play");
         hasSwung = true;
+        shouldRun = true;
       }
       else {
         board.addEvent("strike");
@@ -155,22 +158,30 @@ class Player {
     }
   }
   
-  public int getWhichBaseNum() {
-    return whichBase.getBaseNum();
+  public Base getWhichBase() {
+    return whichBase;
+  }
+
+  public Base getNextBase() {
+    return nextBase;
   }
   
-  public void setWhichBaseNum(int num) {
+  public void setWhichBase(int num) {
     if (num == 1) {
       whichBase = first;
+      nextBase = second;
     }
     if (num == 2) {
       whichBase = second;
+      nextBase = third;
     }
     if (num == 3) {
       whichBase = third;
+      nextBase = home;
     }
     if (num == 4) {
       whichBase = home;
+      nextBase = first;
     }
   }
   
@@ -184,5 +195,13 @@ class Player {
       yShift = -1;
     }
     move(2*xShift,2*yShift);
+  }
+  
+  public boolean getShouldRun() {
+    return shouldRun;
+  }
+  
+  public void setShouldRun(boolean bool) {
+    shouldRun = bool;
   }
 }

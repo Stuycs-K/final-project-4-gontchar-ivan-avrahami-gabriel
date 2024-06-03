@@ -16,13 +16,13 @@ int translate = 50;
 void setup(){
   size(1600,1000);
   // trying to load a batter
-  fielder = new Player("batterExperimental.png", 775, 125+translate);
-  batter = new Player("batterExperimental.png", 730, 770+translate);
-  pitcher = new Player("batterExperimental.png", 775, 530+translate);
-  first = new Base(1, 1015, 565+translate);
+  first = new Base(1, 1010, 565+translate);
   second = new Base(2, 790, 355+translate);
   third = new Base(3, 565, 565+translate);
   home = new Base(4, 790, 810+translate);
+  fielder = new Player("batterExperimental.png", 775, 125+translate);
+  batter = new Player("batterExperimental.png", 730, 770+translate);
+  pitcher = new Player("batterExperimental.png", 775, 530+translate);
   ball = new Baseball(800,625);
   homeTeam = "Home Team";
   awayTeam = "Away Team";
