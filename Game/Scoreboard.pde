@@ -21,9 +21,11 @@ class Scoreboard {
     canSwing = false;
     stopHit = false;
     throwBase = false;
+    ballOnTime = false;
     fielder = new Player("batterExperimental.png", 775, 125+translate);
     batter = new Player("batterExperimental.png", 730, 770+translate);
     pitcher = new Player("batterExperimental.png", 775, 530+translate);
     ball = new Baseball(800,625);
+    ruling = new Base(10,2000,2000);
   }
 }

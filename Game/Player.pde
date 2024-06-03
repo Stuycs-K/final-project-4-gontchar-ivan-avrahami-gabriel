@@ -37,7 +37,9 @@ class Player {
     horizontal += hor;
     vertical += ver;
     if (hasBall) {
-      ball.move(hor, ver);
+      horizontal -= (hor/2);
+      vertical -= (ver/2);
+      ball.move(hor/2, ver/2);
     }
   }
   
@@ -74,6 +76,10 @@ class Player {
     else if (b > 0) {
       res[1]--;
       ball.move(0, bNeg);
+    }
+    else {
+      throwBase = false;
+      ballOnTime = true;
     }
   }
   /*public void throwBall(Base base) {
@@ -158,11 +164,11 @@ class Player {
     }
   }
   
-  /*public Base getWhichBase() {
+  public Base getWhichBase() {
     return whichBase;
   }
 
-  public Base getNextBase() {
+  /*public Base getNextBase() {
     return nextBase;
   }*/
   

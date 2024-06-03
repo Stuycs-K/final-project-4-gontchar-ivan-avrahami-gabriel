@@ -76,25 +76,25 @@ class Field {
         results = first.toHere(ball.x(), ball.y());
         res = new int[]{Math.abs(results[0]), Math.abs(results[1])};
         throwBase = true;
-        //fielder.throwBall(first);
+        ruling = first;
       }
       if (keyboardInput.isPressed(Controller.BASE_2)) {
         results = second.toHere(ball.x(), ball.y());
         res = new int[]{Math.abs(results[0]), Math.abs(results[1])};
         throwBase = true;
-        //fielder.throwBall(second);
+        ruling = second;
       }
       if (keyboardInput.isPressed(Controller.BASE_3)) {
         results = third.toHere(ball.x(), ball.y());
         res = new int[]{Math.abs(results[0]), Math.abs(results[1])};
         throwBase = true;
-        //fielder.throwBall(third);
+        ruling = third;
       }
       if (keyboardInput.isPressed(Controller.BASE_HOME)) {
         results = home.toHere(ball.x(), ball.y());
         res = new int[]{Math.abs(results[0]), Math.abs(results[1])};
         throwBase = true;
-        //fielder.throwBall(home);
+        ruling = home;
       }
     }
     if (keyboardInput.isPressed(Controller.PITCH)) {
@@ -105,10 +105,9 @@ class Field {
       pitcher.pitch(new Pitch("curveball"));
     }
     
-    if (ball.y() > 1500+translate) {
-      canSwing = false;
+    if (ball.y() > 1500+translate || ball.x() < 0 && ball.y() > 200 || ball.x() > 1600 && ball.y() > 200) {
       board.addEvent("strike");
-      ball = new Baseball(800, 625);
+      board.genericSetup();
     }
     
     if (throwBase) {
@@ -126,8 +125,13 @@ class Field {
     }
     
     if (! batter.getKeepRunning()) {
-      keyboardInput.release('P');
-      runner = batter;
+      if (ruling.num() == batter.getWhichBase().num() && ballOnTime) {
+        board.addEvent("out");
+      }
+      else {
+        runner = batter;
+        board.addEvent("safe");
+      }
       board.genericSetup();
     }
     
