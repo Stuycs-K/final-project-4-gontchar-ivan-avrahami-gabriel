@@ -145,7 +145,8 @@ class Player {
       if (xMouse > 700 && xMouse < 900 && yMouse > 675 + translate && yMouse < 875 + translate) {
         xDistance = xMouse - ball.x();
         yDistance = Math.abs(yMouse - ball.y()) + 1;//in case it's 0
-        batter.move(20,20);
+        runner = batter;
+        runner.move(20,20);
         board.addEvent("in play");
         hasSwung = true;
       }

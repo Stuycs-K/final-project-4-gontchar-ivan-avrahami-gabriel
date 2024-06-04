@@ -120,16 +120,15 @@ class Field {
       if (! stopHit) {
         ball.move(-xDistance/6, Math.max(-5, -1000 / yDistance));
       }
-      batter.runToBase();
+      runner.runToBase();
     //board.getEvents();
     }
     
-    if (! batter.getKeepRunning()) {
-      if (ruling.num() == batter.getWhichBase().num() && ballOnTime) {
+    if (! runner.getKeepRunning()) {
+      if (ruling.num() == runner.getWhichBase().num() && ballOnTime) {
         board.addEvent("out");
       }
       else {
-        runner = batter;
         board.addEvent("safe");
       }
       board.genericSetup();

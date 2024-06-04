@@ -39,7 +39,7 @@ void keyReleased() {
 }
 
 void mouseClicked() {
-  if (mouseX < 300 && mouseY > 400+translate) {
+  if (mouseX < 300 && mouseY < 150+translate) {
     batter.setShouldRun(true);
   }
   batter.swing(mouseX,mouseY);
