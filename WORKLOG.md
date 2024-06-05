@@ -138,7 +138,7 @@ Most of the period was taken up by demos, and Ivan and I spent the rest of it di
 
 ### 6/3/24 - HW
 
-xxx
+Allowing multiple players to run (but failing)
 
 ### 6/5/24 - CW
 
