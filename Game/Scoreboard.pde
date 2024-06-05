@@ -19,7 +19,7 @@ class Scoreboard {
     textSize(30);
     fill(0, 0, 0);
     text("Strikes: " + numStrikes, 100, 800, 0);
-    text("Outs: " + numStrikes, 100, 835, 0);
+    text("Outs: " + numOuts, 100, 835, 0);
     if(home){
       text("Team Batting: " + homeTeam, 100, 870, 0);
     }

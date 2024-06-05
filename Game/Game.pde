@@ -7,6 +7,7 @@ boolean shouldPitch, hasSwung, canSwing, stopHit, throwBase, ballOnTime;
 int[] results, res;
 int xDistance, yDistance;
 int translate = 50;
+Field ivan_lacks_neurons;
 
 void setup(){
   size(1600,1000);
@@ -18,12 +19,12 @@ void setup(){
   home = new Base(4, 790, 810+translate);
   board = new Scoreboard("Home Team", "Away Team");
   board.genericSetup();
+  ivan_lacks_neurons = new Field();
 
   keyboardInput = new Controller();
 }
 
 void draw(){
-  Field ivan_lacks_neurons = new Field();
   ivan_lacks_neurons.makeField();
 }
 
@@ -42,5 +43,5 @@ void mouseClicked() {
   if (mouseX < 300 && mouseY > 400+translate) {
     batter.setShouldRun(true);
   }
-  batter.swing(mouseX,mouseY);
+  ivan_lacks_neurons.strikes += batter.swing(mouseX,mouseY);
 }
