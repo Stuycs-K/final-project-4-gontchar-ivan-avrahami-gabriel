@@ -140,7 +140,7 @@ class Player {
     }
   }
 
-  public void swing(int xMouse, int yMouse){
+  public int swing(int xMouse, int yMouse){
     if (canSwing && ! hasSwung) {
       if (xMouse > 700 && xMouse < 900 && yMouse > 675 + translate && yMouse < 875 + translate) {
         xDistance = xMouse - ball.x();
@@ -148,13 +148,16 @@ class Player {
         batter.move(20,20);
         board.addEvent("in play");
         hasSwung = true;
+        canSwing = false;
       }
       else {
         board.addEvent("strike");
         ball = new Baseball(800, 625);
+        canSwing = false;
+        return 1;
       }
-      canSwing = false;
     }
+    return 0;
   }
   
   public void pickUpBall() {
