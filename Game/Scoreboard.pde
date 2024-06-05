@@ -15,6 +15,20 @@ class Scoreboard {
     System.out.println(events);
   }
   
+  public void display(int numStrikes, int numOuts, boolean home, int numInnings){
+    textSize(30);
+    fill(0, 0, 0);
+    text("Strikes: " + numStrikes, 100, 800, 0);
+    text("Outs: " + numStrikes, 100, 835, 0);
+    if(home){
+      text("Team Batting: " + homeTeam, 100, 870, 0);
+    }
+    else{
+      text("Team Batting: " + awayTeam, 100, 870, 0);
+    }
+    text("Inning: " + numInnings, 100, 905, 0);
+  }
+  
   public void genericSetup() {
     shouldPitch = false;
     hasSwung = false;

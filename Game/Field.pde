@@ -134,7 +134,8 @@ class Field {
       }
       board.genericSetup();
     }
-    
+    Scoreboard xyz = new Scoreboard("Blue", "Red");
+    xyz.display(0, 0, true, 0);
     //System.out.println(xDistance + " " + yDistance);
   }
 }
