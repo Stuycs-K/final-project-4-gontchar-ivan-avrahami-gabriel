@@ -1,22 +1,26 @@
-Scoreboard board;
 Baseball ball;
 Controller keyboardInput;
-Player pitcher, batter, fielder, runner;
+Player pitcher, batter, fielder;
+Player[] runners;
 Base first, second, third, home, ruling;
+Scoreboard board = new Scoreboard("Home Team", "Away Team");
 boolean shouldPitch, hasSwung, canSwing, stopHit, throwBase, ballOnTime;
 int[] results, res;
 int xDistance, yDistance;
 int translate = 50;
+int whoseTurn = 0;
 
 void setup(){
   size(1600,1000);
   // trying to load a batter
-  runner = new Player("batterExperimental.png", 2000, 2000+translate);
+  runners = new Player[4];
+  for (int i = 0; i < runners.length; i++) {
+    runners[i] = new Player("batterExperimental.png", 2000, 2000+translate);
+  }
   first = new Base(1, 1010, 565+translate);
   second = new Base(2, 790, 355+translate);
   third = new Base(3, 565, 565+translate);
   home = new Base(4, 790, 810+translate);
-  board = new Scoreboard("Home Team", "Away Team");
   board.genericSetup();
 
   keyboardInput = new Controller();

@@ -120,11 +120,11 @@ class Field {
       if (! stopHit) {
         ball.move(-xDistance/6, Math.max(-5, -1000 / yDistance));
       }
-      runner.runToBase();
+      runners[whoseTurn].runToBase();
     //board.getEvents();
     }
     
-    if (! runner.getKeepRunning()) {
+    if (! runners[whoseTurn].getKeepRunning()) {
       if (ruling.num() == runner.getWhichBase().num() && ballOnTime) {
         board.addEvent("out");
       }

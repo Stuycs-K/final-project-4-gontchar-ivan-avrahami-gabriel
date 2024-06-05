@@ -145,8 +145,8 @@ class Player {
       if (xMouse > 700 && xMouse < 900 && yMouse > 675 + translate && yMouse < 875 + translate) {
         xDistance = xMouse - ball.x();
         yDistance = Math.abs(yMouse - ball.y()) + 1;//in case it's 0
-        runner = batter;
-        runner.move(20,20);
+        runners[whoseTurn] = batter;
+        runners[whoseTurn].move(20,20);
         board.addEvent("in play");
         hasSwung = true;
       }
@@ -173,7 +173,7 @@ class Player {
     return nextBase;
   }*/
   
-  public void setWhichBase(int num) {
+  /*public void setWhichBase(int num) {
     if (num == 1) {
       whichBase = first;
       nextBase = second;
@@ -211,9 +211,10 @@ class Player {
       if (this.xCenter() < nextBase.x() + 20 && this.xCenter() > nextBase.x() - 20
       && this.yCenter() < nextBase.y() + 40 && this.yCenter() > nextBase.y()) {
       
-        batter.setWhichBase(nextBase.num());
+        whichBase = nextBase;
         keepRunning = shouldRun;
         shouldRun = false;
+        
       }
       else {
         this.actuallyRun();
