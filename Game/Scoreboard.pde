@@ -15,6 +15,20 @@ class Scoreboard {
     System.out.println(events);
   }
   
+  public void display(int numStrikes, int numOuts, boolean home, int numInnings){
+    textSize(30);
+    fill(0, 0, 0);
+    text("Strikes: " + numStrikes, 100, 800, 0);
+    text("Outs: " + numOuts, 100, 835, 0);
+    if(home){
+      text("Team Batting: " + homeTeam, 100, 870, 0);
+    }
+    else{
+      text("Team Batting: " + awayTeam, 100, 870, 0);
+    }
+    text("Inning: " + numInnings, 100, 905, 0);
+  }
+  
   public void genericSetup() {
     shouldPitch = false;
     hasSwung = false;
@@ -22,9 +36,9 @@ class Scoreboard {
     stopHit = false;
     throwBase = false;
     ballOnTime = false;
-    fielder = new Player("batterExperimental.png", 775, 125+translate);
-    batter = new Player("batterExperimental.png", 730, 770+translate);
-    pitcher = new Player("batterExperimental.png", 775, 530+translate);
+    fielder = new Player("outFielderStanced.png", 775, 125+translate);
+    batter = new Player("batterStanced.png", 730, 770+translate);
+    pitcher = new Player("pitcherStanced.png", 775, 530+translate);
     ball = new Baseball(800,625);
     ruling = new Base(10,2000,2000);
   }

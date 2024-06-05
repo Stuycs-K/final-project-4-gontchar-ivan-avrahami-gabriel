@@ -1,6 +1,11 @@
 class Field {
   Field() {
   }
+  Scoreboard xyz = new Scoreboard("Blue", "Red");
+  int strikes = 0;
+  float innings = 1;
+  int outs = 0;
+  boolean homeBatting = true;
   
   void makeField() {
     background(0,148,60,255);
@@ -105,8 +110,17 @@ class Field {
       pitcher.pitch(new Pitch("curveball"));
     }
     
-    if (ball.y() > 1500+translate || ball.x() < 0 && ball.y() > 200 || ball.x() > 1600 && ball.y() > 200) {
+    if(ball.x() < 0 && ball.y() > 200 || ball.x() > 1600 && ball.y() > 200){
       board.addEvent("strike");
+      if(strikes < 2){
+        strikes++;
+      }
+      board.genericSetup();
+    }
+    
+    if (ball.y() > 1500+translate) {
+      board.addEvent("strike");
+      strikes++;
       board.genericSetup();
     }
     
@@ -127,14 +141,38 @@ class Field {
     if (! batter.getKeepRunning()) {
       if (ruling.num() == batter.getWhichBase().num() && ballOnTime) {
         board.addEvent("out");
+        strikes = 0;
+        outs++;
       }
       else {
         runner = batter;
+        strikes = 0;
         board.addEvent("safe");
       }
       board.genericSetup();
     }
     
+    if(strikes >= 3){
+      textSize(100);
+      fill(0, 0, 0);
+      //text("3 STRIKES AND OUT", 400, 500);
+      //delay(30000);
+      strikes = 0;
+      outs++;
+    }
+    
+    if(outs >= 3){
+      textSize(100);
+      fill(0, 0, 0);
+      //text("SWITCHING BATTING TEAMS", 200, 500);
+      //delay(5000);
+      outs = 0;
+      strikes = 0;
+      homeBatting = !homeBatting;
+      innings += 0.5;
+    }
+    
+    xyz.display(strikes, outs, homeBatting, (int)innings);
     //System.out.println(xDistance + " " + yDistance);
   }
 }
