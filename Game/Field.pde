@@ -52,7 +52,9 @@ class Field {
     fielder.displayPlayer();
     batter.displayPlayer();
     pitcher.displayPlayer();
-    runner.displayPlayer();
+    for (int i = 0; i < runners.length; i++) {
+      runners[i].displayPlayer();
+    }
     ball.displayBaseball();
     
     fielder.pickUpBall();
@@ -125,8 +127,9 @@ class Field {
     }
     
     if (! runners[whoseTurn].getKeepRunning()) {
-      if (ruling.num() == runner.getWhichBase().num() && ballOnTime) {
+      if (ruling.num() == runners[whoseTurn].getWhichBase().num() && ballOnTime) {
         board.addEvent("out");
+        runners[whoseTurn] = new Player("batterExperimental.png", 2000, 2000+translate);
       }
       else {
         board.addEvent("safe");
