@@ -3,7 +3,7 @@ class Field {
   }
   Scoreboard xyz = new Scoreboard("Blue", "Red");
   int strikes = 0;
-  float innings = 0;
+  float innings = 1;
   int outs = 0;
   boolean homeBatting = true;
   
@@ -110,7 +110,15 @@ class Field {
       pitcher.pitch(new Pitch("curveball"));
     }
     
-    if (ball.y() > 1500+translate || ball.x() < 0 && ball.y() > 200 || ball.x() > 1600 && ball.y() > 200) {
+    if(ball.x() < 0 && ball.y() > 200 || ball.x() > 1600 && ball.y() > 200){
+      board.addEvent("strike");
+      if(strikes < 2){
+        strikes++;
+      }
+      board.genericSetup();
+    }
+    
+    if (ball.y() > 1500+translate) {
       board.addEvent("strike");
       strikes++;
       board.genericSetup();
@@ -133,10 +141,12 @@ class Field {
     if (! batter.getKeepRunning()) {
       if (ruling.num() == batter.getWhichBase().num() && ballOnTime) {
         board.addEvent("out");
+        strikes = 0;
         outs++;
       }
       else {
         runner = batter;
+        strikes = 0;
         board.addEvent("safe");
       }
       board.genericSetup();
