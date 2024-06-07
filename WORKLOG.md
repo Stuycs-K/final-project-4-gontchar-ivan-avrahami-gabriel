@@ -24,57 +24,49 @@ I finished having the player move and not repeatedly leave behind its image
 
 ### 5/29/24 - CW
 
-xxx
+worked on batting
 
 ### 5/29/24 - HW
 
-xxx
+worked on batting
 
 ### 5/30/24 - CW
 
-xxx
+worked together on hitting
 
 ### 5/30/24 - HW
 
-xxx
+tried to improve the look of the field
 
 ### 5/31/24 - CW
 
-xxx
+worked on coding bases
 
 ### 5/31/24 - HW
 
-xxx
-
-### 6/3/24 - CW
-
-xxx
-
-### 6/3/24 - HW
-
-xxx
+made a lot of score tracking mechanics in scoreboard
 
 ### 6/5/24 - CW
 
-xxx
+fixed some bugs with scoreboard tracking so most data is good for now
 
 ### 6/5/24 - HW
 
-xxx
-
-### 6/6/24 - CW
-
-xxx
-
-### 6/6/24 - HW
-
-xxx
+added more stuff to scoreboard, not sure what gabriel's code is doing to the game
 
 ### 6/7/24 - CW
 
 xxx
 
 ### 6/7/24 - HW
+
+xxx
+
+### 6/10/24 - CW
+
+xxx
+
+### 6/10/24 - HW
 
 xxx
 
