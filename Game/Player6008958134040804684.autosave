@@ -4,17 +4,10 @@ class Player {
   boolean hasBall;
   Base whichBase, nextBase;
   boolean shouldRun, keepRunning;
-  char role;
 
   public Player(String img, int hor, int ver) {
     picture = loadImage(img);
-    if (img.charAt(0) == 'o') {
-      picture.resize(0,70);
-    }
-    else {
-      picture.resize(0,95);
-    }
-    role = img.charAt(0);
+    picture.resize(50,0);
     horizontal = hor;
     vertical = ver;
     hasBall = false;
@@ -26,10 +19,6 @@ class Player {
 
   public void displayPlayer() {
     image(picture, horizontal, vertical);
-  }
-  
-  public char getRole() {
-    return role;
   }
   
   public int xCenter() {
@@ -151,33 +140,28 @@ class Player {
     }
   }
 
-  public int swing(int xMouse, int yMouse){
+  public void swing(int xMouse, int yMouse){
     if (canSwing && ! hasSwung) {
       if (xMouse > 700 && xMouse < 900 && yMouse > 675 + translate && yMouse < 875 + translate) {
         xDistance = xMouse - ball.x();
         yDistance = Math.abs(yMouse - ball.y()) + 1;//in case it's 0
         runners[numRunners] = batter;
-        batter = new Player("batterStanced.png", 730, 770+translate);
         runners[numRunners].move(20,20);
         board.addEvent("in play");
         hasSwung = true;
-        canSwing = false;
       }
       else {
         board.addEvent("strike");
         ball = new Baseball(800, 625);
-        canSwing = false;
-        return 1;
       }
+      canSwing = false;
     }
-    return 0;
   }
   
   public void pickUpBall() {
     if (! hasBall && Math.abs(ball.x() - this.xCenter()) < 35 && Math.abs(ball.y() - this.yCenter()) < 35) {
       hasBall = true;
       stopHit = true;
-      ballOnTime = false;
     }
   }
   
@@ -222,17 +206,12 @@ class Player {
   
   public void runToBase() {
     //System.out.println(batter.getShouldRun() + " " + batter.xCenter() + " " + next.x() + " " + batter.yCenter() + " " + next.y());
-    if (role != 'p' && keepRunning) {
+    if (keepRunning) {
     
-      if (this.xCenter() < nextBase.x() + 25 && this.xCenter() > nextBase.x() - 15
-      && this.yCenter() < nextBase.y() + 30 && this.yCenter() > nextBase.y() - 10) {
-        
-        //System.out.println("runToBase, whichBase: "+whichBase.num()+" keepRunning: "+keepRunning+" shouldRun: " + shouldRun);
-        whichBase.addPlayer(pitcher);
-        nextBase.addPlayer(this);
-        Base temp = which(nextBase);
+      if (this.xCenter() < nextBase.x() + 20 && this.xCenter() > nextBase.x() - 20
+      && this.yCenter() < nextBase.y() + 40 && this.yCenter() > nextBase.y()) {
+      
         whichBase = nextBase;
-        nextBase = temp;
         keepRunning = shouldRun;
         shouldRun = false;
         
@@ -243,25 +222,11 @@ class Player {
     }
   }
   
-  public Base which(Base b) {
-    if (b.num() == 1) {
-      return second;
-    }
-    if (b.num() == 2) {
-      return third;
-    }
-    if (b.num() == 3) {
-      return home;
-    }
-    return first;
-  }
-  
   public void setShouldRun(boolean bool) {
     shouldRun = bool;
   }
   
   public boolean getKeepRunning() {
-    //System.out.println(keepRunning + " " + shouldRun);
     return keepRunning;
   }
 }

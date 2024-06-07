@@ -1,11 +1,10 @@
 class Base {
   int baseNum, xLoc, yLoc;
-  boolean hasPlayer;
+  Player runner;
   public Base(int num, int x, int y) {
     baseNum = num;
     xLoc = x;
     yLoc = y;
-    hasPlayer = false;
   }
   
   public int num() {
@@ -42,15 +41,15 @@ class Base {
     return yLoc;
   }
   
-  public int getHasPlayer() {
-    if (hasPlayer) {
-      return 1;
-    }
-    return 0;
+  public void addPlayer(Player p) {
+    runner = p;
   }
   
-  public void setHasPlayer(boolean b) {
-    hasPlayer = b;
+  public Player getPlayer() {
+    if (runner != null) {
+      return runner;
+    }
+    return pitcher;
   }
   
   //public int onBase(Player person){
