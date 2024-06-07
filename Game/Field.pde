@@ -175,7 +175,7 @@ class Field {
       innings += 0.5;
     }
     
-    xyz.display(strikes, outs, homeBatting, (int)innings);
+    xyz.display(strikes, outs, homeBatting, (int)innings, 0);
     //System.out.println(xDistance + " " + yDistance);
   }
 }
