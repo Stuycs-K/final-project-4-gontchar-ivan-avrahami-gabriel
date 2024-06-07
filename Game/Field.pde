@@ -57,7 +57,9 @@ class Field {
     fielder.displayPlayer();
     batter.displayPlayer();
     pitcher.displayPlayer();
-    runner.displayPlayer();
+    for (int i = 0; i < runners.length; i++) {
+      runners[i].displayPlayer();
+    }
     ball.displayBaseball();
     
     fielder.pickUpBall();
@@ -132,22 +134,23 @@ class Field {
     
     if (hasSwung) {
       if (! stopHit) {
-        ball.move(-xDistance/6, Math.max(-5, -1000 / yDistance));
+        ball.move(-xDistance/6, Math.max(-6, -75 / yDistance));
       }
-      batter.runToBase();
+      runners[numRunners].runToBase();
     //board.getEvents();
     }
     
-    if (! batter.getKeepRunning()) {
-      if (ruling.num() == batter.getWhichBase().num() && ballOnTime) {
+    if (! runners[numRunners].getKeepRunning()) {
+      if (ruling.num() == runners[numRunners].getWhichBase().num() && ballOnTime) {
         board.addEvent("out");
         strikes = 0;
         outs++;
       }
       else {
-        runner = batter;
         strikes = 0;
+        runners[numRunners] = new Player("batterExperimental.png", 2000, 2000+translate);
         board.addEvent("safe");
+        numRunners++;
       }
       board.genericSetup();
     }

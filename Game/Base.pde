@@ -1,9 +1,11 @@
 class Base {
   int baseNum, xLoc, yLoc;
+  boolean hasPlayer;
   public Base(int num, int x, int y) {
     baseNum = num;
     xLoc = x;
     yLoc = y;
+    hasPlayer = false;
   }
   
   public int num() {
@@ -38,6 +40,17 @@ class Base {
   
   public int y(){
     return yLoc;
+  }
+  
+  public int getHasPlayer() {
+    if (hasPlayer) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public void setHasPlayer(boolean b) {
+    hasPlayer = b;
   }
   
   //public int onBase(Player person){
