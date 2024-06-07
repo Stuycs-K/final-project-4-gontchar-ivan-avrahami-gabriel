@@ -21,7 +21,7 @@ class Scoreboard {
     text("Strikes: " + strikes, 100, 800, 0);
     text("Outs: " + outs, 100, 835, 0);
     if(home){
-      text("Team Batting: " + home, 100, 870, 0);
+      text("Team Batting: " + homeTeam, 100, 870, 0);
     }
     else{
       text("Team Batting: " + awayTeam, 100, 870, 0);
