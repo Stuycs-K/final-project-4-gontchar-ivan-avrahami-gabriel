@@ -2,7 +2,7 @@ Baseball ball;
 Controller keyboardInput;
 Player pitcher, batter, fielder;
 Player[] runners;
-Base first, second, third, home, ruling;
+Base first, second, third, home, ruling, rPrev;
 Scoreboard board = new Scoreboard("Home Team", "Away Team");
 boolean shouldPitch, hasSwung, canSwing, stopHit, throwBase, ballOnTime;
 int[] results, res;

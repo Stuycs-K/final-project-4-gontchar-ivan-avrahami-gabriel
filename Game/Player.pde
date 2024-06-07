@@ -28,6 +28,10 @@ class Player {
     image(picture, horizontal, vertical);
   }
   
+  public char getRole() {
+    return role;
+  }
+  
   public int xCenter() {
     return horizontal + picture.width/2;
   }
@@ -173,6 +177,7 @@ class Player {
     if (! hasBall && Math.abs(ball.x() - this.xCenter()) < 35 && Math.abs(ball.y() - this.yCenter()) < 35) {
       hasBall = true;
       stopHit = true;
+      ballOnTime = false;
     }
   }
   
