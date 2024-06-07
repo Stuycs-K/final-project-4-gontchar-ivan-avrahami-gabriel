@@ -48,11 +48,11 @@ class Field {
     //home
     rect(width / 2 - 15, 810 + translate, 30, 30);
     //1st
-    rect(1010, 555 + translate, 30, 30);
+    rect(1010, 560 + translate, 30, 30);
     ////2nd
     rect(785, 345 + translate, 30, 30);
     ////3rd
-    rect(560, 555 + translate, 30, 30);
+    rect(560, 560 + translate, 30, 30);
   
     fielder.displayPlayer();
     batter.displayPlayer();
@@ -142,16 +142,15 @@ class Field {
     
     if (! runners[numRunners].getKeepRunning()) {
       if (ruling.num() == runners[numRunners].getWhichBase().num() && ballOnTime) {
+        runners[numRunners] = new Player("batterStanced.png", 2000, 2000+translate);
         board.addEvent("out");
-        strikes = 0;
         outs++;
       }
       else {
-        strikes = 0;
-        runners[numRunners] = new Player("batterExperimental.png", 2000, 2000+translate);
         board.addEvent("safe");
         numRunners++;
       }
+      strikes = 0;
       board.genericSetup();
     }
     

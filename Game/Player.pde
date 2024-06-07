@@ -7,7 +7,12 @@ class Player {
 
   public Player(String img, int hor, int ver) {
     picture = loadImage(img);
-    picture.resize(50,0);
+    if (img.charAt(0) == 'o') {
+      picture.resize(0,70);
+    }
+    else {
+      picture.resize(0,95);
+    }
     horizontal = hor;
     vertical = ver;
     hasBall = false;
@@ -146,7 +151,7 @@ class Player {
         xDistance = xMouse - ball.x();
         yDistance = Math.abs(yMouse - ball.y()) + 1;//in case it's 0
         runners[numRunners] = batter;
-        batter = new Player("batterExperimental.png", 730, 770+translate);
+        batter = new Player("batterStanced.png", 730, 770+translate);
         runners[numRunners].move(20,20);
         board.addEvent("in play");
         hasSwung = true;
@@ -212,10 +217,10 @@ class Player {
     //System.out.println(batter.getShouldRun() + " " + batter.xCenter() + " " + next.x() + " " + batter.yCenter() + " " + next.y());
     if (keepRunning) {
     
-      if (this.xCenter() < nextBase.x() + 20 && this.xCenter() > nextBase.x() - 20
-      && this.yCenter() < nextBase.y() + 40 && this.yCenter() > nextBase.y()) {
+      if (this.xCenter() < nextBase.x() + 25 && this.xCenter() > nextBase.x() - 15
+      && this.yCenter() < nextBase.y() + 30 && this.yCenter() > nextBase.y() - 10) {
         
-        System.out.println("runToBase, whichBase: "+whichBase.num()+" keepRunning: "+keepRunning+" shouldRun: " + shouldRun);
+        //System.out.println("runToBase, whichBase: "+whichBase.num()+" keepRunning: "+keepRunning+" shouldRun: " + shouldRun);
         Base temp = which(nextBase);
         whichBase = nextBase;
         nextBase = temp;
