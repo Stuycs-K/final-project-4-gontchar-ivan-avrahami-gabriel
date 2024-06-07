@@ -228,11 +228,19 @@ class Player {
       && this.yCenter() < nextBase.y() + 30 && this.yCenter() > nextBase.y() - 10) {
         
         //System.out.println("runToBase, whichBase: "+whichBase.num()+" keepRunning: "+keepRunning+" shouldRun: " + shouldRun);
+        System.out.println(whichBase.num() + " Curr base's player: " + whichBase.getPlayer().horizontal);
+        System.out.println(nextBase.num() + " Next base's player: " + nextBase.getPlayer().horizontal);
         whichBase.addPlayer(pitcher);
         nextBase.addPlayer(this);
+        System.out.println(whichBase.num() + " Curr base's player: " + whichBase.getPlayer().horizontal);
+        System.out.println(nextBase.num() + " Next base's player: " + nextBase.getPlayer().horizontal);
         Base temp = which(nextBase);
         whichBase = nextBase;
         nextBase = temp;
+        System.out.println(whichBase.num() + " Curr base's player: " + whichBase.getPlayer().horizontal);
+        System.out.println(nextBase.num() + " Next base's player: " + nextBase.getPlayer().horizontal);
+        System.out.println(whichBase.num() + " Curr base's player: " + whichBase.getPlayer().horizontal);
+        System.out.println(nextBase.num() + " Next base's player: " + nextBase.getPlayer().horizontal);
         keepRunning = shouldRun;
         shouldRun = false;
         

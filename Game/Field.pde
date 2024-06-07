@@ -138,7 +138,7 @@ class Field {
     
     if (hasSwung) {
       if (! stopHit) {
-        ball.move(-xDistance/6, Math.max(-10, -300 / yDistance));
+        ball.move(-xDistance/6, Math.max(-12, -450 / yDistance));
       }
       third.getPlayer().runToBase();
       second.getPlayer().runToBase();
