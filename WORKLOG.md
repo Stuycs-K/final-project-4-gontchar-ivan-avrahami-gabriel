@@ -62,15 +62,6 @@ xxx
 
 xxx
 
-### 6/10/24 - CW
-
-xxx
-
-### 6/10/24 - HW
-
-xxx
-
-
 
 
 
@@ -134,19 +125,11 @@ Allowing multiple players to run (but failing)
 
 ### 6/5/24 - CW
 
-xxx
+Dsicussed the multiple runners with Ivan
 
 ### 6/5/24 - HW
 
-xxx
-
-### 6/6/24 - CW
-
-xxx
-
-### 6/6/24 - HW
-
-xxx
+Wrote the multiple receivers and did some merging but doesn't fully work
 
 ### 6/7/24 - CW
 
