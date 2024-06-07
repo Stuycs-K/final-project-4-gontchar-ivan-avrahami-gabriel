@@ -120,19 +120,20 @@ class Field {
     
     if (hasSwung) {
       if (! stopHit) {
-        ball.move(-xDistance/6, Math.max(-5, -1000 / yDistance));
+        ball.move(-xDistance/6, Math.max(-6, -75 / yDistance));
       }
-      runners[whoseTurn].runToBase();
+      runners[numRunners].runToBase();
     //board.getEvents();
     }
     
-    if (! runners[whoseTurn].getKeepRunning()) {
-      if (ruling.num() == runners[whoseTurn].getWhichBase().num() && ballOnTime) {
+    if (! runners[numRunners].getKeepRunning()) {
+      if (ruling.num() == runners[numRunners].getWhichBase().num() && ballOnTime) {
         board.addEvent("out");
-        runners[whoseTurn] = new Player("batterExperimental.png", 2000, 2000+translate);
+        runners[numRunners] = new Player("batterExperimental.png", 2000, 2000+translate);
       }
       else {
         board.addEvent("safe");
+        numRunners++;
       }
       board.genericSetup();
     }

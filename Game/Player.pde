@@ -145,8 +145,9 @@ class Player {
       if (xMouse > 700 && xMouse < 900 && yMouse > 675 + translate && yMouse < 875 + translate) {
         xDistance = xMouse - ball.x();
         yDistance = Math.abs(yMouse - ball.y()) + 1;//in case it's 0
-        runners[whoseTurn] = batter;
-        runners[whoseTurn].move(20,20);
+        runners[numRunners] = batter;
+        batter = new Player("batterExperimental.png", 730, 770+translate);
+        runners[numRunners].move(20,20);
         board.addEvent("in play");
         hasSwung = true;
       }
@@ -210,8 +211,11 @@ class Player {
     
       if (this.xCenter() < nextBase.x() + 20 && this.xCenter() > nextBase.x() - 20
       && this.yCenter() < nextBase.y() + 40 && this.yCenter() > nextBase.y()) {
-      
+        
+        System.out.println("runToBase, whichBase: "+whichBase.num()+" keepRunning: "+keepRunning+" shouldRun: " + shouldRun);
+        Base temp = which(nextBase);
         whichBase = nextBase;
+        nextBase = temp;
         keepRunning = shouldRun;
         shouldRun = false;
         
@@ -222,11 +226,25 @@ class Player {
     }
   }
   
+  public Base which(Base b) {
+    if (b.num() == 1) {
+      return second;
+    }
+    if (b.num() == 2) {
+      return third;
+    }
+    if (b.num() == 3) {
+      return home;
+    }
+    return first;
+  }
+  
   public void setShouldRun(boolean bool) {
     shouldRun = bool;
   }
   
   public boolean getKeepRunning() {
+    //System.out.println(keepRunning + " " + shouldRun);
     return keepRunning;
   }
 }

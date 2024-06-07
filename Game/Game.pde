@@ -8,7 +8,7 @@ boolean shouldPitch, hasSwung, canSwing, stopHit, throwBase, ballOnTime;
 int[] results, res;
 int xDistance, yDistance;
 int translate = 50;
-int whoseTurn = 0;
+int numRunners = 0;
 
 void setup(){
   size(1600,1000);
@@ -44,7 +44,8 @@ void keyReleased() {
 
 void mouseClicked() {
   if (mouseX < 300 && mouseY < 150+translate) {
-    batter.setShouldRun(true);
+    System.out.println("hi");
+    runners[numRunners].setShouldRun(true);
   }
   batter.swing(mouseX,mouseY);
 }
