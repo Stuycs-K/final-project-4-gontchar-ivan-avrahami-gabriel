@@ -4,6 +4,7 @@ class Player {
   boolean hasBall;
   Base whichBase, nextBase;
   boolean shouldRun, keepRunning;
+  char role;
 
   public Player(String img, int hor, int ver) {
     picture = loadImage(img);
@@ -13,6 +14,7 @@ class Player {
     else {
       picture.resize(0,95);
     }
+    role = img.charAt(0);
     horizontal = hor;
     vertical = ver;
     hasBall = false;
@@ -215,7 +217,7 @@ class Player {
   
   public void runToBase() {
     //System.out.println(batter.getShouldRun() + " " + batter.xCenter() + " " + next.x() + " " + batter.yCenter() + " " + next.y());
-    if (keepRunning) {
+    if (role != 'p' && keepRunning) {
     
       if (this.xCenter() < nextBase.x() + 25 && this.xCenter() > nextBase.x() - 15
       && this.yCenter() < nextBase.y() + 30 && this.yCenter() > nextBase.y() - 10) {

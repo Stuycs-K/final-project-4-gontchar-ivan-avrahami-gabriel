@@ -136,6 +136,9 @@ class Field {
       if (! stopHit) {
         ball.move(-xDistance/6, Math.max(-6, -75 / yDistance));
       }
+      third.getPlayer().runToBase();
+      second.getPlayer().runToBase();
+      first.getPlayer().runToBase();
       runners[numRunners].runToBase();
     //board.getEvents();
     }
