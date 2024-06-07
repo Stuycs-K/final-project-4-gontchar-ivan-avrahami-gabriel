@@ -159,6 +159,7 @@ class Player {
         runners[numRunners] = batter;
         batter = new Player("batterStanced.png", 730, 770+translate);
         runners[numRunners].move(20,20);
+        home.addPlayer(runners[numRunners]);
         board.addEvent("in play");
         hasSwung = true;
         canSwing = false;
@@ -177,7 +178,6 @@ class Player {
     if (! hasBall && Math.abs(ball.x() - this.xCenter()) < 35 && Math.abs(ball.y() - this.yCenter()) < 35) {
       hasBall = true;
       stopHit = true;
-      ballOnTime = false;
     }
   }
   
@@ -228,19 +228,19 @@ class Player {
       && this.yCenter() < nextBase.y() + 30 && this.yCenter() > nextBase.y() - 10) {
         
         //System.out.println("runToBase, whichBase: "+whichBase.num()+" keepRunning: "+keepRunning+" shouldRun: " + shouldRun);
-        System.out.println(whichBase.num() + " Curr base's player: " + whichBase.getPlayer().horizontal);
-        System.out.println(nextBase.num() + " Next base's player: " + nextBase.getPlayer().horizontal);
+        System.out.println(whichBase.num() + " Curr base's player: " + whichBase.getPlayer().vertical);
+        System.out.println(nextBase.num() + " Next base's player: " + nextBase.getPlayer().vertical);
         whichBase.addPlayer(pitcher);
         nextBase.addPlayer(this);
-        System.out.println(whichBase.num() + " Curr base's player: " + whichBase.getPlayer().horizontal);
-        System.out.println(nextBase.num() + " Next base's player: " + nextBase.getPlayer().horizontal);
+        System.out.println(whichBase.num() + " Curr base's player: " + whichBase.getPlayer().vertical);
+        System.out.println(nextBase.num() + " Next base's player: " + nextBase.getPlayer().vertical);
         Base temp = which(nextBase);
         whichBase = nextBase;
         nextBase = temp;
-        System.out.println(whichBase.num() + " Curr base's player: " + whichBase.getPlayer().horizontal);
-        System.out.println(nextBase.num() + " Next base's player: " + nextBase.getPlayer().horizontal);
-        System.out.println(whichBase.num() + " Curr base's player: " + whichBase.getPlayer().horizontal);
-        System.out.println(nextBase.num() + " Next base's player: " + nextBase.getPlayer().horizontal);
+        System.out.println(whichBase.num() + " Curr base's player: " + whichBase.getPlayer().vertical);
+        System.out.println(nextBase.num() + " Next base's player: " + nextBase.getPlayer().vertical);
+        System.out.println(whichBase.num() + " Curr base's player: " + whichBase.getPlayer().vertical);
+        System.out.println(nextBase.num() + " Next base's player: " + nextBase.getPlayer().vertical);
         keepRunning = shouldRun;
         shouldRun = false;
         

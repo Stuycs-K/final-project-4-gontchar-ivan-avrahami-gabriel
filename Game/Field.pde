@@ -138,17 +138,20 @@ class Field {
     
     if (hasSwung) {
       if (! stopHit) {
-        ball.move(-xDistance/6, Math.max(-12, -450 / yDistance));
+        ball.move(-xDistance/6, Math.max(-10, -450 / yDistance));
       }
       third.getPlayer().runToBase();
       second.getPlayer().runToBase();
       first.getPlayer().runToBase();
-      runners[numRunners].runToBase();
+      home.getPlayer().runToBase();
     //board.getEvents();
     }
     
     Player r = rPrev.getPlayer();
     int n = 0;
+    if (r == runners[0]) {
+      n = 0;
+    }
     if (r == runners[1]) {
       n = 1;
     }
@@ -160,19 +163,23 @@ class Field {
     }
     
     if (r.getRole() != 'p' && ballOnTime) {
+      ballOnTime = false;
       ruling.getPlayer().getWhichBase().addPlayer(pitcher);
       for (int i = n; i < numRunners; i++) {
         runners[i] = runners[i+1];
         int num = runners[i+1].getWhichBase().num();
         if (num == 1) {
           first.addPlayer(runners[i]);
+          System.out.println("FIRST BASE RUNNERS " + i);
         }
         if (num == 2) {
           second.addPlayer(runners[i]);
+          System.out.println("SECOND BASE RUNNERS " + i);
         }   
         if (num == 3) {
           third.addPlayer(runners[i]);
-        }   
+          System.out.println("THIRD BASE RUNNERS " + i);
+        }
       }
       runners[numRunners] = new Player("batterStanced.png", 2000, 2000+translate);
       board.addEvent("out");
