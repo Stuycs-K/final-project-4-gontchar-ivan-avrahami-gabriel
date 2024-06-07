@@ -48,11 +48,11 @@ class Field {
     //home
     rect(width / 2 - 15, 810 + translate, 30, 30);
     //1st
-    rect(1010, 555 + translate, 30, 30);
+    rect(1010, 560 + translate, 30, 30);
     ////2nd
     rect(785, 345 + translate, 30, 30);
     ////3rd
-    rect(560, 555 + translate, 30, 30);
+    rect(560, 560 + translate, 30, 30);
   
     fielder.displayPlayer();
     batter.displayPlayer();
@@ -84,24 +84,28 @@ class Field {
         res = new int[]{Math.abs(results[0]), Math.abs(results[1])};
         throwBase = true;
         ruling = first;
+        rPrev = home;
       }
       if (keyboardInput.isPressed(Controller.BASE_2)) {
         results = second.toHere(ball.x(), ball.y());
         res = new int[]{Math.abs(results[0]), Math.abs(results[1])};
         throwBase = true;
         ruling = second;
+        rPrev = first;
       }
       if (keyboardInput.isPressed(Controller.BASE_3)) {
         results = third.toHere(ball.x(), ball.y());
         res = new int[]{Math.abs(results[0]), Math.abs(results[1])};
         throwBase = true;
         ruling = third;
+        rPrev = second;
       }
       if (keyboardInput.isPressed(Controller.BASE_HOME)) {
         results = home.toHere(ball.x(), ball.y());
         res = new int[]{Math.abs(results[0]), Math.abs(results[1])};
         throwBase = true;
         ruling = home;
+        rPrev = third;
       }
     }
     if (keyboardInput.isPressed(Controller.PITCH)) {
@@ -136,22 +140,58 @@ class Field {
       if (! stopHit) {
         ball.move(-xDistance/6, Math.max(-6, -75 / yDistance));
       }
+      third.getPlayer().runToBase();
+      second.getPlayer().runToBase();
+      first.getPlayer().runToBase();
       runners[numRunners].runToBase();
     //board.getEvents();
     }
     
+    Player r = rPrev.getPlayer();
+    int n = 0;
+    if (r == runners[1]) {
+      n = 1;
+    }
+    if (r == runners[2]) {
+      n = 2;
+    }
+    if (r == runners[3]) {
+      n = 3;
+    }
+    
+    if (r.getRole() != 'p' && ballOnTime) {
+      ruling.getPlayer().getWhichBase().addPlayer(pitcher);
+      for (int i = n; i < numRunners; i++) {
+        runners[i] = runners[i+1];
+        int num = runners[i+1].getWhichBase().num();
+        if (num == 1) {
+          first.addPlayer(runners[i]);
+        }
+        if (num == 2) {
+          second.addPlayer(runners[i]);
+        }   
+        if (num == 3) {
+          third.addPlayer(runners[i]);
+        }   
+      }
+      runners[numRunners] = new Player("batterStanced.png", 2000, 2000+translate);
+      board.addEvent("out");
+      outs++;
+      strikes = 0;
+      board.genericSetup();
+    }
+    
     if (! runners[numRunners].getKeepRunning()) {
-      if (ruling.num() == runners[numRunners].getWhichBase().num() && ballOnTime) {
+      /*if (ballOnTime && ruling.num() == runners[numRunners].getWhichBase().num()) {
+        runners[numRunners] = new Player("batterStanced.png", 2000, 2000+translate);
         board.addEvent("out");
-        strikes = 0;
         outs++;
       }
-      else {
-        strikes = 0;
-        runners[numRunners] = new Player("batterExperimental.png", 2000, 2000+translate);
+      else {*/
         board.addEvent("safe");
         numRunners++;
-      }
+      //}
+      strikes = 0;
       board.genericSetup();
     }
     
