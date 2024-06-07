@@ -160,19 +160,21 @@ class Field {
     }
     
     if (r.getRole() != 'p' && ballOnTime) {
-      runners[n] = new Player("batterStanced.png", 2000, 2000+translate);
+      ruling.getPlayer().getWhichBase().addPlayer(pitcher);
       for (int i = n; i < numRunners; i++) {
         runners[i] = runners[i+1];
-        boolean keep = true;
-        while (keep) {
-          if (third.getPlayer().getRole() != 'p') {
-            third.addPlayer(pitcher);
-          }
-          else {
-            
-          }
+        int num = runners[i+1].getWhichBase().num();
+        if (num == 1) {
+          first.addPlayer(runners[i]);
         }
+        if (num == 2) {
+          second.addPlayer(runners[i]);
+        }   
+        if (num == 3) {
+          third.addPlayer(runners[i]);
+        }   
       }
+      runners[numRunners] = new Player("batterStanced.png", 2000, 2000+translate);
       board.addEvent("out");
       outs++;
       strikes = 0;

@@ -42,5 +42,6 @@ class Scoreboard {
     ball = new Baseball(800,625);
     ruling = new Base(10,2000,2000);
     rPrev = ruling;
+    home.addPlayer(runners[numRunners]);
   }
 }

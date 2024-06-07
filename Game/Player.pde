@@ -228,6 +228,8 @@ class Player {
       && this.yCenter() < nextBase.y() + 30 && this.yCenter() > nextBase.y() - 10) {
         
         //System.out.println("runToBase, whichBase: "+whichBase.num()+" keepRunning: "+keepRunning+" shouldRun: " + shouldRun);
+        whichBase.addPlayer(pitcher);
+        nextBase.addPlayer(this);
         Base temp = which(nextBase);
         whichBase = nextBase;
         nextBase = temp;

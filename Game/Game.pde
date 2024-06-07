@@ -45,7 +45,6 @@ void keyReleased() {
 
 void mouseClicked() {
   if (mouseX < 300 && mouseY < 150+translate) {
-    System.out.println("hi");
     runners[numRunners].setShouldRun(true);
   }
   ivan_lacks_neurons.strikes += batter.swing(mouseX,mouseY);
