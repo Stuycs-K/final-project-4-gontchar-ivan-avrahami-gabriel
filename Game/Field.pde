@@ -138,29 +138,31 @@ class Field {
     }
     
     if (hasSwung) {
-      if (! stopHit) {
-        ball.move(-xDistance/6, Math.max(-10, -450 / yDistance));
+      
+      Player r = rPrev.getPlayer();
+      int n = 0;
+      if (r == runners[0]) {
+        n = 0;
       }
+      if (r == runners[1]) {
+        n = 1;
+      }
+      if (r == runners[2]) {
+        n = 2;
+      }
+      if (r == runners[3]) {
+        n = 3;
+      }
+      
+      if (! stopHit) {
+        ball.move(0, Math.max(-10, -450 / yDistance));
+      }
+      System.out.println("numRunners: "+numRunners+"; h,1,2,3,4.getPlayer(): " + home.getPlayer().role+" "+first.getPlayer().role+" "+second.getPlayer().role+" "+third.getPlayer().role);
       third.getPlayer().runToBase();
       second.getPlayer().runToBase();
       first.getPlayer().runToBase();
       home.getPlayer().runToBase();
     //board.getEvents();
-    }
-    
-    Player r = rPrev.getPlayer();
-    int n = 0;
-    if (r == runners[0]) {
-      n = 0;
-    }
-    if (r == runners[1]) {
-      n = 1;
-    }
-    if (r == runners[2]) {
-      n = 2;
-    }
-    if (r == runners[3]) {
-      n = 3;
     }
     
     if (! r.role.equals("pitcher") && ballOnTime) {
