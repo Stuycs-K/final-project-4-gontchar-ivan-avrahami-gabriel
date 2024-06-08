@@ -157,54 +157,54 @@ class Field {
       if (! stopHit) {
         ball.move(0, Math.max(-10, -450 / yDistance));
       }
-      System.out.println("numRunners: "+numRunners+"; h,1,2,3,4.getPlayer(): " + home.getPlayer().role+" "+first.getPlayer().role+" "+second.getPlayer().role+" "+third.getPlayer().role);
+      System.out.println("numRunners: "+numRunners+"; h,1,2,3,4.getPlayer(): "+home.getPlayer().role+" "+home.getPlayer().vertical+" "+first.getPlayer().role+" "+first.getPlayer().vertical+" "+second.getPlayer().role+" "+second.getPlayer().vertical+" "+third.getPlayer().role+" "+third.getPlayer().vertical);
       third.getPlayer().runToBase();
       second.getPlayer().runToBase();
       first.getPlayer().runToBase();
       home.getPlayer().runToBase();
     //board.getEvents();
-    }
     
-    if (! r.role.equals("pitcher") && ballOnTime) {
-      System.out.println("hi, ruling: " + ruling.num() + " and numRunners: " + numRunners + 
-      " and ruling.getPlayer().role: " + ruling.getPlayer().role + " and ruling.getPlayer().getWhichBase(): " + ruling.getPlayer().getWhichBase().num());
-      ballOnTime = false;
-      rPrev.addPlayer(pitcher);
-      for (int i = n; i < numRunners; i++) {
-        runners[i] = runners[i+1];
-        int num = runners[i+1].getWhichBase().num();
-        if (num == 1) {
-          first.addPlayer(runners[i]);
-          System.out.println("FIRST BASE RUNNERS " + i);
+      if (! r.role.equals("pitcher") && ballOnTime) {
+        System.out.println("hi, ruling: " + ruling.num() + " and numRunners: " + numRunners + 
+        " and ruling.getPlayer().role: " + ruling.getPlayer().role + " and ruling.getPlayer().getWhichBase(): " + ruling.getPlayer().getWhichBase().num());
+        ballOnTime = false;
+        rPrev.addPlayer(pitcher);
+        for (int i = n; i < numRunners; i++) {
+          runners[i] = runners[i+1];
+          int num = runners[i+1].getWhichBase().num();
+          if (num == 1) {
+            first.addPlayer(runners[i]);
+            System.out.println("FIRST BASE RUNNERS " + i);
+          }
+          if (num == 2) {
+            second.addPlayer(runners[i]);
+            System.out.println("SECOND BASE RUNNERS " + i);
+          }   
+          if (num == 3) {
+            third.addPlayer(runners[i]);
+            System.out.println("THIRD BASE RUNNERS " + i);
+          }
         }
-        if (num == 2) {
-          second.addPlayer(runners[i]);
-          System.out.println("SECOND BASE RUNNERS " + i);
-        }   
-        if (num == 3) {
-          third.addPlayer(runners[i]);
-          System.out.println("THIRD BASE RUNNERS " + i);
-        }
-      }
-      runners[numRunners] = new Player("runners"+numRunners, "batterStanced.png", 2000, 2000+translate);
-      board.addEvent("out");
-      outs++;
-      strikes = 0;
-      board.genericSetup();
-    }
-    
-    if (! runners[numRunners].getKeepRunning()) {
-      /*if (ballOnTime && ruling.num() == runners[numRunners].getWhichBase().num()) {
-        runners[numRunners] = new Player("batterStanced.png", 2000, 2000+translate);
+        runners[numRunners] = new Player("runners["+numRunners+"]", "batterStanced.png", 2000, 2000+translate);
         board.addEvent("out");
         outs++;
+        strikes = 0;
+        board.genericSetup();
       }
-      else {*/
-        board.addEvent("safe");
-        numRunners++;
-      //}
-      strikes = 0;
-      board.genericSetup();
+    
+      if (! runners[numRunners].getKeepRunning()) {
+        /*if (ballOnTime && ruling.num() == runners[numRunners].getWhichBase().num()) {
+          runners[numRunners] = new Player("batterStanced.png", 2000, 2000+translate);
+          board.addEvent("out");
+          outs++;
+        }
+        else {*/
+          board.addEvent("safe");
+          numRunners++;
+        //}
+        strikes = 0;
+        board.genericSetup();
+      }
     }
     
     if(strikes >= 3){
