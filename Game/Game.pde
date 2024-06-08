@@ -4,12 +4,16 @@ Player pitcher, batter, fielder;
 Player[] runners;
 Base first, second, third, home, ruling, rPrev;
 Scoreboard board = new Scoreboard("Home Team", "Away Team");
-boolean shouldPitch, hasSwung, canSwing, stopHit, throwBase, ballOnTime;
+boolean shouldPitch, hasSwung, canSwing, stopHit, throwBase, atHome, ballOnTime;
 int[] results, res;
 int xDistance, yDistance;
 int translate = 50;
 Field ivan_lacks_neurons;
+int scorer;
 int numRunners = 0;
+int runsHome = 0;
+int runsAway = 0;
+boolean homeBatting = true;
 
 void setup(){
   size(1600,1000);

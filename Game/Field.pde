@@ -5,7 +5,6 @@ class Field {
   int strikes = 0;
   float innings = 1;
   int outs = 0;
-  boolean homeBatting = true;
   
   void makeField() {
     background(0,148,60,255);
@@ -159,6 +158,17 @@ class Field {
       }
       System.out.println("numRunners: "+numRunners+"; h,1,2,3,4.getPlayer(): "+home.getPlayer().role+" "+home.getPlayer().vertical+" "+home.getPlayer().keepRunning+" "+first.getPlayer().role+" "+first.getPlayer().vertical+" "+first.getPlayer().keepRunning+" "+second.getPlayer().role+" "+second.getPlayer().vertical+" "+second.getPlayer().keepRunning+" "+third.getPlayer().role+" "+third.getPlayer().vertical+" "+third.getPlayer().keepRunning);
       third.getPlayer().runToBase();
+      if (atHome) {
+        if (homeBatting) {
+          runsHome++;
+        }
+        else {
+          runsAway++;
+        }
+        runners[scorer] = new Player(runners[scorer].role, "batterStanced.png", 2000, 2000);
+        third.addPlayer(pitcher);
+        numRunners--;
+      }
       second.getPlayer().runToBase();
       first.getPlayer().runToBase();
       home.getPlayer().runToBase();
@@ -233,7 +243,7 @@ class Field {
       }
     }
     
-    xyz.display(strikes, outs, homeBatting, (int)innings, 0);
+    xyz.display(strikes, outs, (int)innings);
     //System.out.println(xDistance + " " + yDistance);
   }
 }
