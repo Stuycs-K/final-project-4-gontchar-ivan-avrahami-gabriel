@@ -16,7 +16,7 @@ void setup(){
   // trying to load a batter
   runners = new Player[4];
   for (int i = 0; i < runners.length; i++) {
-    runners[i] = new Player("batterExperimental.png", 2000, 2000+translate);
+    runners[i] = new Player("runners:"+i, "batterExperimental.png", 2000, 2000+translate);
   }
   first = new Base(1, 1010, 570+translate);
   second = new Base(2, 790, 355+translate);

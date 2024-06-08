@@ -18,6 +18,7 @@ class Scoreboard {
   public void display(int strikes, int outs, boolean home, int innings, int runs){
     textSize(30);
     fill(0, 0, 0);
+    text("Inning: " + innings, 100, 765, 0);
     text("Strikes: " + strikes, 100, 800, 0);
     text("Outs: " + outs, 100, 835, 0);
     if(home){
@@ -26,8 +27,7 @@ class Scoreboard {
     else{
       text("Team Batting: " + awayTeam, 100, 870, 0);
     }
-    text("Inning: " + innings, 100, 905, 0);
-    text("Runs: " + runs, 100, 940, 0);
+    text("Runs: " + runs, 100, 905, 0);
   }
   
   public void genericSetup() {
@@ -37,9 +37,9 @@ class Scoreboard {
     stopHit = false;
     throwBase = false;
     ballOnTime = false;
-    fielder = new Player("outFielderStanced.png", 775, 125+translate);
-    batter = new Player("batterStanced.png", 730, 770+translate);
-    pitcher = new Player("pitcherStanced.png", 775, 530+translate);
+    fielder = new Player("fielder", "outFielderStanced.png", 775, 125+translate);
+    batter = new Player("batter", "batterStanced.png", 730, 770+translate);
+    pitcher = new Player("pitcher", "pitcherStanced.png", 775, 530+translate);
     ball = new Baseball(800,625);
     ruling = new Base(10,2000,2000);
     rPrev = new Base(9,2000,2000);

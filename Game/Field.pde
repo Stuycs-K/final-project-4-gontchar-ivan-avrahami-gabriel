@@ -163,9 +163,9 @@ class Field {
       n = 3;
     }
     
-    if (r.getRole() != 'p' && ballOnTime) {
+    if (! r.role.equals("pitcher") && ballOnTime) {
       System.out.println("hi, ruling: " + ruling.num() + " and numRunners: " + numRunners + 
-      " and ruling.getPlayer().horizontal: " + ruling.getPlayer().horizontal + " and ruling.getPlayer().getWhichBase(): " + ruling.getPlayer().getWhichBase().num());
+      " and ruling.getPlayer().role: " + ruling.getPlayer().role + " and ruling.getPlayer().getWhichBase(): " + ruling.getPlayer().getWhichBase().num());
       ballOnTime = false;
       rPrev.addPlayer(pitcher);
       for (int i = n; i < numRunners; i++) {
@@ -184,7 +184,7 @@ class Field {
           System.out.println("THIRD BASE RUNNERS " + i);
         }
       }
-      runners[numRunners] = new Player("batterStanced.png", 2000, 2000+translate);
+      runners[numRunners] = new Player("runners"+numRunners, "batterStanced.png", 2000, 2000+translate);
       board.addEvent("out");
       outs++;
       strikes = 0;
@@ -223,6 +223,9 @@ class Field {
       strikes = 0;
       homeBatting = !homeBatting;
       innings += 0.5;
+      for (int i = 0; i < runners.length; i++) {
+        runners[i] = new Player("runners:"+i, "batterExperimental.png", 2000, 2000+translate);
+      }
     }
     
     xyz.display(strikes, outs, homeBatting, (int)innings, 0);
