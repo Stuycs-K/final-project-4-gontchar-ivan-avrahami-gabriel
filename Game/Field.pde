@@ -108,6 +108,7 @@ class Field {
         rPrev = third;
       }
     }
+    
     if (keyboardInput.isPressed(Controller.PITCH)) {
       shouldPitch = true;
     }
@@ -163,8 +164,10 @@ class Field {
     }
     
     if (r.getRole() != 'p' && ballOnTime) {
+      System.out.println("hi, ruling: " + ruling.num() + " and numRunners: " + numRunners + 
+      " and ruling.getPlayer().horizontal: " + ruling.getPlayer().horizontal + " and ruling.getPlayer().getWhichBase(): " + ruling.getPlayer().getWhichBase().num());
       ballOnTime = false;
-      ruling.getPlayer().getWhichBase().addPlayer(pitcher);
+      rPrev.addPlayer(pitcher);
       for (int i = n; i < numRunners; i++) {
         runners[i] = runners[i+1];
         int num = runners[i+1].getWhichBase().num();
