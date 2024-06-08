@@ -157,7 +157,7 @@ class Field {
       if (! stopHit) {
         ball.move(0, Math.max(-10, -450 / yDistance));
       }
-      System.out.println("numRunners: "+numRunners+"; h,1,2,3,4.getPlayer(): "+home.getPlayer().role+" "+home.getPlayer().vertical+" "+first.getPlayer().role+" "+first.getPlayer().vertical+" "+second.getPlayer().role+" "+second.getPlayer().vertical+" "+third.getPlayer().role+" "+third.getPlayer().vertical);
+      System.out.println("numRunners: "+numRunners+"; h,1,2,3,4.getPlayer(): "+home.getPlayer().role+" "+home.getPlayer().vertical+" "+home.getPlayer().keepRunning+" "+first.getPlayer().role+" "+first.getPlayer().vertical+" "+first.getPlayer().keepRunning+" "+second.getPlayer().role+" "+second.getPlayer().vertical+" "+second.getPlayer().keepRunning+" "+third.getPlayer().role+" "+third.getPlayer().vertical+" "+third.getPlayer().keepRunning);
       third.getPlayer().runToBase();
       second.getPlayer().runToBase();
       first.getPlayer().runToBase();
@@ -192,7 +192,7 @@ class Field {
         board.genericSetup();
       }
     
-      if (! runners[numRunners].getKeepRunning()) {
+      if (! runners[numRunners].keepRunning) {
         /*if (ballOnTime && ruling.num() == runners[numRunners].getWhichBase().num()) {
           runners[numRunners] = new Player("batterStanced.png", 2000, 2000+translate);
           board.addEvent("out");
@@ -217,6 +217,9 @@ class Field {
     }
     
     if(outs >= 3){
+       for (int i = 0; i < runners.length; i++) {
+        runners[i] = new Player("runners["+i+"]", "batterStanced.png", 2000, 2000+translate);
+      }
       textSize(100);
       fill(0, 0, 0);
       //text("SWITCHING BATTING TEAMS", 200, 500);

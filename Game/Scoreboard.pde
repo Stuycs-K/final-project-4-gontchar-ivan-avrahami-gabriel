@@ -15,7 +15,7 @@ class Scoreboard {
     System.out.println(events);
   }
   
-  public void display(int strikes, int outs, boolean home, int innings, int runs){
+  public void display(int strikes, int outs, boolean home, int innings, int homeRuns, int awayRuns){
     textSize(30);
     fill(0, 0, 0);
     text("Inning: " + innings, 100, 765, 0);
@@ -23,11 +23,12 @@ class Scoreboard {
     text("Outs: " + outs, 100, 835, 0);
     if(home){
       text("Team Batting: " + homeTeam, 100, 870, 0);
+      text("Runs: " + homeRuns, 100, 905, 0);
     }
     else{
       text("Team Batting: " + awayTeam, 100, 870, 0);
+      text("Runs: " + awayRuns, 100, 905, 0);
     }
-    text("Runs: " + runs, 100, 905, 0);
   }
   
   public void genericSetup() {
@@ -43,5 +44,8 @@ class Scoreboard {
     ball = new Baseball(800,625);
     ruling = new Base(10,2000,2000);
     rPrev = new Base(9,2000,2000);
+    for (int i = 0; i < runners.length; i++) {
+      runners[i].keepRunning = true;
+    }
   }
 }

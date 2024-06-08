@@ -222,6 +222,10 @@ class Player {
       if (this.xCenter() < nextBase.x() + 25 && this.xCenter() > nextBase.x() - 15
       && this.yCenter() < nextBase.y() + 30 && this.yCenter() > nextBase.y() - 10) {
         
+        if (nextBase.num() == 4) {
+          this = new Player(role, "batterStanced.png", 2000, 2000);
+        }
+        
         //System.out.println("runToBase, whichBase: "+whichBase.num()+" keepRunning: "+keepRunning+" shouldRun: " + shouldRun);
         System.out.println(whichBase.num() + " Curr base's player: " + whichBase.getPlayer().vertical);
         System.out.println(nextBase.num() + " Next base's player: " + nextBase.getPlayer().vertical);
@@ -261,10 +265,5 @@ class Player {
   
   public void setShouldRun(boolean bool) {
     shouldRun = bool;
-  }
-  
-  public boolean getKeepRunning() {
-    //System.out.println(keepRunning + " " + shouldRun);
-    return keepRunning;
   }
 }
