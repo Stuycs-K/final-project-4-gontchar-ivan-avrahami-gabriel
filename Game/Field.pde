@@ -168,6 +168,7 @@ class Field {
         runners[scorer] = new Player(runners[scorer].role, "batterStanced.png", 2000, 2000);
         third.addPlayer(pitcher);
         numRunners--;
+        atHome = false;
       }
       second.getPlayer().runToBase();
       first.getPlayer().runToBase();
