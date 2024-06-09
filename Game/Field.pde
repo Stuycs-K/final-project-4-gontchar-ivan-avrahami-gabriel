@@ -54,7 +54,16 @@ class Field {
     ////3rd
     rect(560, 560 + translate, 30, 30);
 
-    
+    if ((int)innings == innings && innings >= 10 && runsHome != runsAway) {
+      fill(0, 0, 0);
+      textSize(300);
+      if (runsHome > runsAway) {
+        text(xyz.homeTeam+" beats "+xyz.awayTeam+" by a score of "+runsHome+"-"+runsAway, 650, 350);
+      }
+      else {
+        text(xyz.awayTeam+" beats "+xyz.homeTeam+" by a score of "+runsAway+"-"+runsHome, 650, 350);
+      }  
+    }
   
     fielder.displayPlayer();
     batter.displayPlayer();
@@ -141,7 +150,7 @@ class Field {
     
     if (hasSwung) {
       
-      if (! runners[numRunners-1].keepRunning) {
+      if (numRunners == 0 || ! runners[numRunners-1].keepRunning) {
         /*if (ballOnTime && ruling.num() == runners[numRunners].getWhichBase().num()) {
           runners[numRunners] = new Player("batterStanced.png", 2000, 2000+translate);
           board.addEvent("out");
