@@ -53,14 +53,14 @@ class Field {
     ////3rd
     rect(560, 560 + translate, 30, 30);
 
-    if ((int)innings == innings && innings >= 10 && runsHome != runsAway) {
+    if ((runsAway > runsHome && innings > 9 || (int)innings == innings && innings >= 10 && runsHome != runsAway)) {
       fill(0, 0, 0);
-      textSize(300);
+      textSize(80);
       if (runsHome > runsAway) {
-        text(xyz.homeTeam+" beats "+xyz.awayTeam+" by a score of "+runsHome+"-"+runsAway, 650, 350);
+        text(xyz.homeTeam+" beats "+xyz.awayTeam+" by a score of "+runsHome+"-"+runsAway, 200, 350);
       }
       else {
-        text(xyz.awayTeam+" beats "+xyz.homeTeam+" by a score of "+runsAway+"-"+runsHome, 650, 350);
+        text(xyz.awayTeam+" beats "+xyz.homeTeam+" by a score of "+runsAway+"-"+runsHome, 200, 350);
       }  
     }
   
@@ -80,7 +80,9 @@ class Field {
   
   
   
-  
+    if (keyboardInput.isPressed(Controller.END_GAME)) {
+      innings = 9;
+    }
     //check if the button P1_LEFT is being pressed:
     if (keyboardInput.isPressed(Controller.P1_LEFT)) {
       fielder.move(-8,0);
@@ -155,7 +157,7 @@ class Field {
     }
     
     if (hasSwung) {
-      System.out.println("SIZE: " + runners.size()); //+" "+ runners.get(runners.size()-1).keepRunning);
+      System.out.println("SIZE: " + runners.size() +" "+ runners.get(runners.size()-1).keepRunning);
       if (! runners.get(runners.size()-1).keepRunning) {
         /*if (ballOnTime && ruling.num() == runners[numRunners].getWhichBase().num()) {
           runners[numRunners] = new Player("batterStanced.png", 2000, 2000+translate);
@@ -189,6 +191,9 @@ class Field {
         runners.set(scorer, new Player(runners.get(scorer).role, "batterStanced.png", 2000, 2000));
         third.addPlayer(pitcher);
         atHome = false;
+        if (home.getPlayer().role.equals("pitcher") && first.getPlayer().role.equals("pitcher") && second.getPlayer().role.equals("pitcher") && third.getPlayer().role.equals("pitcher")) {
+          board.genericSetup();
+        }
       }
       second.getPlayer().runToBase();
       first.getPlayer().runToBase();

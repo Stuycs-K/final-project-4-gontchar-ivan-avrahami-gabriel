@@ -18,16 +18,16 @@ class Scoreboard {
   public void display(int strikes, int outs, int innings){
     textSize(30);
     fill(0, 0, 0);
+    text(homeTeam + ": " + runsHome, 100, 695, 0);
+    text(awayTeam + ": " + runsAway, 100, 730, 0);
     text("Inning: " + innings, 100, 765, 0);
     text("Strikes: " + strikes, 100, 800, 0);
     text("Outs: " + outs, 100, 835, 0);
     if(homeBatting){
       text("Team Batting: " + homeTeam, 100, 870, 0);
-      text("Runs: " + runsHome, 100, 905, 0);
     }
     else{
       text("Team Batting: " + awayTeam, 100, 870, 0);
-      text("Runs: " + runsAway, 100, 905, 0);
     }
   }
   
