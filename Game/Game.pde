@@ -12,7 +12,6 @@ int xDistance, yDistance;
 int translate = 50;
 Field ivan_lacks_neurons;
 int scorer;
-int numRunners = 0;
 int runsHome = 0;
 int runsAway = 0;
 boolean homeBatting = true;
@@ -46,7 +45,7 @@ void keyReleased() {
 }
 
 void mouseClicked() {
-  if (mouseX < 300 && mouseY < 150+translate) {
+  if (mouseX < 250 && mouseY < 200+translate) {
     runners.get(runners.size()-1).setShouldRun(true);
   }
   ivan_lacks_neurons.strikes += batter.swing(mouseX,mouseY);
