@@ -21,8 +21,13 @@ class Player {
     whichBase = home;
     nextBase = first;
     shouldRun = false;
-    keepRunning = true;
-  }
+    if (rol.equals("pitcher")) {
+      keepRunning = false;
+    }
+    else {
+      keepRunning = true;
+    }  
+}
 
   public void displayPlayer() {
     image(picture, horizontal, vertical);
@@ -155,6 +160,7 @@ class Player {
         runners[numRunners] = new Player("runners["+numRunners+"]", "batterStanced.png", 730, 770+translate);
         runners[numRunners].move(20,20);
         home.addPlayer(runners[numRunners]);
+        //numRunners++;
         board.addEvent("in play");
         hasSwung = true;
         canSwing = false;
@@ -217,7 +223,7 @@ class Player {
   
   public void runToBase() {
     //System.out.println(batter.getShouldRun() + " " + batter.xCenter() + " " + next.x() + " " + batter.yCenter() + " " + next.y());
-    if (! role.equals("pitcher") && keepRunning) {
+    if (keepRunning) {
     
       if (this.xCenter() < nextBase.x() + 25 && this.xCenter() > nextBase.x() - 15
       && this.yCenter() < nextBase.y() + 30 && this.yCenter() > nextBase.y() - 10) {

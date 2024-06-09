@@ -1,4 +1,5 @@
 class Field {
+  boolean stopHere = false;
   Field() {
   }
   Scoreboard xyz = new Scoreboard("Blue", "Red");
@@ -181,7 +182,7 @@ class Field {
         ballOnTime = false;
         rPrev.addPlayer(pitcher);
         for (int i = n; i < numRunners; i++) {
-          runners[i] = runners[i+1];
+          runners[i] = new Player(runners[i+1].role, "batterSwung.png", runners[i+1].horizontal, runners[i+1].vertical);
           int num = runners[i+1].getWhichBase().num();
           if (num == 1) {
             first.addPlayer(runners[i]);
@@ -198,8 +199,18 @@ class Field {
         }
         runners[numRunners] = new Player("runners["+numRunners+"]", "batterStanced.png", 2000, 2000+translate);
         board.addEvent("out");
-        outs++;
         strikes = 0;
+        outs++;
+        if (numRunners == 0) {
+          board.genericSetup();
+        }
+        else {
+          stopHere = true;
+        }
+      }
+      
+      if (stopHere && !home.getPlayer().keepRunning && !first.getPlayer().keepRunning && !second.getPlayer().keepRunning && !third.getPlayer().keepRunning) {
+        stopHere = false;
         board.genericSetup();
       }
     
