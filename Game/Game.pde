@@ -1,7 +1,8 @@
+import java.util.*;
 Baseball ball;
 Controller keyboardInput;
 Player pitcher, batter, fielder;
-Player[] runners;
+ArrayList<Player> runners;
 Base first, second, third, home, ruling, rPrev;
 Scoreboard board = new Scoreboard("Home Team", "Away Team");
 boolean shouldPitch, hasSwung, canSwing, stopHit, throwBase, ballOnTime;
@@ -18,11 +19,7 @@ boolean homeBatting = true;
 
 void setup(){
   size(1600,1000);
-  // trying to load a batter
-  runners = new Player[4];
-  for (int i = 0; i < runners.length; i++) {
-    runners[i] = new Player("runners["+i+"]", "batterExperimental.png", 2000, 2000+translate);
-  }
+  runners = new ArrayList<Player>();
   first = new Base(1, 1010, 570+translate);
   second = new Base(2, 790, 355+translate);
   third = new Base(3, 565, 570+translate);
@@ -50,7 +47,7 @@ void keyReleased() {
 
 void mouseClicked() {
   if (mouseX < 300 && mouseY < 150+translate) {
-    runners[numRunners-1].setShouldRun(true);
+    runners.get(runners.size()-1).setShouldRun(true);
   }
   ivan_lacks_neurons.strikes += batter.swing(mouseX,mouseY);
 }

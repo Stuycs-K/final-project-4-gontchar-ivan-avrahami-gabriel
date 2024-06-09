@@ -45,8 +45,8 @@ class Scoreboard {
     scorer = 10;
     ruling = new Base(10,2000,2000);
     rPrev = new Base(9,2000,2000);
-    for (int i = 0; i < runners.length; i++) {
-      runners[i].keepRunning = true;
+    for (int i = 0; i < runners.size(); i++) {
+      runners.get(i).keepRunning = true;
     }
   }
 }

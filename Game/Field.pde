@@ -1,5 +1,4 @@
 class Field {
-  boolean stopHere = false;
   Field() {
   }
   Scoreboard xyz = new Scoreboard("Blue", "Red");
@@ -68,8 +67,10 @@ class Field {
     fielder.displayPlayer();
     batter.displayPlayer();
     pitcher.displayPlayer();
-    for (int i = 0; i < runners.length; i++) {
-      runners[i].displayPlayer();
+    for (int i = 0; i < runners.size(); i++) {
+      if (runners.get(i).horizontal < 1300) {
+        runners.get(i).displayPlayer();
+      }
     }
     ball.displayBaseball();
     
@@ -129,7 +130,7 @@ class Field {
     }
     
     if(ball.x() < 0 && ball.y() > 200 || ball.x() > 1600 && ball.y() > 200){
-      board.addEvent("strike");
+      board.addEvent("sfoul");
       if(strikes < 2){
         strikes++;
       }
@@ -143,14 +144,14 @@ class Field {
     }
     
     if (throwBase) {
-      for (int i = 0; i < 10; i++) {
+      for (int i = 0; i < 12; i++) {
         fielder.throwBall();
       }
     }
     
     if (hasSwung) {
       
-      if (numRunners == 0 || ! runners[numRunners-1].keepRunning) {
+      if (! runners.get(runners.size()-1).keepRunning) {
         /*if (ballOnTime && ruling.num() == runners[numRunners].getWhichBase().num()) {
           runners[numRunners] = new Player("batterStanced.png", 2000, 2000+translate);
           board.addEvent("out");
@@ -160,25 +161,13 @@ class Field {
           board.addEvent("safe");
         //}
         strikes = 0;
+        numRunners++;
         board.genericSetup();
       }
       else {
  
         
       Player r = rPrev.getPlayer();
-      int n = 0;
-      if (r == runners[0]) {
-        n = 0;
-      }
-      if (r == runners[1]) {
-        n = 1;
-      }
-      if (r == runners[2]) {
-        n = 2;
-      }
-      if (r == runners[3]) {
-        n = 3;
-      }
       
       if (! stopHit) {
         ball.move(0, Math.max(-10, -450 / yDistance));
@@ -192,9 +181,8 @@ class Field {
         else {
           runsAway++;
         }
-        runners[scorer] = new Player(runners[scorer].role, "batterStanced.png", 2000, 2000);
+        runners.set(scorer, new Player(runners.get(scorer).role, "batterStanced.png", 2000, 2000));
         third.addPlayer(pitcher);
-        numRunners--;
         atHome = false;
       }
       second.getPlayer().runToBase();
@@ -206,40 +194,16 @@ class Field {
         System.out.println("hi, ruling: " + ruling.num() + " and numRunners: " + numRunners + 
         " and ruling.getPlayer().role: " + ruling.getPlayer().role + " and ruling.getPlayer().getWhichBase(): " + ruling.getPlayer().getWhichBase().num());
         ballOnTime = false;
-        numRunners--;
         rPrev.addPlayer(pitcher);
-        for (int i = n; i < numRunners; i++) {
-          runners[i] = new Player(runners[i+1].role, "batterStanced.png", runners[i+1].horizontal, runners[i+1].vertical);
-          int num = runners[i+1].getWhichBase().num();
-          if (num == 1) {
-            first.addPlayer(runners[i]);
-            System.out.println("FIRST BASE RUNNERS " + i);
-          }
-          if (num == 2) {
-            second.addPlayer(runners[i]);
-            System.out.println("SECOND BASE RUNNERS " + i);
-          }   
-          if (num == 3) {
-            third.addPlayer(runners[i]);
-            System.out.println("THIRD BASE RUNNERS " + i);
-          }
-        }
-        runners[numRunners] = new Player("runners["+numRunners+"]", "batterStanced.png", 2000, 2000+translate);
+        runners.set(runners.size()-1, new Player("runners["+numRunners+"]", "batterStanced.png", 2000, 2000+translate));
         board.addEvent("out");
         strikes = 0;
         outs++;
-        if (numRunners == 0) {
+        if (!home.getPlayer().keepRunning && !first.getPlayer().keepRunning && !second.getPlayer().keepRunning && !third.getPlayer().keepRunning) {
           board.genericSetup();
-        }
-        else {
-          stopHere = true;
         }
       }
       
-      if (stopHere && !home.getPlayer().keepRunning && !first.getPlayer().keepRunning && !second.getPlayer().keepRunning && !third.getPlayer().keepRunning) {
-        stopHere = false;
-        board.genericSetup();
-      }
       }    
   
     }
@@ -254,9 +218,7 @@ class Field {
     }
     
     if(outs >= 3){
-       for (int i = 0; i < runners.length; i++) {
-        runners[i] = new Player("runners["+i+"]", "batterStanced.png", 2000, 2000+translate);
-      }
+      runners = new ArrayList<Player>();
       textSize(100);
       fill(0, 0, 0);
       //text("SWITCHING BATTING TEAMS", 200, 500);
@@ -265,9 +227,6 @@ class Field {
       strikes = 0;
       homeBatting = !homeBatting;
       innings += 0.5;
-      for (int i = 0; i < runners.length; i++) {
-        runners[i] = new Player("runners:"+i, "batterExperimental.png", 2000, 2000+translate);
-      }
     }
     
     xyz.display(strikes, outs, (int)innings);

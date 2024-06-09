@@ -157,10 +157,9 @@ class Player {
       if (xMouse > 700 && xMouse < 900 && yMouse > 675 + translate && yMouse < 875 + translate) {
         xDistance = xMouse - ball.x();
         yDistance = Math.abs(yMouse - ball.y()) + 1;//in case it's 0
-        runners[numRunners] = new Player("runners["+numRunners+"]", "batterStanced.png", 730, 770+translate);
-        runners[numRunners].move(20,20);
-        home.addPlayer(runners[numRunners]);
-        numRunners++;
+        runners.add(new Player("runners["+runners.size()+"]", "batterStanced.png", 730, 770+translate));
+        runners.get(runners.size()-1).move(20,20);
+        home.addPlayer(runners.get(runners.size()-1));
         board.addEvent("in play");
         hasSwung = true;
         canSwing = false;
