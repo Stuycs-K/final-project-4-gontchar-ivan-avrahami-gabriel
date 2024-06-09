@@ -157,8 +157,15 @@ class Field {
     }
     
     if (hasSwung) {
-      System.out.println("SIZE: " + runners.size() +" "+ runners.get(runners.size()-1).keepRunning);
-      if (! runners.get(runners.size()-1).keepRunning) {
+      System.out.println("SIZE: " + runners.size() +" "+runners.get(runners.size()-1).role+" "+ runners.get(runners.size()-1).keepRunning);
+      for (int i = runners.size()-1; i >= 0; i--) {
+        if (runners.get(i).horizontal < 1300) {
+          currentTop = i;
+          break;
+        }
+      }
+      System.out.println("SIZE: " + runners.size() +" "+ runners.get(currentTop).role+" "+runners.get(currentTop).keepRunning);
+      if (! runners.get(currentTop).keepRunning) {
         /*if (ballOnTime && ruling.num() == runners[numRunners].getWhichBase().num()) {
           runners[numRunners] = new Player("batterStanced.png", 2000, 2000+translate);
           board.addEvent("out");
@@ -205,7 +212,8 @@ class Field {
         " and ruling.getPlayer().role: " + ruling.getPlayer().role + " and ruling.getPlayer().getWhichBase(): " + ruling.getPlayer().getWhichBase().num());
         ballOnTime = false;
         rPrev.addPlayer(pitcher);
-        runners.set(Integer.parseInt(r.role.substring(8,9)), new Player(runners.get(runners.size()-1).role, "batterStanced.png", 2000, 2000+translate));
+        int n = Integer.parseInt(r.role.substring(8,9));
+        runners.set(n, new Player(runners.get(n).role, "batterStanced.png", 2000, 2000+translate));
         board.addEvent("out");
         strikes = 0;
         outs++;

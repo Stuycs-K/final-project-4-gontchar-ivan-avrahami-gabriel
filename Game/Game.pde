@@ -10,6 +10,7 @@ boolean atHome = false;
 int[] results, res;
 int xDistance, yDistance;
 int translate = 50;
+int currentTop = 0;
 Field ivan_lacks_neurons;
 int scorer;
 int runsHome = 0;
@@ -46,7 +47,7 @@ void keyReleased() {
 
 void mouseClicked() {
   if (mouseX < 250 && mouseY < 200+translate) {
-    runners.get(runners.size()-1).setShouldRun(true);
+    runners.get(currentTop).setShouldRun(true);
   }
   ivan_lacks_neurons.strikes += batter.swing(mouseX,mouseY);
 }
