@@ -160,7 +160,7 @@ class Player {
         runners[numRunners] = new Player("runners["+numRunners+"]", "batterStanced.png", 730, 770+translate);
         runners[numRunners].move(20,20);
         home.addPlayer(runners[numRunners]);
-        //numRunners++;
+        numRunners++;
         board.addEvent("in play");
         hasSwung = true;
         canSwing = false;

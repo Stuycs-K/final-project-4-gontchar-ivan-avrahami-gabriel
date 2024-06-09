@@ -53,6 +53,8 @@ class Field {
     rect(785, 345 + translate, 30, 30);
     ////3rd
     rect(560, 560 + translate, 30, 30);
+
+    
   
     fielder.displayPlayer();
     batter.displayPlayer();
@@ -139,6 +141,21 @@ class Field {
     
     if (hasSwung) {
       
+      if (! runners[numRunners-1].keepRunning) {
+        /*if (ballOnTime && ruling.num() == runners[numRunners].getWhichBase().num()) {
+          runners[numRunners] = new Player("batterStanced.png", 2000, 2000+translate);
+          board.addEvent("out");
+          outs++;
+        }
+        else {*/
+          board.addEvent("safe");
+        //}
+        strikes = 0;
+        board.genericSetup();
+      }
+      else {
+ 
+        
       Player r = rPrev.getPlayer();
       int n = 0;
       if (r == runners[0]) {
@@ -176,13 +193,14 @@ class Field {
       home.getPlayer().runToBase();
     //board.getEvents();
     
-      if (! r.role.equals("pitcher") && ballOnTime) {
+      if (! r.role.equals("pitcher") && ballOnTime && r != ruling.getPlayer()) {
         System.out.println("hi, ruling: " + ruling.num() + " and numRunners: " + numRunners + 
         " and ruling.getPlayer().role: " + ruling.getPlayer().role + " and ruling.getPlayer().getWhichBase(): " + ruling.getPlayer().getWhichBase().num());
         ballOnTime = false;
+        numRunners--;
         rPrev.addPlayer(pitcher);
         for (int i = n; i < numRunners; i++) {
-          runners[i] = new Player(runners[i+1].role, "batterSwung.png", runners[i+1].horizontal, runners[i+1].vertical);
+          runners[i] = new Player(runners[i+1].role, "batterStanced.png", runners[i+1].horizontal, runners[i+1].vertical);
           int num = runners[i+1].getWhichBase().num();
           if (num == 1) {
             first.addPlayer(runners[i]);
@@ -213,20 +231,8 @@ class Field {
         stopHere = false;
         board.genericSetup();
       }
-    
-      if (! runners[numRunners].keepRunning) {
-        /*if (ballOnTime && ruling.num() == runners[numRunners].getWhichBase().num()) {
-          runners[numRunners] = new Player("batterStanced.png", 2000, 2000+translate);
-          board.addEvent("out");
-          outs++;
-        }
-        else {*/
-          board.addEvent("safe");
-          numRunners++;
-        //}
-        strikes = 0;
-        board.genericSetup();
-      }
+      }    
+  
     }
     
     if(strikes >= 3){

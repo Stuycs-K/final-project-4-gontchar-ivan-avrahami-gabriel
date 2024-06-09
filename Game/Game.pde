@@ -50,7 +50,7 @@ void keyReleased() {
 
 void mouseClicked() {
   if (mouseX < 300 && mouseY < 150+translate) {
-    runners[numRunners].setShouldRun(true);
+    runners[numRunners-1].setShouldRun(true);
   }
   ivan_lacks_neurons.strikes += batter.swing(mouseX,mouseY);
 }
