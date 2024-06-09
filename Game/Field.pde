@@ -70,11 +70,16 @@ class Field {
     for (int i = 0; i < runners.size(); i++) {
       if (runners.get(i).horizontal < 1300) {
         runners.get(i).displayPlayer();
+        System.out.println(i+" hor: "+runners.get(i).horizontal+" ver: "+runners.get(i).vertical+" role: "+runners.get(i).role+" whichBase: "+runners.get(i).getWhichBase().num()+" nextBase: "+runners.get(i).nextBase.num());
       }
     }
     ball.displayBaseball();
     
     fielder.pickUpBall();
+  
+  
+  
+  
   
     //check if the button P1_LEFT is being pressed:
     if (keyboardInput.isPressed(Controller.P1_LEFT)) {
@@ -150,7 +155,7 @@ class Field {
     }
     
     if (hasSwung) {
-      System.out.println("SIZE: " + runners.size() + runners.get(runners.size()-1).keepRunning);
+      System.out.println("SIZE: " + runners.size()); //+" "+ runners.get(runners.size()-1).keepRunning);
       if (! runners.get(runners.size()-1).keepRunning) {
         /*if (ballOnTime && ruling.num() == runners[numRunners].getWhichBase().num()) {
           runners[numRunners] = new Player("batterStanced.png", 2000, 2000+translate);
@@ -172,7 +177,7 @@ class Field {
       if (! stopHit) {
         ball.move(0, Math.max(-10, -450 / yDistance));
       }
-      System.out.println(runners.get(runners.size()-1).role+" is size-1's role, this is its keepRunning: "+runners.get(runners.size()-1).keepRunning+"; h,1,2,3.getPlayer(): "+home.getPlayer().role+" "+home.getPlayer().vertical+" "+home.getPlayer().keepRunning+" "+first.getPlayer().role+" "+first.getPlayer().vertical+" "+first.getPlayer().keepRunning+" "+second.getPlayer().role+" "+second.getPlayer().vertical+" "+second.getPlayer().keepRunning+" "+third.getPlayer().role+" "+third.getPlayer().vertical+" "+third.getPlayer().keepRunning);
+      //System.out.println(runners.get(runners.size()-1).role+" is size-1's role, this is its keepRunning: "+runners.get(runners.size()-1).keepRunning+"; h,1,2,3.getPlayer(): "+home.getPlayer().role+" "+home.getPlayer().vertical+" "+home.getPlayer().keepRunning+" "+first.getPlayer().role+" "+first.getPlayer().vertical+" "+first.getPlayer().keepRunning+" "+second.getPlayer().role+" "+second.getPlayer().vertical+" "+second.getPlayer().keepRunning+" "+third.getPlayer().role+" "+third.getPlayer().vertical+" "+third.getPlayer().keepRunning);
       third.getPlayer().runToBase();
       if (atHome) {
         if (homeBatting) {
@@ -191,11 +196,11 @@ class Field {
     //board.getEvents();
     
       if (! r.role.equals("pitcher") && ballOnTime && r != ruling.getPlayer()) {
-        System.out.println("hi, ruling: " + ruling.num() + 
+        System.out.println("hi, r: " + r.role + " rPrev: "+ rPrev.num() + " r.role: " + " ruling: " + ruling.num() + 
         " and ruling.getPlayer().role: " + ruling.getPlayer().role + " and ruling.getPlayer().getWhichBase(): " + ruling.getPlayer().getWhichBase().num());
         ballOnTime = false;
         rPrev.addPlayer(pitcher);
-        runners.set(runners.size()-1, new Player(runners.get(runners.size()-1).role, "batterStanced.png", 2000, 2000+translate));
+        runners.set(Integer.parseInt(r.role.substring(8,9)), new Player(runners.get(runners.size()-1).role, "batterStanced.png", 2000, 2000+translate));
         board.addEvent("out");
         strikes = 0;
         outs++;
@@ -219,6 +224,7 @@ class Field {
     
     if(outs >= 3){
       runners = new ArrayList<Player>();
+      board.genericSetup();
       textSize(100);
       fill(0, 0, 0);
       //text("SWITCHING BATTING TEAMS", 200, 500);
