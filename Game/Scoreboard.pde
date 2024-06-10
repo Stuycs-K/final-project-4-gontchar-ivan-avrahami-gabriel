@@ -38,6 +38,7 @@ class Scoreboard {
     stopHit = false;
     throwBase = false;
     ballOnTime = false;
+    atHome = false;
     fielder = new Player("fielder", "outFielderStanced.png", 775, 125+translate);
     batter = new Player("batter", "batterStanced.png", 730, 770+translate);
     pitcher = new Player("pitcher", "pitcherStanced.png", 775, 530+translate);
