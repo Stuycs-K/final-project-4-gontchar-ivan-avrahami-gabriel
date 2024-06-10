@@ -12,11 +12,12 @@ class Controller {
   static final int END_GAME = 10;
   static final int FAST = 11;
   static final int CURVE = 12;
+  static final int EIGHTH = 13;
   
   boolean [] inputs;
 
   public Controller() {
-    inputs = new boolean[13];//13 valid buttons
+    inputs = new boolean[14];//14 valid buttons
   }
 
   /**@param code: a valid constant e.g. P1_LEFT
@@ -53,6 +54,8 @@ class Controller {
       inputs[CURVE] = true;
     if(code == 'F')
       inputs[FAST] = true;
+    if(code == '8')
+      inputs[EIGHTH] = true;
   }
   void release(int code) {
     if(code == 'A')
@@ -81,5 +84,7 @@ class Controller {
       inputs[CURVE] = false;
     if(code == 'F')
       inputs[FAST] = false;
+    if(code == '8')
+      inputs[EIGHTH] = false;
   }
 }

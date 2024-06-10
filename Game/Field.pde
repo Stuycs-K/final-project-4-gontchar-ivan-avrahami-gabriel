@@ -67,11 +67,23 @@ class Field {
   
   
   
-  
+    if (keyboardInput.isPressed(Controller.EIGHTH)) {
+      board.addEvent("8th inn.");
+      if ((int) innings == innings) {
+        innings = 8;
+      }
+      else {
+        innings = 8.5;
+      }
+    }
     if (keyboardInput.isPressed(Controller.END_GAME)) {
-      innings = 9;
+      board.addEvent("9th inn.");
+      innings = 9.5;
+      homeBatting = true;
       outs = 2;
       strikes = 2;
+      runsHome = 0;
+      runsAway = 1;
     }
     //check if the button P1_LEFT is being pressed:
     if (keyboardInput.isPressed(Controller.P1_LEFT)) {
