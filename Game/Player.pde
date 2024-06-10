@@ -11,6 +11,9 @@ class Player {
     if (rol.equals("fielder")) {
       picture.resize(0,70);
     }
+    else if (rol.substring(0,2).equals("ru")) {
+      picture.resize(0,50);
+    }
     else {
       picture.resize(0,95);
     }
@@ -142,15 +145,7 @@ class Player {
   public void pitch(Pitch p) {
     canSwing = true;
     if (! hasSwung) {
-      int right = 0;
-      int speed = 3;
-      if (p.getPitch() == "curveball") {
-        right = (int) (Math.random() * 5 - 3);
-      }
-      if (p.getPitch() == "fastball") {
-        speed = 6;
-      }
-      ball.move(right,speed);
+      ball.move(p.right(),p.down());
     }
   }
 
@@ -159,8 +154,8 @@ class Player {
       if (xMouse > 700 && xMouse < 900 && yMouse > 675 + translate && yMouse < 875 + translate) {
         xDistance = xMouse - ball.x();
         yDistance = Math.abs(yMouse - ball.y()) + 1;//in case it's 0
-        runners.add(new Player("runners["+runners.size()+"]", "batterStanced.png", 730, 770+translate));
-        runners.get(runners.size()-1).move(20,-10);
+        runners.add(new Player("runners["+runners.size()+"]", "onBase.png", 730, 770+translate));
+        runners.get(runners.size()-1).move(20,0);
         home.addPlayer(runners.get(runners.size()-1));
         board.addEvent("in play");
         hasSwung = true;
@@ -236,13 +231,13 @@ class Player {
         
         else {
           if (nextBase.num() == 1) {
-            this.move(22,22);
+            this.move(20,20);
           }
           else if (nextBase.num() == 2) {
-            this.move(16,-16);
+            this.move(4,-4);
           }
           else {
-            this.move(-16,-16);
+            this.move(-14,-14);
           }
           
           //System.out.println("runToBase, whichBase: "+whichBase.num()+" keepRunning: "+keepRunning+" shouldRun: " + shouldRun);

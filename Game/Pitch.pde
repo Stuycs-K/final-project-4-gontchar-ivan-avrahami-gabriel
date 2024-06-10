@@ -1,10 +1,17 @@
 class Pitch {
-  String p;
-  public Pitch(String pitch) {
-    p = pitch;
+  int f;
+  public Pitch(int speed) {
+    f = speed;
   }
   
-  public String getPitch() {
-    return p;
+  public int down() {
+    return 4*f;
+  }
+  
+  public int right() {
+    if (f == 2) {
+      return 0;
+    }
+    return (int) (Math.random() * 5 - 3);
   }
 }

@@ -10,11 +10,13 @@ class Controller {
   static final int PITCH_SPEED = 8;
   static final int PITCH = 9;
   static final int END_GAME = 10;
+  static final int FAST = 11;
+  static final int CURVE = 12;
   
   boolean [] inputs;
 
   public Controller() {
-    inputs = new boolean[11];//10 valid buttons
+    inputs = new boolean[13];//13 valid buttons
   }
 
   /**@param code: a valid constant e.g. P1_LEFT
@@ -47,6 +49,10 @@ class Controller {
       inputs[PITCH] = true;
     if(code == '9')
       inputs[END_GAME] = true;
+    if(code == 'C')
+      inputs[CURVE] = true;
+    if(code == 'F')
+      inputs[FAST] = true;
   }
   void release(int code) {
     if(code == 'A')
@@ -71,5 +77,9 @@ class Controller {
       inputs[PITCH] = false;
     if(code == '9')
       inputs[END_GAME] = false;
+    if(code == 'C')
+      inputs[CURVE] = false;
+    if(code == 'F')
+      inputs[FAST] = false;
   }
 }

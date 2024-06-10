@@ -6,6 +6,8 @@ class Field {
   float innings = 1;
   int outs = 0;
   
+  int speed = 0;
+  
   void makeField() {
     System.out.println("I AM AT HOME: " + atHome);
     background(0,148,60,255);
@@ -139,10 +141,19 @@ class Field {
     
     if (keyboardInput.isPressed(Controller.PITCH)) {
       shouldPitch = true;
+      speed = (int)(Math.random()*2+1);
+    }
+    if (keyboardInput.isPressed(Controller.CURVE)) {
+      shouldPitch = true;
+      speed = 1;
+    }
+    if (keyboardInput.isPressed(Controller.FAST)) {
+      shouldPitch = true;
+      speed = 2;
     }
     
     if (shouldPitch) {
-      pitcher.pitch(new Pitch("curveball"));
+      pitcher.pitch(new Pitch(speed));
     }
     
     if(ball.x() < 0 && ball.y() > 200 || ball.x() > 1600 && ball.y() > 200){
@@ -153,7 +164,7 @@ class Field {
       board.genericSetup();
     }
     
-    if (ball.y() > 1500+translate) {
+    if (ball.y() > 1200+translate) {
       board.addEvent("strike");
       strikes++;
       board.genericSetup();
@@ -210,7 +221,7 @@ class Field {
           runsAway++;
           board.addEvent("away team scores");
         }
-        runners.set(scorer, new Player(runners.get(scorer).role, "batterStanced.png", 2000, 2000));
+        runners.set(scorer, new Player(runners.get(scorer).role, "onBase.png", 2000, 2000));
         third.addPlayer(pitcher);
         atHome = false;
         if (home.getPlayer().role.equals("pitcher") && first.getPlayer().role.equals("pitcher") && second.getPlayer().role.equals("pitcher") && third.getPlayer().role.equals("pitcher")) {
@@ -227,7 +238,7 @@ class Field {
         ballOnTime = false;
         rPrev.addPlayer(pitcher);
         int n = Integer.parseInt(r.role.substring(8,9));
-        runners.set(n, new Player(runners.get(n).role, "batterStanced.png", 2000, 2000+translate));
+        runners.set(n, new Player(runners.get(n).role, "onBase.png", 2000, 2000+translate));
         board.addEvent("out at base " + ruling.num());
         strikes = 0;
         outs++;
