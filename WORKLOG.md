@@ -56,11 +56,11 @@ added more stuff to scoreboard, not sure what gabriel's code is doing to the gam
 
 ### 6/7/24 - CW
 
-xxx
+we worked on planning what we would do for the final stretch and fixed some stuff with scoreboard
 
 ### 6/7/24 - HW
 
-xxx
+made beauty upgrades to text and displays on left and right sides and added image for runner on base
 
 
 
