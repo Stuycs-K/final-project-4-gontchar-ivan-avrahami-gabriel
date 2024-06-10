@@ -188,10 +188,11 @@ class Field {
         ball.move(0, Math.max(-10, -450 / yDistance));
       }
       System.out.println(runners.get(runners.size()-1).keepRunning+" "+runners.get(currentTop).keepRunning);
-      System.out.println("home: "+home.getPlayer().role+" first: "+first.getPlayer().role+" second: "+second.getPlayer().role+"\n");
+      System.out.println("home: "+home.getPlayer().role+" first: "+first.getPlayer().role+" second: "+second.getPlayer().role+" third: "+third.getPlayer().role+"\n");
       //System.out.println(runners.get(runners.size()-1).role+" is size-1's role, this is its keepRunning: "+runners.get(runners.size()-1).keepRunning+"; h,1,2,3.getPlayer(): "+home.getPlayer().role+" "+home.getPlayer().vertical+" "+home.getPlayer().keepRunning+" "+first.getPlayer().role+" "+first.getPlayer().vertical+" "+first.getPlayer().keepRunning+" "+second.getPlayer().role+" "+second.getPlayer().vertical+" "+second.getPlayer().keepRunning+" "+third.getPlayer().role+" "+third.getPlayer().vertical+" "+third.getPlayer().keepRunning);
-      third.getPlayer().runToBase();
       System.out.println("AT HOME 2: " + atHome);
+      third.getPlayer().runToBase();
+      System.out.println("AT HOME 3: " + atHome);
       if (atHome) {
         if (homeBatting) {
           runsHome++;
@@ -241,6 +242,10 @@ class Field {
     
     if(outs >= 3){
       runners = new ArrayList<Player>();
+      home.addPlayer(pitcher);
+      first.addPlayer(pitcher);
+      second.addPlayer(pitcher);
+      third.addPlayer(pitcher);
       board.genericSetup();
       textSize(100);
       fill(0, 0, 0);
