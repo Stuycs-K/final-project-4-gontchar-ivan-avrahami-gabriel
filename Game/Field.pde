@@ -234,7 +234,7 @@ class Field {
         rPrev.addPlayer(pitcher);
         int n = Integer.parseInt(r.role.substring(8,9));
         runners.set(n, new Player(runners.get(n).role, "onBase.png", 2000, 2000+translate));
-        board.addEvent("out at base " + ruling.num());
+        board.addEvent("out (base " + ruling.num() + ")");
         strikes = 0;
         outs++;
         if (!home.getPlayer().keepRunning && !first.getPlayer().keepRunning && !second.getPlayer().keepRunning && !third.getPlayer().keepRunning) {
