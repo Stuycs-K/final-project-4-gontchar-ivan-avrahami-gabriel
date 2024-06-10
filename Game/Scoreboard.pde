@@ -12,11 +12,16 @@ class Scoreboard {
   }
   
   public void getEvents() {
-    fill(0,0,0);
+    fill(0, 0, 0);
+    stroke(255, 255, 255);
+    strokeWeight(10);
+    rect(1250, 550, 345, 500);
+    textSize(28);
+    fill(255, 255, 255);
     int k = 0;
     for (int i = events.size()-1; i >= 0; i--) {
-      if (k < 5) {
-        text(events.get(i), 1300, 695 + 30 * k);
+      if (k < 6) {
+        text(events.get(i), 1270, 600 + 50 * k);
         k++;
       } 
     }

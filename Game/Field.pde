@@ -56,12 +56,12 @@ class Field {
 
     if ((runsAway > runsHome && innings > 9 || (int)innings == innings && innings >= 10 && runsHome != runsAway)) {
       fill(0, 0, 0);
-      textSize(80);
+      textSize(47);
       if (runsHome > runsAway) {
-        text(xyz.homeTeam+" beats "+xyz.awayTeam+" by a score of "+runsHome+"-"+runsAway, 200, 350);
+        text(xyz.homeTeam+" beats "+xyz.awayTeam+" by a score of "+runsHome+"-"+runsAway, 25, 350);
       }
       else {
-        text(xyz.awayTeam+" beats "+xyz.homeTeam+" by a score of "+runsAway+"-"+runsHome, 200, 350);
+        text(xyz.awayTeam+" beats "+xyz.homeTeam+" by a score of "+runsAway+"-"+runsHome, 25, 350);
       }  
     }
   
@@ -83,6 +83,8 @@ class Field {
   
     if (keyboardInput.isPressed(Controller.END_GAME)) {
       innings = 9;
+      outs = 2;
+      strikes = 2;
     }
     //check if the button P1_LEFT is being pressed:
     if (keyboardInput.isPressed(Controller.P1_LEFT)) {
@@ -204,11 +206,11 @@ class Field {
       if (atHome) {
         if (homeBatting) {
           runsHome++;
-          board.addEvent("home team scores");
+          board.addEvent("home scores");
         }
         else {
           runsAway++;
-          board.addEvent("away team scores");
+          board.addEvent("away scores");
         }
         runners.set(scorer, new Player(runners.get(scorer).role, "batterStanced.png", 2000, 2000));
         third.addPlayer(pitcher);
