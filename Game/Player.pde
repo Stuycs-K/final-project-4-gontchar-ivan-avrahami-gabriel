@@ -222,7 +222,7 @@ class Player {
   
   public void runToBase() {
     //System.out.println(batter.getShouldRun() + " " + batter.xCenter() + " " + next.x() + " " + batter.yCenter() + " " + next.y());
-    if (keepRunning) {
+    if (role != "pitcher" && (keepRunning || runners.get(currentTop).keepRunning)) {
     
       if (this.xCenter() < nextBase.x() + 25 && this.xCenter() > nextBase.x() - 15
       && this.yCenter() < nextBase.y() + 30 && this.yCenter() > nextBase.y() - 10) {
