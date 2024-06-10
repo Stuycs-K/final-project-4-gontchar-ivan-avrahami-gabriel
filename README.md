@@ -11,7 +11,7 @@ Our game is a bird’s eye view-oriented game (2D) that simulates a baseball gam
 ## Instructions
 Player 1 controls the pitching keys, the number keys, and the WASD keys. Player 2 controls the Mouse.
 First, Player 1 pitches the ball. F throws a fastball, C throws a curveball, and P gives a 50/50 chance of either.
-Player 2 swings with left click as the ball crosses home plate. 
+Player 2 swings with left click as the ball crosses home plate.
 If you swing to the left of the ball, it will go right, and vice versa. Swinging at approximately the same height as the ball will cause it to be hit faster.
 A ball hit to the right of the rightmost base or left of the leftmost base will go foul, causing a re-hit.
 In the event of a good hit, the batter will automatically start running.
@@ -25,6 +25,6 @@ When the game gets through 9 innings, a winner is declared or it goes into overt
 (Pressing 9 takes you near to the end of the game with 9 innings, 2 strikes and 2 outs for a high leverage situation.)
 
 ## Video Presentation Link:
-
+https://drive.google.com/file/d/119lSREfyPPxc1_9__WCb27NNxpqVlUpe/view?usp=sharing
 
 ## Major Bugs:
