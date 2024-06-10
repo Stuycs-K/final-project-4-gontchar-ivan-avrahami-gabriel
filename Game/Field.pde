@@ -185,7 +185,7 @@ class Field {
       Player r = rPrev.getPlayer();
       
       if (! stopHit) {
-        ball.move(0, Math.max(-10, -450 / yDistance));
+        ball.move(-xDistance/8, Math.max(-10, -450 / yDistance));
       }
       System.out.println(runners.get(runners.size()-1).keepRunning+" "+runners.get(currentTop).keepRunning);
       System.out.println("home: "+home.getPlayer().role+" first: "+first.getPlayer().role+" second: "+second.getPlayer().role+" third: "+third.getPlayer().role+"\n");

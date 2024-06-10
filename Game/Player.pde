@@ -252,7 +252,7 @@ class Player {
         }
       }
       else {
-        if (Math.random() > 0.95 || nextBase != third) {
+        if (Math.random() < 0.95 || nextBase != third) {
           this.actuallyRun();
         }
       }
