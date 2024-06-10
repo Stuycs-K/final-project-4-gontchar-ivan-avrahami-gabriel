@@ -23,18 +23,24 @@ class Scoreboard {
   }
   
   public void display(int strikes, int outs, int innings){
-    textSize(30);
     fill(0, 0, 0);
-    text(homeTeam + ": " + runsHome, 100, 695, 0);
-    text(awayTeam + ": " + runsAway, 100, 730, 0);
-    text("Inning: " + innings, 100, 765, 0);
-    text("Strikes: " + strikes, 100, 800, 0);
-    text("Outs: " + outs, 100, 835, 0);
+    stroke(255, 255, 255);
+    strokeWeight(10);
+    rect(0, 700, 500, 500);
+    PFont font = createFont("retro.ttf", 24);
+    textFont(font);
+    textSize(28);
+    fill(255, 255, 255);
+    text(homeTeam + ":" + runsHome, 17, 790, 0);
+    text(awayTeam + ":" + runsAway, 17, 835, 0);
+    text("Inning:" + innings, 17, 880, 0);
+    text("Strikes:" + strikes, 17, 925, 0);
+    text("Outs:" + outs, 17, 975, 0);
     if(homeBatting){
-      text("Team Batting: " + homeTeam, 100, 870, 0);
+      text("Team Batting:" + homeTeam, 17, 745, 0);
     }
     else{
-      text("Team Batting: " + awayTeam, 100, 870, 0);
+      text("Team Batting:" + awayTeam, 17, 745, 0);
     }
   }
   

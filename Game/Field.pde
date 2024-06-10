@@ -1,7 +1,7 @@
 class Field {
   Field() {
   }
-  Scoreboard xyz = new Scoreboard("Blue", "Red");
+  Scoreboard xyz = new Scoreboard("Away", "Home");
   int strikes = 0;
   float innings = 1;
   int outs = 0;
