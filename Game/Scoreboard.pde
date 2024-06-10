@@ -16,11 +16,11 @@ class Scoreboard {
     stroke(255, 255, 255);
     strokeWeight(10);
     rect(1250, 550, 345, 500);
-    textSize(28);
+    textSize(26);
     fill(255, 255, 255);
     int k = 0;
     for (int i = events.size()-1; i >= 0; i--) {
-      if (k < 6) {
+      if (k < 8) {
         text(events.get(i), 1270, 600 + 50 * k);
         k++;
       } 
