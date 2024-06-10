@@ -30,8 +30,6 @@ class Player {
     else {
       keepRunning = true;
     }  
-    System.out.println(rol + " " + hor + " " + ver);
-    System.out.println(rol + " " + (hor + picture.width) + " " + (ver + picture.width));
 }
 
   public void displayPlayer() {
@@ -174,19 +172,11 @@ class Player {
             this.move(-14,-14);
           }
           
-          System.out.println(whichBase.num() + " Curr base's player: " + whichBase.getPlayer().vertical);
-          System.out.println(nextBase.num() + " Next base's player: " + nextBase.getPlayer().vertical);
           whichBase.addPlayer(pitcher);
           nextBase.addPlayer(this);
-          System.out.println(whichBase.num() + " Curr base's player: " + whichBase.getPlayer().vertical);
-          System.out.println(nextBase.num() + " Next base's player: " + nextBase.getPlayer().vertical);
           Base temp = which(nextBase);
           whichBase = nextBase;
           nextBase = temp;
-          System.out.println(whichBase.num() + " Curr base's player: " + whichBase.getPlayer().vertical);
-          System.out.println(nextBase.num() + " Next base's player: " + nextBase.getPlayer().vertical);
-          System.out.println(whichBase.num() + " Curr base's player: " + whichBase.getPlayer().vertical);
-          System.out.println(nextBase.num() + " Next base's player: " + nextBase.getPlayer().vertical);
           keepRunning = shouldRun;
           shouldRun = false;
         }

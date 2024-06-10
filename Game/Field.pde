@@ -1,7 +1,7 @@
 class Field {
   Field() {
   }
-  Scoreboard xyz = new Scoreboard("Away", "Home");
+  Scoreboard xyz = new Scoreboard("Home", "Away");
   int strikes = 0;
   float innings = 1;
   int outs = 0;
@@ -9,7 +9,6 @@ class Field {
   int speed = 0;
   
   void makeField() {
-    System.out.println("I AM AT HOME: " + atHome);
     background(0,148,60,255);
     stroke(21, 212, 53);
     fill(21,212,53);
@@ -43,7 +42,7 @@ class Field {
     ////3rd
     rect(560, 565 + translate, 30, 30);
 
-    if ((runsAway > runsHome && innings > 9 || (int)innings == innings && innings >= 10 && runsHome != runsAway)) {
+    if ((runsHome > runsAway && innings > 9 || (int)innings == innings && innings >= 10 && runsHome != runsAway)) {
       fill(0, 0, 0);
       textSize(47);
       if (runsHome > runsAway) {
@@ -60,7 +59,6 @@ class Field {
     for (int i = 0; i < runners.size(); i++) {
       if (runners.get(i).horizontal < 1300) {
         runners.get(i).displayPlayer();
-        System.out.println(i+" hor: "+runners.get(i).horizontal+" ver: "+runners.get(i).vertical+" role: "+runners.get(i).role+" whichBase: "+runners.get(i).getWhichBase().num()+" nextBase: "+runners.get(i).nextBase.num());
       }
     }
     ball.displayBaseball();
@@ -179,28 +177,15 @@ class Field {
     }
     
     if (hasSwung) {
-      System.out.println("SIZE: " + runners.size() +" "+runners.get(runners.size()-1).role+" "+ runners.get(runners.size()-1).keepRunning);
-      for (int i = runners.size()-1; i >= 0; i--) {
+     for (int i = runners.size()-1; i >= 0; i--) {
         if (runners.get(i).horizontal < 1300) {
           currentTop = i;
           break;
         }
       }
-      System.out.println("SIZE: " + runners.size() +" "+ runners.get(currentTop).role+" "+runners.get(currentTop).keepRunning);
-      if (! runners.get(currentTop).keepRunning) {
-        System.out.println("FIRST: "+first.getPlayer().horizontal+" "+first.getPlayer().vertical);
-        System.out.println("SECOND: "+second.getPlayer().horizontal+" "+second.getPlayer().vertical);
-        System.out.println("THIRD: "+third.getPlayer().horizontal+" "+third.getPlayer().vertical);
-        /*if (ballOnTime && ruling.num() == runners[numRunners].getWhichBase().num()) {
-          runners[numRunners] = new Player("batterStanced.png", 2000, 2000+translate);
-          board.addEvent("out");
-          outs++;
-        }
-        else {*/
-          board.addEvent("safe");
-        //}
+      if (! runners.get(currentTop).keepRunning) {        
+        board.addEvent("safe");
         strikes = 0;
-        System.out.println("HI");
         board.genericSetup();
       }
       else {
@@ -211,12 +196,7 @@ class Field {
       if (! stopHit) {
         ball.move(-xDistance/8, Math.max(-10, -450 / yDistance));
       }
-      System.out.println(runners.get(runners.size()-1).keepRunning+" "+runners.get(currentTop).keepRunning);
-      System.out.println("home: "+home.getPlayer().role+" first: "+first.getPlayer().role+" second: "+second.getPlayer().role+" third: "+third.getPlayer().role+"\n");
-      //System.out.println(runners.get(runners.size()-1).role+" is size-1's role, this is its keepRunning: "+runners.get(runners.size()-1).keepRunning+"; h,1,2,3.getPlayer(): "+home.getPlayer().role+" "+home.getPlayer().vertical+" "+home.getPlayer().keepRunning+" "+first.getPlayer().role+" "+first.getPlayer().vertical+" "+first.getPlayer().keepRunning+" "+second.getPlayer().role+" "+second.getPlayer().vertical+" "+second.getPlayer().keepRunning+" "+third.getPlayer().role+" "+third.getPlayer().vertical+" "+third.getPlayer().keepRunning);
-      System.out.println("AT HOME 2: " + atHome);
       third.getPlayer().runToBase();
-      System.out.println("AT HOME 3: " + atHome);
       if (atHome) {
         if (homeBatting) {
           runsHome++;
@@ -238,8 +218,6 @@ class Field {
       home.getPlayer().runToBase();
     
       if (! r.role.equals("pitcher") && ballOnTime && r != ruling.getPlayer()) {
-        System.out.println("hi, r: " + r.role + " rPrev: "+ rPrev.num() + " r.role: " + " ruling: " + ruling.num() + 
-        " and ruling.getPlayer().role: " + ruling.getPlayer().role + " and ruling.getPlayer().getWhichBase(): " + ruling.getPlayer().getWhichBase().num());
         ballOnTime = false;
         rPrev.addPlayer(pitcher);
         int n = Integer.parseInt(r.role.substring(8,9));
@@ -284,6 +262,5 @@ class Field {
     
     xyz.display(strikes, outs, (int)innings);
     board.getEvents();
-    //System.out.println(xDistance + " " + yDistance);
   }
 }
