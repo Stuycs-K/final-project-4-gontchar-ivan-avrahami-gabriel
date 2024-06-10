@@ -160,7 +160,7 @@ class Player {
         xDistance = xMouse - ball.x();
         yDistance = Math.abs(yMouse - ball.y()) + 1;//in case it's 0
         runners.add(new Player("runners["+runners.size()+"]", "batterStanced.png", 730, 770+translate));
-        runners.get(runners.size()-1).move(20,20);
+        runners.get(runners.size()-1).move(20,-10);
         home.addPlayer(runners.get(runners.size()-1));
         board.addEvent("in play");
         hasSwung = true;
@@ -235,6 +235,16 @@ class Player {
         }
         
         else {
+          if (nextBase.num() == 1) {
+            this.move(22,22);
+          }
+          else if (nextBase.num() == 2) {
+            this.move(16,-16);
+          }
+          else {
+            this.move(-16,-16);
+          }
+          
           //System.out.println("runToBase, whichBase: "+whichBase.num()+" keepRunning: "+keepRunning+" shouldRun: " + shouldRun);
           System.out.println(whichBase.num() + " Curr base's player: " + whichBase.getPlayer().vertical);
           System.out.println(nextBase.num() + " Next base's player: " + nextBase.getPlayer().vertical);
@@ -254,9 +264,7 @@ class Player {
         }
       }
       else {
-        if (Math.random() < 0.95 || nextBase != third) {
-          this.actuallyRun();
-        }
+        this.actuallyRun();
       }
     }
   }

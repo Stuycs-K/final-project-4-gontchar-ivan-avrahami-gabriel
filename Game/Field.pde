@@ -46,13 +46,13 @@ class Field {
     //drawing the bases
     fill(255, 255, 255);
     //home
-    rect(width / 2 - 15, 810 + translate, 30, 30);
+    rect(width / 2 - 15, 805 + translate, 30, 30);
     //1st
     rect(1010, 560 + translate, 30, 30);
     ////2nd
     rect(785, 345 + translate, 30, 30);
     ////3rd
-    rect(560, 560 + translate, 30, 30);
+    rect(560, 565 + translate, 30, 30);
 
     if ((runsAway > runsHome && innings > 9 || (int)innings == innings && innings >= 10 && runsHome != runsAway)) {
       fill(0, 0, 0);
@@ -204,9 +204,11 @@ class Field {
       if (atHome) {
         if (homeBatting) {
           runsHome++;
+          board.addEvent("home team scores");
         }
         else {
           runsAway++;
+          board.addEvent("away team scores");
         }
         runners.set(scorer, new Player(runners.get(scorer).role, "batterStanced.png", 2000, 2000));
         third.addPlayer(pitcher);
@@ -218,7 +220,6 @@ class Field {
       second.getPlayer().runToBase();
       first.getPlayer().runToBase();
       home.getPlayer().runToBase();
-    //board.getEvents();
     
       if (! r.role.equals("pitcher") && ballOnTime && r != ruling.getPlayer()) {
         System.out.println("hi, r: " + r.role + " rPrev: "+ rPrev.num() + " r.role: " + " ruling: " + ruling.num() + 
@@ -227,7 +228,7 @@ class Field {
         rPrev.addPlayer(pitcher);
         int n = Integer.parseInt(r.role.substring(8,9));
         runners.set(n, new Player(runners.get(n).role, "batterStanced.png", 2000, 2000+translate));
-        board.addEvent("out");
+        board.addEvent("out at base " + ruling.num());
         strikes = 0;
         outs++;
         if (!home.getPlayer().keepRunning && !first.getPlayer().keepRunning && !second.getPlayer().keepRunning && !third.getPlayer().keepRunning) {
@@ -266,6 +267,7 @@ class Field {
     }
     
     xyz.display(strikes, outs, (int)innings);
+    board.getEvents();
     //System.out.println(xDistance + " " + yDistance);
   }
 }
