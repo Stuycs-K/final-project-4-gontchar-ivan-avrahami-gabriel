@@ -86,17 +86,25 @@ class Field {
     }
     //check if the button P1_LEFT is being pressed:
     if (keyboardInput.isPressed(Controller.P1_LEFT)) {
-      fielder.move(-8,0);
+      if(!(fielder.yCenter() >= 560 && fielder.yCenter() <= 1000) || !(fielder.xCenter() <= 855)){
+        fielder.move(-8,0);
+      }
     }
     //check if the button P1_RIGHT is being pressed:
     if (keyboardInput.isPressed(Controller.P1_RIGHT)) {
-      fielder.move(8,0);
+      //if(){
+        fielder.move(8,0);
+      //}
     }
     if (keyboardInput.isPressed(Controller.P1_UP)) {
-      fielder.move(0,-8);
+      //if(){
+        fielder.move(0,-8);
+      //}
     }
     if (keyboardInput.isPressed(Controller.P1_DOWN)) {
-      fielder.move(0,8);
+      //if(){
+        fielder.move(0,8);
+      //}
     }
     if (fielder.hasBall()) {
       if (keyboardInput.isPressed(Controller.BASE_1)) {

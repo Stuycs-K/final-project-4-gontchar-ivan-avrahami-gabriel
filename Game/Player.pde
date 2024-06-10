@@ -27,6 +27,8 @@ class Player {
     else {
       keepRunning = true;
     }  
+    System.out.println(rol + " " + hor + " " + ver);
+    System.out.println(rol + " " + (hor + picture.width) + " " + (ver + picture.width));
 }
 
   public void displayPlayer() {
