@@ -2,7 +2,6 @@ class Baseball {
   int xLoc;
   int yLoc;
   PImage ball;
-  //double speed = 0;
   public Baseball(int x, int y) {
     xLoc = x;
     yLoc = y;
@@ -17,7 +16,6 @@ class Baseball {
   public void move(int hor, int ver) {
     xLoc += hor;
     yLoc += ver;
-    //speed = Math.sqrt(hor * hor + ver * ver);
   }
   
   public int x() {

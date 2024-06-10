@@ -99,48 +99,6 @@ class Player {
       ballOnTime = true;
     }
   }
-  /*public void throwBall(Base base) {
-      if (hasBall) {
-      hasBall = false;
-      int[] results = base.toHere(ball.x(), ball.y());
-      int aNeg = 1;
-      int bNeg = 1;
-      if (results[0] < 0) {
-        aNeg = -1;
-      }
-      if (results[1] < 0) {
-        bNeg = -1;
-      }
-      int a, b;
-      for (int i = 0; i < results[2]; i++) {
-        a = Math.abs(results[0]);
-        b = Math.abs(results[1]);
-        while (a > 0 && b > 0) {
-          double rand = (double) a / (a+b);
-          if (a > b) {
-            rand = (double) b / (a+b);
-          }
-          if (Math.random() < rand) {
-            a--;
-            ball.move(aNeg, 0);
-          }
-          else {
-            b--;
-            ball.move(0, bNeg);
-          }
-        }
-        while (a > 0) {
-          a--;
-          ball.move(aNeg, 0);
-        }
-        while (b > 0) {
-          b--;
-          ball.move(0, bNeg);
-        }
-      }
-      //System.out.println(ball.x() + " " + ball.y() + " " + results[0] + " " + results[1] + " " + results[2]);
-    }
-  }*/
 
   public void pitch(Pitch p) {
     canSwing = true;
@@ -181,29 +139,6 @@ class Player {
   public Base getWhichBase() {
     return whichBase;
   }
-
-  /*public Base getNextBase() {
-    return nextBase;
-  }*/
-  
-  /*public void setWhichBase(int num) {
-    if (num == 1) {
-      whichBase = first;
-      nextBase = second;
-    }
-    if (num == 2) {
-      whichBase = second;
-      nextBase = third;
-    }
-    if (num == 3) {
-      whichBase = third;
-      nextBase = home;
-    }
-    if (num == 4) {
-      whichBase = home;
-      nextBase = first;
-    }
-  }*/
   
   public void actuallyRun() {
     int xShift = 1;
@@ -218,7 +153,6 @@ class Player {
   }
   
   public void runToBase() {
-    //System.out.println(batter.getShouldRun() + " " + batter.xCenter() + " " + next.x() + " " + batter.yCenter() + " " + next.y());
     if (role != "pitcher" && (keepRunning || runners.get(currentTop).keepRunning)) {
     
       if (this.xCenter() < nextBase.x() + 25 && this.xCenter() > nextBase.x() - 15
@@ -240,7 +174,6 @@ class Player {
             this.move(-14,-14);
           }
           
-          //System.out.println("runToBase, whichBase: "+whichBase.num()+" keepRunning: "+keepRunning+" shouldRun: " + shouldRun);
           System.out.println(whichBase.num() + " Curr base's player: " + whichBase.getPlayer().vertical);
           System.out.println(nextBase.num() + " Next base's player: " + nextBase.getPlayer().vertical);
           whichBase.addPlayer(pitcher);

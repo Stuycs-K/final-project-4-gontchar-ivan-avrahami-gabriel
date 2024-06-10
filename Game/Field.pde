@@ -17,29 +17,16 @@ class Field {
     fill(235,157,95,255);
     arc(width / 2, 865 + translate, 1025, 1100, PI+QUARTER_PI, PI+PI-QUARTER_PI);
     
-    
-    //fill(255);
-    //rect(125,25,1200,75);
-    //fill(21,212,53);
-    ////green outer quad
-    //quad(800,425+translate,1000,615+translate,800,825+translate,600,615+translate);
-    //fill(237,247,87);
-    ////yellow quad
-    //quad(800,425+translate,975,600+translate,800,775+translate,625,600+translate);
+  
     stroke(21,212,53);
     fill(21,212,53);
     //green inner quad
     quad(800,360+translate,1020,580+translate,800,800+translate,580,580+translate);
-    //rotate(PI);
-    //arc(-800,-425-translate,550,550,-QUARTER_PI,PI+QUARTER_PI,PIE);
-    //rotate(-PI);
     
     stroke(255);
     strokeWeight(2);
     line(200,195+translate,800,847+translate);
     line(1400,195+translate,800,847+translate);
-    //line(1150,508+translate,1185,543+translate);
-    //line(450,507+translate,415,542+translate);
     
     stroke(235,157,95,255);
     fill(235,157,95,255);
@@ -106,7 +93,7 @@ class Field {
       //}
     }
     if (keyboardInput.isPressed(Controller.P1_DOWN)) {
-      if(fielder.yCenter() < 570){
+      if(hasSwung || fielder.yCenter() < 530){
         fielder.move(0,8);
       }
     }
@@ -160,6 +147,19 @@ class Field {
     
     if(ball.x() < 0 && ball.y() > 200 || ball.x() > 1600 && ball.y() > 200){
       board.addEvent("foul");
+      runners.remove(runners.size()-1);
+      if (third.getPlayer().role != "pitcher") {
+        third.getPlayer().horizontal = 562;
+        third.getPlayer().vertical = 624;
+      }
+      if (second.getPlayer().role != "pitcher") {
+        second.getPlayer().horizontal = 774;
+        second.getPlayer().vertical = 416;
+      }
+       if (third.getPlayer().role != "pitcher") {
+        first.getPlayer().horizontal = 992;
+        first.getPlayer().vertical = 618;
+      }
       if(strikes < 2){
         strikes++;
       }
@@ -188,6 +188,9 @@ class Field {
       }
       System.out.println("SIZE: " + runners.size() +" "+ runners.get(currentTop).role+" "+runners.get(currentTop).keepRunning);
       if (! runners.get(currentTop).keepRunning) {
+        System.out.println("FIRST: "+first.getPlayer().horizontal+" "+first.getPlayer().vertical);
+        System.out.println("SECOND: "+second.getPlayer().horizontal+" "+second.getPlayer().vertical);
+        System.out.println("THIRD: "+third.getPlayer().horizontal+" "+third.getPlayer().vertical);
         /*if (ballOnTime && ruling.num() == runners[numRunners].getWhichBase().num()) {
           runners[numRunners] = new Player("batterStanced.png", 2000, 2000+translate);
           board.addEvent("out");
@@ -240,13 +243,8 @@ class Field {
         ballOnTime = false;
         rPrev.addPlayer(pitcher);
         int n = Integer.parseInt(r.role.substring(8,9));
-<<<<<<< HEAD
         runners.set(n, new Player(runners.get(n).role, "onBase.png", 2000, 2000+translate));
         board.addEvent("out at base " + ruling.num());
-=======
-        runners.set(n, new Player(runners.get(n).role, "batterStanced.png", 2000, 2000+translate));
-        board.addEvent("out @ base " + ruling.num());
->>>>>>> f48d1086d0f07babdadf9df17a4cd3c35125e230
         strikes = 0;
         outs++;
         if (!home.getPlayer().keepRunning && !first.getPlayer().keepRunning && !second.getPlayer().keepRunning && !third.getPlayer().keepRunning) {
