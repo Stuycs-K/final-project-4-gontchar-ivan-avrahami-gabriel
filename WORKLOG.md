@@ -133,8 +133,8 @@ Wrote the multiple receivers and did some merging but doesn't fully work
 
 ### 6/7/24 - CW
 
-xxx
+Debugging the multi runners code
 
 ### 6/7/24 - HW
 
-xxx
+Fixed the multi runners as well as the basepath running and fixing fouls.
