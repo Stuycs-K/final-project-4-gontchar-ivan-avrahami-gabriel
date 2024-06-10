@@ -12,7 +12,14 @@ class Scoreboard {
   }
   
   public void getEvents() {
-    System.out.println(events);
+    fill(0,0,0);
+    int k = 0;
+    for (int i = events.size()-1; i >= 0; i--) {
+      if (k < 5) {
+        text(events.get(i), 1300, 695 + 30 * k);
+        k++;
+      } 
+    }
   }
   
   public void display(int strikes, int outs, int innings){

@@ -14,15 +14,15 @@ Field ivan_lacks_neurons;
 int scorer;
 int runsHome = 0;
 int runsAway = 0;
-boolean homeBatting = true;
+boolean homeBatting = false;
 
 void setup(){
   size(1600,1000);
   runners = new ArrayList<Player>();
   first = new Base(1, 1010, 570+translate);
   second = new Base(2, 790, 355+translate);
-  third = new Base(3, 565, 570+translate);
-  home = new Base(4, 790, 810+translate);
+  third = new Base(3, 565, 575+translate);
+  home = new Base(4, 790, 805+translate);
   board.genericSetup();
   ivan_lacks_neurons = new Field();
 
@@ -45,8 +45,10 @@ void keyReleased() {
 }
 
 void mouseClicked() {
-  if (mouseX < 250 && mouseY < 200+translate) {
+  if (mouseButton == RIGHT) {
     runners.get(currentTop).setShouldRun(true);
   }
-  ivan_lacks_neurons.strikes += batter.swing(mouseX,mouseY);
+  else {
+    ivan_lacks_neurons.strikes += batter.swing(mouseX,mouseY);
+  }
 }
